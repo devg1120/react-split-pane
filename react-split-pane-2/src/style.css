@@ -1,8 +1,11 @@
+
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 
 html,
 body,
@@ -10,19 +13,23 @@ body,
   height: 100%;
 }
 
+/*
 body {
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: #fff;
   color: #333;
 }
+*/
 
+/*
 .app {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-
+*/
+/*
 .nav {
   display: flex;
   align-items: center;
@@ -69,7 +76,9 @@ body {
 .nav-buttons .label-short {
   display: none;
 }
+*/
 
+/*
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
@@ -95,15 +104,19 @@ body {
     display: none;
   }
 }
+*/
 
+/*
 .main {
   flex: 1;
   overflow: hidden;
 }
+*/
 
 /* Split pane divider - 1px line with expanded hit area */
 .split-pane-divider {
-  background: #ddd; 
+  /* background: #ddd; */
+  background: red;    /*GUSA*/
   position: relative;
 }
 
@@ -115,14 +128,15 @@ body {
 
 .split-pane-divider:hover::before,
 .split-pane-divider.dragging::before {
-  background: rgba(0, 0, 0, 0.08);
+  /* background: rgba(0, 0, 0, 0.08); */
+  background: red;    /*GUSA*/
 }
-
+/*
 .split-pane-divider:focus {
   outline: 2px solid #0066cc;
   outline-offset: -1px;
 }
-
+*/
 .split-pane-divider.horizontal {
   width: 1px;
   cursor: col-resize;
@@ -131,8 +145,8 @@ body {
 .split-pane-divider.horizontal::before {
   top: 0;
   bottom: 0;
-  left: -4px;
-  right: -4px;
+  left: -2px;
+  right: -2px;
 }
 
 .split-pane-divider.vertical {
@@ -143,8 +157,8 @@ body {
 .split-pane-divider.vertical::before {
   left: 0;
   right: 0;
-  top: -4px;
-  bottom: -4px;
+  top: -2px;
+  bottom: -2px;
 }
 
 /* Example layout */
