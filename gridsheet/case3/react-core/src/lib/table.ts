@@ -1,6 +1,7 @@
 import { defaultParser } from '../parsers/core';
-import { defaultRenderer, RendererCallProps } from '../renderers/core';
-import {
+import { defaultRenderer } from '../renderers/core';
+import type {  RendererCallProps } from '../renderers/core';
+import type {
   Id,
   Ids,
   IdMatrix,
@@ -33,7 +34,7 @@ import {
   putMatrix,
 } from './structs';
 import { a2p, x2c, p2a, y2r, grantAddressAbsolute } from './converters';
-import { FunctionMapping } from '../formula/functions/__base';
+import type { FunctionMapping } from '../formula/functions/__base';
 import { identifyFormula, Lexer, splitRef, stripSheetName } from '../formula/evaluator';
 import { solveFormula, stripTable } from '../formula/solver';
 
@@ -43,7 +44,8 @@ import { updateTable } from '../store/actions';
 import * as operation from './operation';
 import { Wire, createWire } from './hub';
 import { safeQueueMicrotask } from './time';
-import { defaultPolicy, PolicyType } from '../policy/core';
+import { defaultPolicy } from '../policy/core';
+import type { PolicyType } from '../policy/core';
 import { escapeSheetName, getSheetPrefix } from './sheet';
 import { ReferencePreserver } from './reference';
 

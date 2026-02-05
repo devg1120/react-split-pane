@@ -1,7 +1,8 @@
 import dayjs from 'dayjs';
 
-import { CellType, PointType, WriterType } from '../types';
-import { Table, UserTable } from '../lib/table';
+import type { CellType, PointType, WriterType } from '../types';
+import { Table } from '../lib/table';
+import type { UserTable } from '../lib/table';
 import { solveFormula, solveTable } from '../formula/solver';
 import { FormulaError } from '../formula/evaluator';
 import { TimeDelta } from '../lib/time';

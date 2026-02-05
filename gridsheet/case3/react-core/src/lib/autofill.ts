@@ -5,7 +5,7 @@ import { areaShape, areaToZone, complementSelectingArea, concatAreas, zoneToArea
 import { p2a } from './converters';
 import { identifyFormula } from '../formula/evaluator';
 import { TimeDelta } from './time';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 const BORDER_AUTOFILL_DRAGGING = 'dashed 1px #888888';
 

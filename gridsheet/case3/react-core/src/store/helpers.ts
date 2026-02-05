@@ -1,6 +1,6 @@
 import { a2p, x2c, y2r } from '../lib/converters';
 import { Table } from '../lib/table';
-import { Address, PointType, StoreType } from '../types';
+import type { Address, PointType, StoreType } from '../types';
 
 export const restrictPoints = (store: StoreType, table: Table) => {
   const { choosing, selectingZone } = store;

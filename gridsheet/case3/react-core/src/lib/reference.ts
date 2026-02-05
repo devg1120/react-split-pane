@@ -1,5 +1,5 @@
 import { identifyFormula } from '../formula/evaluator';
-import { CellsByIdType, Id } from '../types';
+import type { CellsByIdType, Id } from '../types';
 import { Table } from './table';
 
 export class ReferencePreserver {

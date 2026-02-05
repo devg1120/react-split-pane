@@ -1,8 +1,9 @@
 // DO NOT COPY THIS CODE FOR THE OTHER.
 
 import { Table } from '../../lib/table';
-import { Expression, FormulaError } from '../evaluator';
-import { FunctionProps } from './__base';
+import type { Expression } from '../evaluator';
+import { FormulaError } from '../evaluator';
+import type { FunctionProps } from './__base';
 import { stripTable } from '../../formula/solver';
 
 export class IfErrorFunction {

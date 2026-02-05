@@ -1,4 +1,4 @@
-import { OperationType as operations } from '../types';
+import type { OperationType as operations } from '../types';
 
 export const RemoveRows: operations = 0b00000000000000000000000000000000000000000000000000001; // 1
 export const RemoveCols: operations = 0b00000000000000000000000000000000000000000000000000010; // 2

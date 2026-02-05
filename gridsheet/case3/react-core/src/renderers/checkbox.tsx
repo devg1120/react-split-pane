@@ -1,4 +1,4 @@
-import { RenderProps } from './core';
+import type { RenderProps } from './core';
 
 export const CheckboxRendererMixin = {
   bool({ value, sync, table, point }: RenderProps<boolean>): any {

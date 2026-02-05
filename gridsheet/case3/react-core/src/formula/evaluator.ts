@@ -1,6 +1,6 @@
 import { a2p, grantAddressAbsolute, p2a } from '../lib/converters';
 import { Table } from '../lib/table';
-import { Id, PointType } from '../types';
+import type { Id, PointType } from '../types';
 
 type EvaluateProps = {
   table: Table;

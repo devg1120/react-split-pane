@@ -1,6 +1,6 @@
 import { Special } from '../constants';
 import { Table } from '../lib/table';
-import { Id, MatrixType, PointType, RefEvaluation } from '../types';
+import type { Id, MatrixType, PointType, RefEvaluation } from '../types';
 import { FormulaError, Lexer, Parser } from './evaluator';
 
 const SOLVING = new Special('solving');

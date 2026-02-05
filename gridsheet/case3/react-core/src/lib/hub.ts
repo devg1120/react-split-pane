@@ -20,9 +20,9 @@ import { useEffect, useState } from 'react';
 import { updateTable } from '../store/actions';
 import type { FunctionMapping } from '../formula/functions/__base';
 import { functions as functionsDefault } from '../formula/mapping';
-import { PolicyType } from '../policy/core';
-import { RendererType } from '../renderers/core';
-import { ParserType } from '../parsers/core';
+import type { PolicyType } from '../policy/core';
+import type { RendererType } from '../renderers/core';
+import type { ParserType } from '../parsers/core';
 import { Table } from './table';
 
 export type WireProps = {

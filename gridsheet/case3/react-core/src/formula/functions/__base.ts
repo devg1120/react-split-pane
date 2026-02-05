@@ -1,6 +1,6 @@
 import { Table } from '../../lib/table';
 import type { PointType } from '../../types';
-import { Expression } from '../evaluator';
+import type { Expression } from '../evaluator';
 
 export type FunctionProps = {
   args: Expression[];

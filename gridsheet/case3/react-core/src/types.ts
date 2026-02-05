@@ -61,6 +61,7 @@ export type CellType<T = any, Custom = any> = {
   disableFormula?: boolean;
   prevention?: OperationType;
   system?: System;
+  default?: any;   //GUSA
 };
 
 export type RawCellType = {

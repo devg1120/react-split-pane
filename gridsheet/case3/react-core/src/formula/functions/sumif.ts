@@ -4,7 +4,7 @@ import { Table } from '../../lib/table';
 import { BaseFunction } from './__base';
 import { check, ensureString } from './__utils';
 import { stripTable } from '../../formula/solver';
-import { AreaType } from '../../types';
+import type { AreaType } from '../../types';
 
 export class SumifFunction extends BaseFunction {
   example = 'SUMIF(A1:A10,">20")';

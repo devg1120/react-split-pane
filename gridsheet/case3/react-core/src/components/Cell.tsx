@@ -27,6 +27,7 @@ type Props = {
   y: number;
   x: number;
   operationStyle?: CSSProperties;
+  //operationStyle?: any; //GUSA
 };
 
 export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {

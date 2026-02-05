@@ -1,4 +1,4 @@
-import { CellType } from '../types';
+import type { CellType } from '../types';
 import { TimeDelta } from '../lib/time';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';

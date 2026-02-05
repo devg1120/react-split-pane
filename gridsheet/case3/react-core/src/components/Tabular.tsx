@@ -200,7 +200,11 @@ export const Tabular = () => {
                     <HeaderCellLeft y={y} />
                     <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-left" />
                     {virtualized?.xs?.map((x) => (
+		    /*
                       <Cell key={x} y={y} x={x} operationStyle={operationStyles[p2a({ y, x })]} />
+		      */
+                      <Cell key={x} y={y} x={x}  />
+		      
                     ))}
                     <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-right" />
                   </tr>
