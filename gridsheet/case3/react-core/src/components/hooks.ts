@@ -14,7 +14,7 @@ export const useBrowser = () => {
 
 export const useDebounce = <T>(value: T, delay = 100) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(0);
 
   useEffect(() => {
     timerRef.current = window.setTimeout(() => setDebouncedValue(value), delay);
@@ -27,7 +27,7 @@ export const useDebounce = <T>(value: T, delay = 100) => {
 
 export const useDebounceCallback = (callback: (...args: any[]) => void, delay = 100) => {
   const debouncedCallback = useRef(callback);
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(0);
 
   useEffect(() => {
     debouncedCallback.current = callback;

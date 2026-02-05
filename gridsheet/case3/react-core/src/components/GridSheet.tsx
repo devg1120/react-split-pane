@@ -35,7 +35,7 @@ export function GridSheet({
   const mainRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLTextAreaElement>(null);
   const editorRef = useRef<HTMLTextAreaElement>(null);
-  const largeEditorRef = useRef<HTMLTextAreaElement>(null);
+  const largeEditorRef = useRef<HTMLTextAreaElement>(null); //GUSA
   const tabularRef = useRef<HTMLDivElement>(null);
 
   const internalConnector = useConnector();

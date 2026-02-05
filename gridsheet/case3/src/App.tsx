@@ -54,7 +54,7 @@ const App: React.FC = () => {
             }
           }
           sheetName="Sheet1"
-          style={{ width: 800, height: 300 }}
+          //style={{ width: 800, height: 300 }}
         />
 
         <br />
@@ -97,7 +97,7 @@ const App: React.FC = () => {
             },
             //default: { labeler: 'decimal' },
           }}
-          style={{ width: 800, height: 300 }}
+          //style={{ width: 800, height: 300 }}
           options={{}}
           sheetName="Sheet2"
         />

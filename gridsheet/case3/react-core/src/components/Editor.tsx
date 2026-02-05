@@ -27,7 +27,7 @@ import * as prevention from '../lib/operation';
 import { expandInput, insertTextAtCursor, isRefInsertable, resetInput } from '../lib/input';
 import { Lexer } from '../formula/evaluator';
 import { COLOR_PALETTE } from '../lib/palette';
-import { CursorStateType, EditorEventWithNativeEvent, FeedbackType, ModeType } from '../types';
+import type { CursorStateType, EditorEventWithNativeEvent, FeedbackType, ModeType } from '../types';
 import { Fixed } from './Fixed';
 import { parseHTML, parseText } from '../lib/paste';
 import React from 'react';

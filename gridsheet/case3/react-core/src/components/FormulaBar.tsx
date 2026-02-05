@@ -141,6 +141,7 @@ export const FormulaBar = ({ ready }: FormulaBarProps) => {
           if (e.ctrlKey || e.metaKey) {
             return true;
           }
+          break;
         case 'c': // C
           if (e.ctrlKey || e.metaKey) {
             return true;
@@ -200,7 +201,7 @@ export const FormulaBar = ({ ready }: FormulaBarProps) => {
           spellCheck={false}
           ref={largeEditorRef}
           value={inputting}
-          onInput={handleInput}
+          //onInput={handleInput} //GUSA
           onFocus={handleFocus}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}

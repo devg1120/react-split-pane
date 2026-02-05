@@ -102,13 +102,13 @@ export type WriterType = (value: string) => void;
 
 export type StoreType = {
   sheetId: number;
-  tableReactive: RefObject<Table>;
-  rootRef: RefObject<HTMLDivElement>;
-  mainRef: RefObject<HTMLDivElement>;
-  editorRef: RefObject<HTMLTextAreaElement>;
-  largeEditorRef: RefObject<HTMLTextAreaElement>;
-  tabularRef: RefObject<HTMLDivElement>;
-  searchInputRef: RefObject<HTMLTextAreaElement>;
+  tableReactive: RefObject<Table | null>;
+  rootRef: RefObject<HTMLDivElement | null>;
+  mainRef: RefObject<HTMLDivElement | null>;
+  editorRef: RefObject<HTMLTextAreaElement | null>;
+  largeEditorRef: RefObject<HTMLTextAreaElement | null>;
+  tabularRef: RefObject<HTMLDivElement | null>;
+  searchInputRef: RefObject<HTMLTextAreaElement | null>;
   entering: boolean;
   choosing: PointType;
   inputting: string;

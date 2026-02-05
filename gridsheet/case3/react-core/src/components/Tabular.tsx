@@ -1,4 +1,5 @@
-import { useEffect, useContext, useRef, useState, createRef, useCallback, RefObject } from 'react';
+import { useEffect, useContext, useRef, useState, createRef, useCallback } from 'react';
+import type { RefObject } from 'react';
 
 import { Cell } from './Cell';
 import { HeaderCellTop } from './HeaderCellTop';
@@ -200,10 +201,9 @@ export const Tabular = () => {
                     <HeaderCellLeft y={y} />
                     <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-left" />
                     {virtualized?.xs?.map((x) => (
-		    /*
+		    
                       <Cell key={x} y={y} x={x} operationStyle={operationStyles[p2a({ y, x })]} />
-		      */
-                      <Cell key={x} y={y} x={x}  />
+		      
 		      
                     ))}
                     <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-right" />
