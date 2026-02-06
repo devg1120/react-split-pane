@@ -199,22 +199,14 @@ export const Tabular = () => {
                 return (
                   <tr key={y} className="gs-row">
                     <HeaderCellLeft y={y} />
-{/*
                     <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-left" />
                     {virtualized?.xs?.map((x) => (
+		    
                       <Cell key={x} y={y} x={x} operationStyle={operationStyles[p2a({ y, x })]} />
+		      
+		      
                     ))}
                     <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-right" />
-*/}
-
-                        <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-left" />
-
-                        {virtualized?.xs?.map((x) => (
-                          <Cell key={x} y={y} x={x} operationStyle={operationStyles[p2a({ y, x })]} />
-                        ))}
-
-                        <td className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-right" />
-
                   </tr>
                 );
               })}

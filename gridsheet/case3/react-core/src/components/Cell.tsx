@@ -27,7 +27,6 @@ type Props = {
   y: number;
   x: number;
   operationStyle?: CSSProperties;
-  //operationStyle?: any; //GUSA
 };
 
 export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
@@ -291,6 +290,7 @@ export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
     return 'gs-autofill-drag gs-hidden';
   }, [editing, pointed, selectingArea]);
 
+/*
   if (!input) {
     return (
       <td key={x} data-x={x} data-y={y} data-address={address} className="gs-cell gs-hidden">
@@ -302,7 +302,42 @@ export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
         </div>
       </td>
     );
-  }
+   };
+*/
+if ( x == 5 && y == 5 ) {
+  console.log(x,y, colId, rowId);
+}
+
+  if (!input) {
+    return  (
+    <>
+    { x == 3  ?
+        (
+          <td  key={x} data-x={x} data-y={y} data-address={address}  colspan="4" className="span gs-cell gs-hidden">
+            <div className="gs-cell-inner-wrap">
+              <div className="gs-cell-inner">
+                <div className="gs-cell-rendered"></div>
+              </div>
+              <div className="gs-autofill-drag"></div>
+            </div>
+          </td>
+        )
+    :
+        (
+          <td key={x} data-x={x} data-y={y} data-address={address}  className="gs-cell gs-hidden">
+            <div className="gs-cell-inner-wrap">
+              <div className="gs-cell-inner">
+                <div className="gs-cell-rendered"></div>
+              </div>
+              <div className="gs-autofill-drag"></div>
+            </div>
+          </td>
+        )
+    }
+    </>
+  );
+  };
+  
 
   return (
     <td
