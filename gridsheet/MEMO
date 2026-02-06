@@ -1,0 +1,15 @@
+
+
+case3
+ ---- dev mode
+   npn run dev
+
+ ---- prod mode
+   npm run build
+   ./_start_httpd.sh
+
+
+
+case 4 
+  colspan & rowspan
+

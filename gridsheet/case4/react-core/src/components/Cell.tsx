@@ -26,10 +26,12 @@ import type { UserTable } from '../lib/table';
 type Props = {
   y: number;
   x: number;
+  colSpan_size: number;
+  rowSpan_size: number;
   operationStyle?: CSSProperties;
 };
 
-export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
+export const Cell: FC<Props> = memo(({ y, x, colSpan_size, rowSpan_size, operationStyle }) => {
   const rowId = y2r(y);
   const colId = x2c(x);
   const address = `${colId}${rowId}`;
@@ -290,7 +292,30 @@ export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
     return 'gs-autofill-drag gs-hidden';
   }, [editing, pointed, selectingArea]);
 
+/*
+  const span_list = [
+   {  x:  5, y:  5, col_size: 2, row_size: 1 },
+//   {  x:  3, y: 10, col_size: 2, row_size: 2 },
+  ]
+*/
+/*
+  let colSpan_size = 1; // default
+  let rowSpan_size = 1; // default
 
+  if (typeof span_list !== 'undefined') {
+    for ( let i = 0; i < span_list.length; i++){
+      if ( x == span_list[i].x && y == span_list[i].y ) {
+          if (span_list[i].col_size > 1 ) {
+             colSpan_size = span_list[i].col_size;
+          }
+          if (span_list[i].row_size > 1 ) {
+             rowSpan_size = span_list[i].row_size;
+          }
+      }
+    }
+  }
+*/
+  
   if (!input) {
     return (
       <td key={x} data-x={x} data-y={y} data-address={address} className="gs-cell gs-hidden">
@@ -303,43 +328,6 @@ export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
       </td>
     );
    };
-
-
-/*
-if ( x == 5 && y == 5 ) {
-  console.log(x,y, colId, rowId);
-}
-
-  if (!input) {
-    return  (
-    <>
-    { x == 5 && y == 5 ?
-        (
-          <td  key={x} data-x={x} data-y={y} data-address={address}  className="gs-cell gs-hidden">
-            <div className="gs-cell-inner-wrap">
-              <div className="gs-cell-inner">
-                <div className="gs-cell-rendered"></div>
-              </div>
-              <div className="gs-autofill-drag"></div>
-            </div>
-          </td>
-        )
-    :
-        (
-          <td key={x} data-x={x} data-y={y} data-address={address}  className="gs-cell gs-hidden">
-            <div className="gs-cell-inner-wrap">
-              <div className="gs-cell-inner">
-                <div className="gs-cell-rendered"></div>
-              </div>
-              <div className="gs-autofill-drag"></div>
-            </div>
-          </td>
-        )
-    }
-    </>
-  );
-  };
-  */
 
   return (
     <td
@@ -357,6 +345,8 @@ if ( x == 5 && y == 5 ) {
       }}
       onContextMenu={onContextMenu}
       onDoubleClick={onDoubleClick}
+      colSpan={colSpan_size}
+      rowSpan={rowSpan_size}
     >
       <div
         className={`gs-cell-inner-wrap`}

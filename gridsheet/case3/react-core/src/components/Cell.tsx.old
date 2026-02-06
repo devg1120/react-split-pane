@@ -290,7 +290,7 @@ export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
     return 'gs-autofill-drag gs-hidden';
   }, [editing, pointed, selectingArea]);
 
-
+/*
   if (!input) {
     return (
       <td key={x} data-x={x} data-y={y} data-address={address} className="gs-cell gs-hidden">
@@ -303,9 +303,7 @@ export const Cell: FC<Props> = memo(({ y, x, operationStyle }) => {
       </td>
     );
    };
-
-
-/*
+*/
 if ( x == 5 && y == 5 ) {
   console.log(x,y, colId, rowId);
 }
@@ -315,7 +313,7 @@ if ( x == 5 && y == 5 ) {
     <>
     { x == 5 && y == 5 ?
         (
-          <td  key={x} data-x={x} data-y={y} data-address={address}  className="gs-cell gs-hidden">
+          <td  key={x} data-x={x} data-y={y} data-address={address}  className="gs-cell gs-hidden" colspan="2">
             <div className="gs-cell-inner-wrap">
               <div className="gs-cell-inner">
                 <div className="gs-cell-rendered"></div>
@@ -339,7 +337,7 @@ if ( x == 5 && y == 5 ) {
     </>
   );
   };
-  */
+  
 
   return (
     <td
