@@ -192,6 +192,8 @@ export class Table implements UserTable {
   public totalWidth = 0;
   public totalHeight = 0;
 
+  public spanList = [];
+
   private version = 0;
   private idMatrix: IdMatrix;
   private area: AreaType = { top: 0, left: 0, bottom: 0, right: 0 };
@@ -320,6 +322,7 @@ export class Table implements UserTable {
     Object.keys(cells).forEach((address) => {
       const range = expandRange(address);
       const data = cells[address];
+      console.log(address, a2p(address).x, a2p(address).y, data);
       range.forEach((address) => {
         const origin = cells[address];
         cells[address] = {

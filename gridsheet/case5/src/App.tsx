@@ -47,7 +47,22 @@ const App: React.FC = () => {
 
     }
   }
-  //console.log(cells);
+
+
+  let spans = {
+     E5:  {colsize: 2            },
+     C10: {            rowsize: 2},
+     F12: {colsize: 3, rowsize: 3},
+  }
+
+
+  for (const key in spans) {
+      //console.log(key, spans[key]);
+      Object.assign(cells[key], spans[key])
+  }
+  //console.log(cells["E5"]);
+  //console.log(cells["C10"]);
+  //console.log(cells["F12"]);
 
   //style={{ width: 800 }}
   return (
