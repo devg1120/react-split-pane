@@ -407,6 +407,7 @@ const useOperationStyles = (store: StoreType, refs: RefPaletteType) => {
   {
     // selecting
     const { top, left, bottom, right } = zoneToArea(selectingZone);
+    
     if (!editingAnywhere) {
       for (let y = top; y <= bottom; y++) {
         updateStyle({ y, x: left - 1 }, { borderRight: BORDER_SELECTED });
@@ -421,6 +422,7 @@ const useOperationStyles = (store: StoreType, refs: RefPaletteType) => {
         updateStyle({ y: bottom + 1, x }, { borderTop: BORDER_SELECTED });
       }
     }
+    
   }
   if (autofillDraggingTo) {
     const autofill = new Autofill(store, autofillDraggingTo);
@@ -440,6 +442,7 @@ const useOperationStyles = (store: StoreType, refs: RefPaletteType) => {
   }
   {
     // choosing
+    
     const { y, x } = choosing;
     updateStyle(
       { y, x },
@@ -453,7 +456,8 @@ const useOperationStyles = (store: StoreType, refs: RefPaletteType) => {
     updateStyle({ y, x: x - 1 }, { borderRight: BORDER_POINTED });
     updateStyle({ y, x: x + 1 }, { borderLeft: BORDER_POINTED });
     updateStyle({ y: y - 1, x }, { borderBottom: BORDER_POINTED });
-    updateStyle({ y: y + 1, x }, { borderTop: BORDER_POINTED });
+    //updateStyle({ y: y + 1, x }, { borderTop: BORDER_POINTED });  //GUSA
+    
   }
   if (table.sheetId === copyingSheetId) {
     // copying
