@@ -47,14 +47,24 @@ const App: React.FC = () => {
 
     }
   }
-
-
+/*
+              style: {
+                backgroundColor: "#ccff99",
+		}
+*/
+/*
   let spans = {
      E5:  {colsize: 2            },
      C10: {            rowsize: 2},
      F12: {colsize: 3, rowsize: 3},
   }
+*/
 
+  let spans = {
+     E5:  {colsize: 2            , style:{ backgroundColor: "#ffff99"}},
+     C10: {            rowsize: 2, style:{ backgroundColor: "#99ccff"}},
+     F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff"}},
+  }
 
   for (const key in spans) {
       //console.log(key, spans[key]);
@@ -112,7 +122,12 @@ const App: React.FC = () => {
               style: { fontSize: "14px" },
               default: { labeler: "decimal" },
             },
-            A4: { value: "TEST", colsize:2, rowsize:2 },
+            A4: { value: "TEST", colsize:2, rowsize:2,
+              style: {
+                backgroundColor: "#ccff99",
+		}
+
+	    },
             C3: { value: "=SUM(Sheet1!A2:B3)" },
             X20: { value: 789 },
 	             F: {
