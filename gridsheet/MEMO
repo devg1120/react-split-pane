@@ -9,7 +9,13 @@ case3
    ./_start_httpd.sh
 
 
-
 case 4 
   colspan & rowspan
+
+
+case 5
+    npm run build   > error
+
+case 6
+    npm run build   > ok
 
