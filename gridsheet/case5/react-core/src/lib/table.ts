@@ -319,10 +319,29 @@ export class Table implements UserTable {
         this.addressCaches.set(id, address);
       }
     }
+
+    this.spanList = [];
+
     Object.keys(cells).forEach((address) => {
       const range = expandRange(address);
       const data = cells[address];
-      console.log(address, a2p(address).x, a2p(address).y, data);
+      //console.log(address, a2p(address).x, a2p(address).y, data);
+      if ( ("colsize" in data) && ("rowsize" in data)) {
+          console.log("CR: ",address, a2p(address).x, a2p(address).y, data);
+	  const p = a2p(address);
+	  this.spanList.push({ x:p.x, y:p.y, col_size:data.colsize, row_size:data.rowsize}); 
+      }
+      else if ( "colsize" in data ) {
+          console.log("C:  ",address, a2p(address).x, a2p(address).y, data);
+	  const p = a2p(address);
+	  this.spanList.push({ x:p.x, y:p.y, col_size:data.colsize, row_size:1           }); 
+      }
+      else if ( "rowsize" in data ) {
+          console.log("R:  ",address, a2p(address).x, a2p(address).y, data);
+	  const p = a2p(address);
+	  this.spanList.push({ x:p.x, y:p.y, col_size:1           , row_size:data.rowsize}); 
+      }
+
       range.forEach((address) => {
         const origin = cells[address];
         cells[address] = {

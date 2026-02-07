@@ -193,11 +193,22 @@ export const Tabular = () => {
   }
 */
 
-  const span_list = [
+/*
+  let span_list = [
    {  x:  5, y:  5, col_size: 2, row_size: 1 },
    {  x:  3, y: 10, col_size: 1, row_size: 2 },
    {  x:  6, y: 12, col_size: 3, row_size: 3 },
   ]
+*/
+  
+/*
+  let span_list = [];
+  for (let i = 0; i < table.spanList.length; i++) {
+       span_list.push(table.spanList[i]);
+  }
+*/
+
+  const span_list = table.spanList;
 
   const isSkip = (x,y) =>{
     let skip = false; // default

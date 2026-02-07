@@ -102,6 +102,7 @@ const App: React.FC = () => {
         />
 
         <br />
+
         <GridSheet
           hub={hub}
           initialCells={{
@@ -111,7 +112,7 @@ const App: React.FC = () => {
               style: { fontSize: "14px" },
               default: { labeler: "decimal" },
             },
-
+            A4: { value: "TEST", colsize:2, rowsize:2 },
             C3: { value: "=SUM(Sheet1!A2:B3)" },
             X20: { value: 789 },
 	             F: {
@@ -145,6 +146,8 @@ const App: React.FC = () => {
           options={{}}
           sheetName="Sheet2"
         />
+
+
       </div>
       {/* Labeler Control */}
       <div className="labeler-control">
