@@ -60,10 +60,18 @@ const App: React.FC = () => {
   }
 */
 
+//                ...makeBorder({
   let spans = {
      E5:  {colsize: 2            , style:{ backgroundColor: "#ffff99"}},
      C10: {            rowsize: 2, style:{ backgroundColor: "#99ccff"}},
-     F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff"}},
+     //F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff", border:"solid red 2px"}},
+     F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff", 
+            ...makeBorder({bottom:"solid red 2px",
+	                   top:   "solid red 2px",
+	                   left:  "solid red 2px",
+	                   right: "solid red 2px",
+			   },
+	    )}},
   }
 
   for (const key in spans) {
