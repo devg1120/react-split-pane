@@ -284,9 +284,11 @@ export const Tabular = () => {
 
   const freeze_point = { x:3, y:3 }
 
-/*
+
   const sum_top_hight = (y:number) => {
     let height = 0;
+    //let ele =  tableRef.current.querySelector("#CR" );
+    //height -= ele?.clientHeight;
     for ( let i = 1; i <= y ; i++ ) {
         const rowId  = y2r(y);     
         const id = `RH-${rowId}`;
@@ -303,6 +305,8 @@ export const Tabular = () => {
 
   const sum_left_width = (x:number) => {
     let width = 0;
+    let ele =  tableRef.current.querySelector("#CR" );
+    width -= ele?.clientWidth;
     for ( let i = 1; i <= x ; i++ ) {
         const colId  = x2c(x);     
         const id = `CH-${colId}`;
@@ -311,14 +315,15 @@ export const Tabular = () => {
 	if (ele == null) { width += 0;  }
         width += ele?.clientWidth;
     }
-    console.log(width);
-    return width-50;
+    //console.log(width);
+    //return width-50;
+    return width;
     
     //    if ( x == 2) { return 140; }
     //    if ( x == 1) { return 50; }
   }
-*/
 
+/*
   const sum_top_hight = (y:number) => {
         if ( y == 2) { return 50; }
         if ( y == 1) { return 25; }
@@ -328,7 +333,7 @@ export const Tabular = () => {
         if ( x == 2) { return 140; }
         if ( x == 1) { return 50; }
   }
-
+*/
   const set_freeze_tr_style = (y:number) => {
     //const rowId  = y2r(y);     
     //console.log(rowId);
@@ -399,7 +404,8 @@ export const Tabular = () => {
             <thead className="gs-thead" style={{ height: table.headerHeight }}>
               <tr className="gs-row">
                 <th
-                  className="gs-th gs-th-left gs-th-top"
+                  id="CR"
+		  className="gs-th gs-th-left gs-th-top"
                   style={{ position: 'sticky', width: table.headerWidth, height: table.headerHeight }}
                   onClick={handleSelectAllClick}
                 >
