@@ -390,6 +390,27 @@ export const Tabular = () => {
     }
   }
 
+  const set_freeze_headertop_td_style = (x:number) => {
+    //const colId  = x2c(x);     
+    //console.log(colId);
+
+    if (freeze_point && x < freeze_point.x) {
+       let leftwidth = sum_left_width(x);
+       let style =  {
+               position: "sticky",
+               left: `${leftwidth}px`,
+               zIndex: 200,
+               //background: "white",
+	       borderRight: "" ,
+              };
+       if ( x == freeze_point.x -1 ) {
+           style["borderRight"] = "2px solid green";
+       }
+       return style;
+    } else {
+       return {}
+    }
+  }
   return (
     <>
       <div
@@ -435,7 +456,7 @@ export const Tabular = () => {
 {/*
                 {virtualized?.xs?.map?.((x) => <HeaderCellTop x={x} key={x} />)}
 */}
-                {virtualized?.xs?.map?.((x) => <HeaderCellTop x={x} key={x} freezeStyle={set_freeze_td_style(x)}/>)}
+                {virtualized?.xs?.map?.((x) => <HeaderCellTop x={x} key={x} freezeStyle={set_freeze_headertop_td_style(x)}/>)}
 
                 <th
                   className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-right"

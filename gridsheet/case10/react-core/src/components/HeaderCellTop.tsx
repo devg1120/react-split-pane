@@ -206,8 +206,8 @@ export const HeaderCellTop: FC<Props> = memo(({ x, freezeStyle }) => {
             : 'gs-selecting'
           : ''
       }`}
-      style={{ width, minWidth: width, maxWidth: width, zIndex:150,  }}
-      //style={{ width, minWidth: width, maxWidth: width, zIndex:150, ...freezeStyle, }}
+      //style={{ width, minWidth: width, maxWidth: width, zIndex:150,  }}
+      style={{ width, minWidth: width, maxWidth: width,  ...freezeStyle, }}
       onContextMenu={(e) => {
         if (contextMenuItems.length > 0) {
           e.stopPropagation();
