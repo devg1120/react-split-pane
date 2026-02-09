@@ -314,6 +314,8 @@ export const Tabular = () => {
   const sum_left_width = (x:number) => {
     let width = 0;
     let ele =  tableRef.current.querySelector("#CR" );
+    console.log("CR width:", ele?.clientWidth);
+    console.log("CR height:", ele?.clientHeight);
     width -= ele?.clientWidth;
     for ( let i = 1; i <= x ; i++ ) {
         const colId  = x2c(x);     
