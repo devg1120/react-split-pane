@@ -303,7 +303,7 @@ export const Tabular = () => {
 	if (tableRef.current) {
 	   let ele =  tableRef.current.querySelector("#" + id) ;
 	   if ( ele ) {
-              height += ele.clientHeight ;
+              height += ele.clientHeight;
 	   }
 	}
     }
@@ -352,7 +352,7 @@ export const Tabular = () => {
           //console.log("tophight", tophight);
        let style = {
                position: "sticky",
-               top: `${tophight-1}px`,
+               top: `${tophight}px`,
                zIndex: 105,
                background: "white",
 	       borderBottom: "",
@@ -415,7 +415,7 @@ export const Tabular = () => {
                 <th
                   id="CR"
 		  className="gs-th gs-th-left gs-th-top"
-                  style={{ position: 'sticky', width: table.headerWidth, height: table.headerHeight, zIndex:200, }}
+                  style={{ position: 'sticky', width: table.headerWidth, height: table.headerHeight }}
                   onClick={handleSelectAllClick}
                 >
                   <div className="gs-th-inner">
@@ -432,10 +432,8 @@ export const Tabular = () => {
                   className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-left"
                   style={{ width: virtualized?.adjuster?.left ?? 1 }}
                 ></th>
-{/*
+
                 {virtualized?.xs?.map?.((x) => <HeaderCellTop x={x} key={x} />)}
-*/}
-                {virtualized?.xs?.map?.((x) => <HeaderCellTop x={x} key={x} freezeStyle={set_freeze_td_style(x)}/>)}
 
                 <th
                   className="gs-adjuster gs-adjuster-horizontal gs-adjuster-horizontal-right"

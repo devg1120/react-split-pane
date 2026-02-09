@@ -26,9 +26,10 @@ import { useDebounceCallback } from './hooks';
 
 type Props = {
   x: number;
+  freezeStyle: CSSProperties; //GUSA
 };
 
-export const HeaderCellTop: FC<Props> = memo(({ x }) => {
+export const HeaderCellTop: FC<Props> = memo(({ x, freezeStyle }) => {
   const colId = x2c(x);
   const { store, dispatch } = useContext(Context);
 
@@ -192,6 +193,8 @@ export const HeaderCellTop: FC<Props> = memo(({ x }) => {
     );
   }
   const id = `CH-${colId}`
+      //style={{ width, minWidth: width, maxWidth: width, zIndex:150,  }}
+      //style={{ width, minWidth: width, maxWidth: width, zIndex:150, ...freezeStyle, }}
   return (
     <th
       id={id}
@@ -203,7 +206,8 @@ export const HeaderCellTop: FC<Props> = memo(({ x }) => {
             : 'gs-selecting'
           : ''
       }`}
-      style={{ width, minWidth: width, maxWidth: width }}
+      style={{ width, minWidth: width, maxWidth: width, zIndex:150,  }}
+      //style={{ width, minWidth: width, maxWidth: width, zIndex:150, ...freezeStyle, }}
       onContextMenu={(e) => {
         if (contextMenuItems.length > 0) {
           e.stopPropagation();

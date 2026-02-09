@@ -64,6 +64,7 @@ const App: React.FC = () => {
 
 //                ...makeBorder({
   let spans:CellsByAddressType = {
+
      E5:  {colsize: 2            , style:{ backgroundColor: "#ffff99"}},
      C10: {            rowsize: 2, style:{ backgroundColor: "#99ccff"}},
      //F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff", border:"solid red 2px"}},
@@ -82,8 +83,8 @@ const App: React.FC = () => {
   }
 
   cells['0'] = {
-           //       height: 60,  // Header height
-           //       width: 180,   // Header width
+                  //height: 20,  // Header height
+                  //width: 100,   // Header width
 	  freeze : 'C3',
 	  //freeze : 'D3',
 	  //freeze : 'B2',
@@ -135,12 +136,13 @@ const App: React.FC = () => {
         <GridSheet
           hub={hub}
           initialCells={{
-            default: {
-              width: 150,
-              height: 30,
+            default: {                   // cell size
+              width: 100,
+              height: 20,
               style: { fontSize: "14px" },
               default: { labeler: "decimal" },
             },
+	    0: { height:20, width: 100},  // header size
             A4: { value: "TEST", colsize:2, rowsize:2,
               style: {
                 backgroundColor: "#ccff99",
