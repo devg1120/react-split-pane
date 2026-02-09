@@ -1,4 +1,6 @@
 import type { FC } from 'react';
+import type { CSSProperties } from 'react';
+
 import { useContext, useCallback, memo, useRef } from 'react';
 import { x2c } from '../lib/converters';
 import { between, zoneToArea } from '../lib/structs';
