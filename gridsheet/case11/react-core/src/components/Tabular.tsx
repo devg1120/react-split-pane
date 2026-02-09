@@ -313,8 +313,8 @@ export const Tabular = () => {
 
   const sum_left_width = (x:number) => {
     let width = 0;
-    //let ele =  tableRef.current.querySelector("#CR" );
-    //width -= ele?.clientWidth;
+    let ele =  tableRef.current.querySelector("#CR" );
+    width -= ele?.clientWidth;
     for ( let i = 1; i <= x ; i++ ) {
         const colId  = x2c(x);     
         const id = `CH-${colId}`;

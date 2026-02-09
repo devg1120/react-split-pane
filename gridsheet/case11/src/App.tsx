@@ -83,8 +83,9 @@ const App: React.FC = () => {
   }
 
   cells['0'] = {
-                  //height: 20,  // Header height
+                  height: 20,  // Header height
                   //width: 100,   // Header width
+                  width: 50,   // Header width
 	  freeze : 'C3',
 	  //freeze : 'D3',
 	  //freeze : 'B2',
