@@ -19,3 +19,9 @@ case 5
 case 6
     npm run build   > ok
 
+case 8
+    freeze    
+
+case 9
+    npm run build   > ok
+   
