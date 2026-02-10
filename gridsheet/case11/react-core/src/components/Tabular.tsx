@@ -438,7 +438,7 @@ export const Tabular = () => {
                 <th
                   id="CR"
 		  className="gs-th gs-th-left gs-th-top"
-                  style={{ position: 'sticky', width: table.headerWidth, height: table.headerHeight, zIndex:200, }}
+                  style={{ position: 'sticky', width: table.headerWidth, height: table.headerHeight, background: "red",zIndex:200, }}
                   onClick={handleSelectAllClick}
                 >
                   <div className="gs-th-inner">
