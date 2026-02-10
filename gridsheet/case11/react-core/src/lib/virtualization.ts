@@ -138,9 +138,10 @@ export const smartScroll = (
 
   // when header is sticky
   const up = target.top - table.headerHeight;
-  const left = target.left - table.headerWidth;
+  const left = target.left - table.headerWidth ;
   const down = target.bottom - screen.height + 1;
-  const right = target.right - screen.width + 1;
+  const right = target.right - screen.width + 1 + 10;
+  //const right = target.right - screen.width + 1 - table.headerWidth +10; //GUSA
 
   const isTopOver = up < screen.top;
   const isLeftOver = left < screen.left;
@@ -149,13 +150,14 @@ export const smartScroll = (
 
   if (isLeftOver) {
     if (isTopOver) {
-      // go left up
+      // go left up 
       e.scrollTo({ left, top: up, behavior });
     } else if (isBottomOver) {
       // go left down
       e.scrollTo({ left, top: down, behavior });
     } else {
       // go left
+      console.log("--left")
       e.scrollTo({ left, top: screen.top, behavior });
     }
   } else if (isRightOver) {
@@ -167,6 +169,7 @@ export const smartScroll = (
       e.scrollTo({ left: right, top: down, behavior });
     } else {
       // go right
+      console.log("--right")
       e.scrollTo({ left: right, top: screen.top, behavior });
     }
   } else {

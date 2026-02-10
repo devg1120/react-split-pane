@@ -294,8 +294,8 @@ export const Tabular = () => {
   }
 
   const sum_top_hight = (y:number) => {
-    let height = 0;
-    //let ele =  tableRef.current.querySelector("#CR" );
+    let height = 2;
+    let ele =  tableRef.current.querySelector("#CR" );
     //height -= ele?.clientHeight;
     for ( let i = 1; i <= y ; i++ ) {
         const rowId  = y2r(y);     
@@ -303,7 +303,7 @@ export const Tabular = () => {
 	if (tableRef.current) {
 	   let ele =  tableRef.current.querySelector("#" + id) ;
 	   if ( ele ) {
-              height += ele.clientHeight ;
+              height += ele.clientHeight +1;
 	   }
 	}
     }
@@ -312,11 +312,10 @@ export const Tabular = () => {
   }
 
   const sum_left_width = (x:number) => {
-    let width = 10;
+    let width = 10; // 10
     let ele =  tableRef.current.querySelector("#CR" );
-    console.log("CR width:", ele?.clientWidth);
-    console.log("CR height:", ele?.clientHeight);
-    width -= ele?.clientWidth;
+    //width -= ele?.clientWidth;
+    width -= table.headerWidth;
     for ( let i = 1; i <= x ; i++ ) {
         const colId  = x2c(x);     
         const id = `CH-${colId}`;
@@ -334,6 +333,27 @@ export const Tabular = () => {
     
   }
 
+  const sum_left_top_width = (x:number) => {
+    let width = 10; // 10
+    let ele =  tableRef.current.querySelector("#CR" );
+    //width -= ele?.clientWidth;
+    width -= table.headerWidth;
+    for ( let i = 1; i <= x ; i++ ) {
+        const colId  = x2c(x);     
+        const id = `CH-${colId}`;
+	if (tableRef.current) {
+	   let ele =  tableRef.current.querySelector("#" + id);
+	   //console.log(ele)
+	   if (ele ) {
+             width += ele?.clientWidth;
+	   }
+	}
+    }
+    //console.log(width);
+    //return width-50;
+    return width;
+    
+  }
 /*
   const sum_top_hight = (y:number) => {
         if ( y == 2) { return 50; }
@@ -356,11 +376,12 @@ export const Tabular = () => {
                position: "sticky",
                top: `${tophight-1}px`,
                zIndex: 105,
-               background: "white",
-	       borderBottom: "",
+               background: "#e6e6fa",
+	       border: "green",
               };
        if ( y == freeze_point.y -1 ) {
-           style["borderBottom"] = "2px solid green";
+	   //style["borderBottom"] = "2px solid green";
+           //style["background"] = "green";
        }
        return style;
     } else {
@@ -380,11 +401,11 @@ export const Tabular = () => {
                position: "sticky",
                left: `${leftwidth}px`,
                zIndex: 100,
-               background: "white",
+               background: "#e6e6fa",
 	       borderRight: "" ,
               };
        if ( x == freeze_point.x -1 ) {
-           style["borderRight"] = "2px solid green";
+           //style["borderRight"] = "2px solid green";
        }
        return style;
     } else {
@@ -397,7 +418,7 @@ export const Tabular = () => {
     //console.log(colId);
 
     if (freeze_point && x < freeze_point.x) {
-       let leftwidth = sum_left_width(x);
+       let leftwidth = sum_left_top_width(x);
        let style =  {
                position: "sticky",
                left: `${leftwidth}px`,
@@ -406,7 +427,7 @@ export const Tabular = () => {
 	       borderRight: "" ,
               };
        if ( x == freeze_point.x -1 ) {
-           style["borderRight"] = "2px solid green";
+           //style["borderRight"] = "2px solid green";
        }
        return style;
     } else {

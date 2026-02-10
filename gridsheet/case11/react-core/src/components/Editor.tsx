@@ -190,6 +190,7 @@ export const Editor: FC<Props> = ({ mode }: Props) => {
       if (isKeyDown) {
         return;
       }
+      console.log(e.key);
       // do not debounce it if control key is down.
       if (!(e.key === 'Meta' || e.key === 'Control')) {
         setIsKeyDown(true);

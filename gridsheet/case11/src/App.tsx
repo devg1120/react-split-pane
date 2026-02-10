@@ -82,14 +82,38 @@ const App: React.FC = () => {
       Object.assign(cells[key], spans[key])
   }
 
+/*
+ default by  ../constants.ts
+
+SHEET_HEIGHT = 500;
+SHEET_WIDTH = 1000;
+
+DEFAULT_HEIGHT = 24;
+DEFAULT_WIDTH = 90;
+
+HEADER_HEIGHT = 24;
+HEADER_WIDTH = 50;
+*/
+
+
+  cells['default'] = {                   // cell size
+              width: 90,
+              height: 24,
+              style: { fontSize: "14px" },
+              default: { labeler: "decimal" },
+  };
+
   cells['0'] = {
-          height: 40,  // CR Header height
-          //width: 99,   // CR Header width
-          width: 40,   // CR Header width
-	  //freeze : 'C3',
+          //height: 40,  // CR   table.headerHeight
+          //width: 60,   // CR  table.headerWidth
+	        //default HEADER_HEIGHT = 24;
+                //default HEADER_WIDTH = 50;
+
+	  freeze : 'C3',
 	  //freeze : 'D3',
 	  //freeze : 'B2',
   }
+ 
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
   //console.log(cells["F12"]);

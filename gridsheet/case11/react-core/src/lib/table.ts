@@ -318,7 +318,12 @@ export class Table implements UserTable {
     }
     if (cells[0] == null) {
       cells[0] = { width: HEADER_WIDTH, height: HEADER_HEIGHT };
+    } else if (!cells[0].height) {
+      cells[0]["height"]= HEADER_HEIGHT ;
+    } else if (!cells[0].width) {
+      cells[0]["width"]= HEADER_WIDTH ;
     }
+
     if (cells[0]["freeze"] ) {
             console.log(cells[0]["freeze"] );
 	    const { x, y } =  a2p(cells[0]["freeze"])
