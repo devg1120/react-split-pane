@@ -314,7 +314,7 @@ export const Tabular = () => {
   }
 
   const sum_top_hight = (y: number) => {
-    let height = 2;
+    let height = 0;
     if (tableRef.current) {
       let ele = tableRef.current.querySelector("#CR");
       //height -= ele?.clientHeight;
@@ -400,7 +400,7 @@ export const Tabular = () => {
         top: `${tophight - 1}px`,
         zIndex: 105,
         background: "#e6e6fa",
-        border: "green",
+        borderBottom: "solid #e6e6fa 2px",
       };
       if (y == freeze_point.y - 1) {
         //style["borderBottom"] = "2px solid green";
@@ -423,7 +423,7 @@ export const Tabular = () => {
         left: `${leftwidth}px`,
         zIndex: 100,
         background: "#e6e6fa",
-        borderRight: "",
+        borderBottom: "solid #e6e6fa 2px",
       };
       if (x == freeze_point.x - 1) {
         //style["borderRight"] = "2px solid green";
@@ -484,7 +484,7 @@ export const Tabular = () => {
                     position: "sticky",
                     width: table.headerWidth,
                     height: table.headerHeight,
-                    background: "red",
+                    //background: "red",
                     zIndex: 200,
                   }}
                   onClick={handleSelectAllClick}
