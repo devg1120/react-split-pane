@@ -295,6 +295,7 @@ export const Tabular = () => {
 
   const sum_top_hight = (y:number) => {
     let height = 2;
+    if (tableRef.current) {
     let ele =  tableRef.current.querySelector("#CR" );
     //height -= ele?.clientHeight;
     for ( let i = 1; i <= y ; i++ ) {
@@ -307,12 +308,14 @@ export const Tabular = () => {
 	   }
 	}
     }
+    }
     return height;
     
   }
 
   const sum_left_width = (x:number) => {
     let width = 10; // 10
+    if (tableRef.current) {
     let ele =  tableRef.current.querySelector("#CR" );
     //width -= ele?.clientWidth;
     width -= table.headerWidth;
@@ -327,6 +330,7 @@ export const Tabular = () => {
 	   }
 	}
     }
+    }
     //console.log(width);
     //return width-50;
     return width;
@@ -335,6 +339,7 @@ export const Tabular = () => {
 
   const sum_left_top_width = (x:number) => {
     let width = 10; // 10
+    if (tableRef.current) {
     let ele =  tableRef.current.querySelector("#CR" );
     //width -= ele?.clientWidth;
     width -= table.headerWidth;
@@ -348,6 +353,7 @@ export const Tabular = () => {
              width += ele?.clientWidth;
 	   }
 	}
+    }
     }
     //console.log(width);
     //return width-50;

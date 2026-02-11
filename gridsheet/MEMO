@@ -25,3 +25,13 @@ case 8
 case 9
     npm run build   > ok
    
+case 11
+    npm run build   > ok
+   
+case 12
+    fmt
+    fmt2
+
+case 12_comp
+    react compiler
+

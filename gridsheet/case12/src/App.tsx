@@ -104,8 +104,8 @@ HEADER_WIDTH = 50;
   };
 
   cells['0'] = {
-          //height: 40,  // CR   table.headerHeight
-          //width: 60,   // CR  table.headerWidth
+          height: 24,  // CR   table.headerHeight
+          width: 50,   // CR  table.headerWidth
 	        //default HEADER_HEIGHT = 24;
                 //default HEADER_WIDTH = 50;
 

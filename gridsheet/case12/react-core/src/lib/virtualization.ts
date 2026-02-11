@@ -1,7 +1,12 @@
-import { DEFAULT_HEIGHT, DEFAULT_WIDTH, OVERSCAN_X, OVERSCAN_Y } from '../constants';
-import { range, binarySearch, type BinarySearchPredicate } from './structs';
-import { Table } from './table';
-import type { AreaType, PointType, Virtualization } from '../types';
+import {
+  DEFAULT_HEIGHT,
+  DEFAULT_WIDTH,
+  OVERSCAN_X,
+  OVERSCAN_Y,
+} from "../constants";
+import { range, binarySearch, type BinarySearchPredicate } from "./structs";
+import { Table } from "./table";
+import type { AreaType, PointType, Virtualization } from "../types";
 
 export const getCellRectPositions = (table: Table, { y, x }: PointType) => {
   let { width, height } = table.getRectSize({
@@ -12,8 +17,9 @@ export const getCellRectPositions = (table: Table, { y, x }: PointType) => {
   });
   width += table.headerWidth;
   height += table.headerHeight;
-  const w = table.getCellByPoint({ y: 0, x }, 'SYSTEM')?.width || DEFAULT_WIDTH;
-  const h = table.getCellByPoint({ y, x: 0 }, 'SYSTEM')?.height || DEFAULT_HEIGHT;
+  const w = table.getCellByPoint({ y: 0, x }, "SYSTEM")?.width || DEFAULT_WIDTH;
+  const h =
+    table.getCellByPoint({ y, x: 0 }, "SYSTEM")?.height || DEFAULT_HEIGHT;
   return {
     top: height,
     left: width,
@@ -34,7 +40,10 @@ export const getScreenRect = (e: HTMLDivElement) => {
   return { top, left, bottom, right, height, width };
 };
 
-export const virtualize = (table: Table, e: HTMLDivElement | null): Virtualization | null => {
+export const virtualize = (
+  table: Table,
+  e: HTMLDivElement | null,
+): Virtualization | null => {
   if (e == null) {
     return null;
   }
@@ -47,7 +56,8 @@ export const virtualize = (table: Table, e: HTMLDivElement | null): Virtualizati
   let width = 0,
     height = 0;
   for (let x = 1; x <= table.getNumCols(); x++) {
-    const w = table.getCellByPoint({ y: 0, x }, 'SYSTEM')?.width || DEFAULT_WIDTH;
+    const w =
+      table.getCellByPoint({ y: 0, x }, "SYSTEM")?.width || DEFAULT_WIDTH;
     width += w;
     if (boundaryLeft === 0 && width > left) {
       boundaryLeft = Math.max(x - OVERSCAN_X, 1);
@@ -58,7 +68,8 @@ export const virtualize = (table: Table, e: HTMLDivElement | null): Virtualizati
     }
   }
   for (let y = 1; y <= table.getNumRows(); y++) {
-    const h = table.getCellByPoint({ y, x: 0 }, 'SYSTEM')?.height || DEFAULT_HEIGHT;
+    const h =
+      table.getCellByPoint({ y, x: 0 }, "SYSTEM")?.height || DEFAULT_HEIGHT;
     height += h;
     if (boundaryTop === 0 && height > top) {
       boundaryTop = Math.max(y - OVERSCAN_Y, 1);
@@ -70,9 +81,9 @@ export const virtualize = (table: Table, e: HTMLDivElement | null): Virtualizati
   }
   const ys = range(boundaryTop, boundaryBottom);
   const xs = range(boundaryLeft, boundaryRight);
-  
+
   //GUSA
-/*
+  /*
   if (ys[0] != 1) {
      ys.unshift(3)
      ys.unshift(2)
@@ -88,16 +99,16 @@ export const virtualize = (table: Table, e: HTMLDivElement | null): Virtualizati
 
   let xp = 3;
   let yp = 3;
-  for (let i = xp ; i >0 ;i--) {
-   if (!xs.includes(i)) {
-     xs.unshift(i)
-   }
+  for (let i = xp; i > 0; i--) {
+    if (!xs.includes(i)) {
+      xs.unshift(i);
+    }
   }
 
-  for (let i = yp ; i >0 ;i--) {
-   if (!ys.includes(i)) {
-     ys.unshift(i)
-   }
+  for (let i = yp; i > 0; i--) {
+    if (!ys.includes(i)) {
+      ys.unshift(i);
+    }
   }
 
   const before = table.getRectSize({
@@ -128,7 +139,7 @@ export const smartScroll = (
   table: Table,
   e: HTMLDivElement | null,
   targetPoint: PointType,
-  behavior: ScrollBehavior = 'auto',
+  behavior: ScrollBehavior = "auto",
 ) => {
   if (e == null) {
     return;
@@ -137,11 +148,12 @@ export const smartScroll = (
   const target = getCellRectPositions(table, targetPoint);
 
   // when header is sticky
-  const up = target.top - table.headerHeight ;
-  const left = target.left - table.headerWidth ;
-  const down = target.bottom - screen.height + 1;
-  const right = target.right - screen.width + 1 + 10;
-  //const right = target.right - screen.width + 1 - table.headerWidth +10; //GUSA
+  const up = target.top - table.headerHeight;
+  const left = target.left - table.headerWidth;
+  //const down = target.bottom - screen.height + 1 ;
+  const down = target.bottom - screen.height + table.headerHeight; //GUSA
+  //const right = target.right - screen.width + 1 + 10;
+  const right = target.right - screen.width + table.headerWidth; //GUSA
 
   const isTopOver = up < screen.top;
   const isLeftOver = left < screen.left;
@@ -150,14 +162,14 @@ export const smartScroll = (
 
   if (isLeftOver) {
     if (isTopOver) {
-      // go left up 
+      // go left up
       e.scrollTo({ left, top: up, behavior });
     } else if (isBottomOver) {
       // go left down
       e.scrollTo({ left, top: down, behavior });
     } else {
       // go left
-      console.log("--left")
+      console.log("--left");
       e.scrollTo({ left, top: screen.top, behavior });
     }
   } else if (isRightOver) {
@@ -169,18 +181,16 @@ export const smartScroll = (
       e.scrollTo({ left: right, top: down, behavior });
     } else {
       // go right
-      console.log("--right")
-      e.scrollTo({ left: right+43, top: screen.top, behavior });  //GUSA PD  43
+      console.log("--right");
+      e.scrollTo({ left: right, top: screen.top, behavior });
     }
   } else {
     if (isTopOver) {
       // go up
-      console.log("--up")
       e.scrollTo({ left: screen.left, top: up, behavior });
     } else if (isBottomOver) {
       // go down
-      console.log("--down")
-      e.scrollTo({ left: screen.left, top: down+19, behavior });    //GUSA PD  19
+      e.scrollTo({ left: screen.left, top: down, behavior });
     } else {
       // go nowhere
     }
@@ -201,7 +211,7 @@ const findVisibleElement = (
     (mid) => getPosition(elements[mid].getBoundingClientRect()) < boundary,
     false,
   );
-  return parseInt(elements[index]?.dataset[dataKey] ?? '1');
+  return parseInt(elements[index]?.dataset[dataKey] ?? "1");
 };
 
 export const getAreaInTabular = (tabularElement: HTMLDivElement): AreaType => {
@@ -212,13 +222,27 @@ export const getAreaInTabular = (tabularElement: HTMLDivElement): AreaType => {
     right: rightPosition,
   } = tabularElement.getBoundingClientRect();
 
-  const rows = Array.from(tabularElement.querySelectorAll('.gs-th-left')) as HTMLTableHeaderCellElement[];
-  const cols = Array.from(tabularElement.querySelectorAll('.gs-th-top')) as HTMLTableHeaderCellElement[];
+  const rows = Array.from(
+    tabularElement.querySelectorAll(".gs-th-left"),
+  ) as HTMLTableHeaderCellElement[];
+  const cols = Array.from(
+    tabularElement.querySelectorAll(".gs-th-top"),
+  ) as HTMLTableHeaderCellElement[];
 
-  const top = findVisibleElement(rows, (rect) => rect.top, topPosition, 'y');
-  const bottom = findVisibleElement(rows, (rect) => rect.bottom, bottomPosition, 'y');
-  const left = findVisibleElement(cols, (rect) => rect.left, leftPosition, 'x');
-  const right = findVisibleElement(cols, (rect) => rect.right, rightPosition, 'x');
+  const top = findVisibleElement(rows, (rect) => rect.top, topPosition, "y");
+  const bottom = findVisibleElement(
+    rows,
+    (rect) => rect.bottom,
+    bottomPosition,
+    "y",
+  );
+  const left = findVisibleElement(cols, (rect) => rect.left, leftPosition, "x");
+  const right = findVisibleElement(
+    cols,
+    (rect) => rect.right,
+    rightPosition,
+    "x",
+  );
 
   return { top, left, bottom, right };
 };
