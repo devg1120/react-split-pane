@@ -127,6 +127,7 @@ HEADER_WIDTH = 50;
   let    maxNumCols= -1;
   let sheetName = "Sheet1";
 
+/*
    const table = new Table({
       minNumRows,
       maxNumRows,
@@ -135,10 +136,21 @@ HEADER_WIDTH = 50;
       sheetName,
       hub: wire,
     });
+*/
+
+   const [table, setTable] = useState(
+    new Table({
+      minNumRows,
+      maxNumRows,
+      minNumCols,
+      maxNumCols,
+      sheetName,
+      hub: wire,
+    })
+  );
 
   table.initialize(cells);
 
-  console.log(table);
 
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
@@ -204,7 +216,7 @@ HEADER_WIDTH = 50;
 
         <br />
 	
-{/*
+
         <GridSheet
           hub={hub}
           initialCells={{
@@ -254,7 +266,7 @@ HEADER_WIDTH = 50;
           options={{}}
           sheetName="Sheet2"
         />
-*/}
+
 
       </div>
       {/* Labeler Control */}
