@@ -150,6 +150,7 @@ HEADER_WIDTH = 50;
   );
 
   table.initialize(cells);
+  table.setTotalSize();
 
 
   //console.log(cells["E5"]);

@@ -21,7 +21,8 @@ import { StoreObserver } from "./StoreObserver";
 import { Resizer } from "./Resizer";
 import { Emitter } from "./Emitter";
 import { ContextMenu, defaultContextMenuItems } from "./ContextMenu";
-import { Table } from "../lib/table";
+import { Table  } from "../lib/table";
+import type { UserTable  } from "../lib/table";
 import { Tabular } from "./Tabular";
 import { getMaxSizesFromCells } from "../lib/structs";
 import { x2c, y2r } from "../lib/converters";
@@ -36,8 +37,8 @@ export const useConnector = () => useRef<Connector | null>(null);
 
 export function GridSheetPassive({
   //initialCells,
-  //table: UserTable,   //GUSA
-  table,   //GUSA
+  table ,   //GUSA
+  //table  ,   //GUSA
   
   sheetName = "",
   connector: initialConnector,
@@ -100,8 +101,8 @@ export function GridSheetPassive({
     //GUSA table.initialize(initialCells);
     wire.onInit?.({ table });
 
-    table.setTotalSize();
-    tableReactive.current = table;
+    //table.setTotalSize();
+    tableReactive.current = (table as Table);
 
     const store: StoreType = {
       sheetId,

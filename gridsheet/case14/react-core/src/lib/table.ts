@@ -133,6 +133,7 @@ export interface UserTable {
   sheetName: string;
   freeze: {}; //GUSA
   isFreeze: boolean; // GUSA
+  sheetId: number; //GUSA
 
   /**
    * Returns the raw table object, which is used for internal operations.
@@ -249,6 +250,7 @@ export class Table implements UserTable {
   public spanList: SpanElementType[] = []; //GUSA
   public freeze: { x: number; y: number } = { x: 1, y: 1 }; //GUSA
   public isFreeze: boolean = false; // GUSA
+
 
   private version = 0;
   private idMatrix: IdMatrix;
