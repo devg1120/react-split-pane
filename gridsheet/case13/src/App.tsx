@@ -40,7 +40,7 @@ const App: React.FC = () => {
 
   let cells: CellsByAddressType  = {};
 
-  for ( let rowNum = 1 ; rowNum < 150 ; rowNum++ ) {
+  for ( let rowNum = 1 ; rowNum < 500 ; rowNum++ ) {
     for ( let colNum = 1 ; colNum < 140 ; colNum++ ) {
         const columnName = colNumToId(colNum);
         const cellName = columnName  +  String(rowNum);
@@ -110,6 +110,7 @@ HEADER_WIDTH = 50;
                 //default HEADER_WIDTH = 50;
 
 	  freeze : 'C3',
+	  //freeze : 'C5',
 	  //freeze : 'D3',
 	  //freeze : 'B2',
   }

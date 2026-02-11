@@ -135,6 +135,7 @@ export const Tabular = () => {
     table.wire.choosingAddress = p2a(choosing);
   }, [choosing]);
 
+
   useEffect(() => {
     if (!table) {
       return;
@@ -146,6 +147,7 @@ export const Tabular = () => {
     mainRef.current?.clientHeight,
     mainRef.current?.clientWidth,
   ]);
+
 
   if (!table || !table.wire.ready) {
     return null;
@@ -401,7 +403,7 @@ export const Tabular = () => {
         border: "green",
       };
       if (y == freeze_point.y - 1) {
-        style["borderBottom"] = "2px solid green";
+        //style["borderBottom"] = "2px solid green";
         //style["background"] = "green";
       }
       return style;
@@ -424,7 +426,7 @@ export const Tabular = () => {
         borderRight: "",
       };
       if (x == freeze_point.x - 1) {
-        style["borderRight"] = "2px solid green";
+        //style["borderRight"] = "2px solid green";
       }
       return style;
     } else {
@@ -562,8 +564,8 @@ export const Tabular = () => {
 
                     {virtualized?.xs?.map((x) => {
                       if (isSkip(x, y)) {
-                        return <></>;
-                        //return
+                        //return <></>;
+                        return
                       }
 
                       return (

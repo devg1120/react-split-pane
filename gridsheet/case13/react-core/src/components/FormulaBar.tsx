@@ -211,7 +211,8 @@ export const FormulaBar = ({ ready }: FormulaBarProps) => {
           rows={1}
           spellCheck={false}
           ref={largeEditorRef}
-          value={inputting}
+          //value={inputting}
+          defaultValue={inputting} //GUSA
           //onInput={handleInput} //GUSA
           onFocus={handleFocus}
           onBlur={handleBlur}

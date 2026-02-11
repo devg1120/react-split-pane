@@ -47,6 +47,7 @@ export const virtualize = (
   if (e == null) {
     return null;
   }
+
   let boundaryTop = 0,
     boundaryLeft = 0,
     boundaryBottom = table.getNumRows(),
@@ -79,6 +80,7 @@ export const virtualize = (
       break;
     }
   }
+  
   const ys = range(boundaryTop, boundaryBottom);
   const xs = range(boundaryLeft, boundaryRight);
 
@@ -97,8 +99,8 @@ export const virtualize = (
   }
 */
 
-  let xp = 3;
-  let yp = 3;
+  let xp = table.freeze.x;
+  let yp = table.freeze.y;
   for (let i = xp; i > 0; i--) {
     if (!xs.includes(i)) {
       xs.unshift(i);
@@ -123,6 +125,9 @@ export const virtualize = (
     bottom: table.getNumRows(),
     right: table.getNumCols(),
   });
+
+  //console.log(ys.length, xs.length);
+
   return {
     ys,
     xs,
