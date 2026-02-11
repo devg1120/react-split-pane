@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 //import { GridSheet, useHub, type HubProps } from '@gridsheet/react-core';
 
+import { Table } from "../react-core/src/lib/table";
+
 import {
   GridSheet,
+  GridSheetPassive,
   useHub,
   makeBorder,
   type HubProps,
@@ -115,6 +118,28 @@ HEADER_WIDTH = 50;
 	  //freeze : 'B2',
   }
  
+  const { wire } = hub;
+
+
+  let    minNumRows= 1;
+  let    maxNumRows= -1;
+  let    minNumCols= 1;
+  let    maxNumCols= -1;
+  let sheetName = "Sheet1";
+
+   const table = new Table({
+      minNumRows,
+      maxNumRows,
+      minNumCols,
+      maxNumCols,
+      sheetName,
+      hub: wire,
+    });
+
+  table.initialize(cells);
+
+  console.log(table);
+
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
   //console.log(cells["F12"]);
@@ -123,8 +148,9 @@ HEADER_WIDTH = 50;
   return (
     <main>
       <div className="grid-container">
-        <GridSheet
+        <GridSheetPassive
           hub={hub}
+	  table={table}
 /*
           initialCells={{
             
@@ -145,21 +171,40 @@ HEADER_WIDTH = 50;
           }}
 */
 
-         initialCells={ cells }
+//         initialCells={ cells }
 
           options={
             {
               //mode: 'dark',
             }
           }
-          sheetName="Sheet1"
+          //sheetName="Sheet1"
+          sheetName={sheetName}
           //style={{ width: 800, height: 300 }}
+	  //
         />
 
         <br />
 
-	
+        <GridSheetPassive
+          hub={hub}
+	  table={table}
+          //initialCells={ cells }
+          options={
+            {
+              //mode: 'dark',
+	      //sheetHeight: 400,
+	      //sheetWidth: 800,
+            }
+          }
+          sheetName="Sheet1"
+          //style={{ width: 800, height: 300 }}
+        />
 
+
+        <br />
+	
+{/*
         <GridSheet
           hub={hub}
           initialCells={{
@@ -209,7 +254,7 @@ HEADER_WIDTH = 50;
           options={{}}
           sheetName="Sheet2"
         />
-
+*/}
 
       </div>
       {/* Labeler Control */}
