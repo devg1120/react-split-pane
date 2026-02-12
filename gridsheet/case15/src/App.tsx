@@ -265,6 +265,91 @@ HEADER_WIDTH = 50;
                 textAlign: "center",
               },
             },
+/*
+solid	一本線　初期値
+double	二重線
+dotted	点線
+dashed	破線
+wavy	波線
+
+*/
+            "C14": {
+		   value: "製品",
+		   style: {   
+			      textAlign: 'center',
+			      height: '40px',
+			      verticalAlign: 'middle',
+			     
+		   },
+	    },
+            "D14": {
+		   value: "価格",
+		   style: {   textAlign: 'center', 
+			      verticalAlign: 'middle',
+		   
+		   },
+	    },
+
+            "C14:D14": {
+              style: {
+                ...makeBorder({
+                  bottom: "4px double #000000",
+                }),
+              },
+            },
+            "C13:D13": {
+              style: {
+                ...makeBorder({
+                  bottom: "1px solid #000000",
+                }),
+              },
+            },
+            "C15:D15": {
+              style: {
+                ...makeBorder({
+                  bottom: "1px solid #000000",
+                }),
+              },
+            },
+            "C16:D16": {
+              style: {
+                ...makeBorder({
+                  bottom: "1px solid #000000",
+                }),
+              },
+            },
+
+            "B14:B16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+            "C14:C16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+            "D14:D16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+
+/*
+            "C13:D13": {
+              style: {
+                ...makeBorder({
+                  bottom: "1px solid #000000",
+                }),
+              },
+            },
+*/
             //default: { labeler: 'decimal' },
           }}
           //style={{ width: 800, height: 300 }}
