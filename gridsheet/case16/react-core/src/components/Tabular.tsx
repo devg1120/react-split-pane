@@ -399,7 +399,7 @@ export const Tabular = () => {
         position: "sticky",
         top: `${tophight }px`,
         zIndex: 105,
-        background: "#e6e6fa",
+        //background: "#e6e6fa",
         background: "red",
         border: "solid 2px blue",
       };
@@ -474,6 +474,21 @@ export const Tabular = () => {
       };
     }
   };
+
+  const is_freeze_y = (y: number ) => {
+      if (freeze_point && y < freeze_point.y) {
+             return true;
+      } else {
+             return false;
+      }
+  }
+  const is_freeze_x = (x: number ) => {
+      if (freeze_point && x < freeze_point.x) {
+             return true;
+      } else {
+             return false;
+      }
+  }
 
   return (
     <>
@@ -593,6 +608,8 @@ export const Tabular = () => {
                           key={x}
                           y={y}
                           x={x}
+			  freeze_y={is_freeze_y(y) ? true : false}
+			  freeze_x={is_freeze_x(x) ? true : false}
                           freezeStyle={set_freeze_td_style(x,y)}
                           colSpan_size={colSpan_size(x, y)}
                           rowSpan_size={rowSpan_size(x, y)}

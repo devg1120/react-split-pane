@@ -226,7 +226,7 @@ export const HeaderCellTop: FC<Props> = memo(({ x, freezeStyle }) => {
             ? "gs-th-selecting"
             : "gs-selecting"
           : ""
-      }`}
+      } `}
       //style={{ width, minWidth: width, maxWidth: width, zIndex:150,  }}
       style={{ width, minWidth: width, maxWidth: width,  ...freezeStyle }}
       onContextMenu={(e) => {

@@ -37,10 +37,13 @@ type Props = {
   rowSpan_size: number;
   freezeStyle: CSSProperties;
   operationStyle?: CSSProperties;
+  freeze_y:boolean;
+  freeze_x:boolean;
 };
 
 export const Cell: FC<Props> = memo(
-  ({ y, x, freezeStyle, colSpan_size, rowSpan_size, operationStyle }) => {
+  ({ y, x, freezeStyle, colSpan_size, rowSpan_size, operationStyle, freeze_y, freeze_x }) => {
+
     const rowId = y2r(y);
     const colId = x2c(x);
     const address = `${colId}${rowId}`;
@@ -336,6 +339,7 @@ export const Cell: FC<Props> = memo(
   }
 */
 
+
     if (!input) {
       return (
         <td
@@ -364,7 +368,7 @@ export const Cell: FC<Props> = memo(
         data-address={address}
         className={`gs-cell ${among(selectingArea, { y, x }) ? "gs-selecting" : ""} ${pointed ? "gs-choosing" : ""} ${
           editing ? "gs-editing" : ""
-        }`}
+        } ${freeze_y ? "freeze_y" : ""}  ${freeze_x ? "freeze_x" : ""} `}
         style={{
           ...cell?.style,
           ...operationStyle,
