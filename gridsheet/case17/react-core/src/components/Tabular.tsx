@@ -400,8 +400,8 @@ export const Tabular = () => {
         top: `${tophight }px`,
         zIndex: 105,
         //background: "#e6e6fa",
-        background: "red",
-        border: "solid 2px blue",
+        //background: "red",
+        //border: "solid 2px blue",
       };
       if (y == freeze_point.y - 1) {
         //style["borderBottom"] = "2px solid green";
@@ -424,7 +424,7 @@ export const Tabular = () => {
         left: `${leftwidth}px`,
         zIndex: 100,
         //background: "#e6e6fa",
-        background: "green",
+        //background: "green",
         //borderTop: "solid #e6e6fa 0px",
         //borderBottom: "solid #e6e6fa 0px",
       };
@@ -442,7 +442,7 @@ export const Tabular = () => {
          let style = {
            //background: "#e6e6fa",
            //borderTop: "solid #e6e6fa 0px",
-           border: "solid yellow 2px",
+           //border: "solid yellow 2px",
          };
          return style
       }
@@ -460,7 +460,8 @@ export const Tabular = () => {
       let style = {
         position: "sticky",
         left: `${leftwidth}px`,
-        zIndex: 200,
+        //zIndex: 200,
+        zIndex: 103,
         //background: "blue",
         //borderRight: "",
         //border: "solid blue 1px",
