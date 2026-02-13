@@ -220,7 +220,7 @@ export const HeaderCellLeft: FC<Props> = memo(({ y }) => {
     <th
       id={id}
       data-y={y}
-      className={`gs-th gs-th-left ${choosing.y === y ? "gs-choosing" : ""} ${
+      className={`gs-th gs-th-left freeze_x ${choosing.y === y ? "gs-choosing" : ""} ${
         between({ start: selectingZone.startY, end: selectingZone.endY }, y)
           ? leftHeaderSelecting
             ? "gs-th-selecting"

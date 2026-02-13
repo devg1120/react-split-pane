@@ -51,7 +51,6 @@
 }
 
 
-
 .gs-th-inner {
   height: 100%;
   box-sizing: border-box;
@@ -70,7 +69,7 @@
 
 .gs-th-top {
   top: 0;
-  overflow: hidden;
+  //overflow: hidden;  //GUSA
 
   .gs-resizer {
     top: 0;
@@ -84,22 +83,16 @@
       cursor: e-resize;
     }
   }
+
+
 }
-/*
-.gs-th-top::before {
-  content: '';
-  position : absolute ;
-  top : 0;
-  left : 0;
-  width : 100%;
-  height : 100%;
-  border-bottom: 1px solid #888;
-}
-*/
+
+
+
 
 .gs-th-left {
   left: 0;
-  overflow: hidden;
+  //overflow: hidden;  //GUSA
   min-width: 30px;
   border-top: solid 1px #ddd;
 
@@ -123,6 +116,7 @@
   z-index: 3;
   border: none !important;
 }
+
 
 .freeze_y:before {
   content: "";

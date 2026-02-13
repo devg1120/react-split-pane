@@ -220,15 +220,16 @@ export const HeaderCellTop: FC<Props> = memo(({ x, freezeStyle }) => {
     <th
       id={id}
       data-x={x}
-      className={`gs-th gs-th-top ${choosing.x === x ? "gs-choosing" : ""} ${
+      className={`gs-th gs-th-top freeze_y ${choosing.x === x ? "gs-choosing" : ""} ${
         between({ start: selectingZone.startX, end: selectingZone.endX }, x)
           ? topHeaderSelecting
             ? "gs-th-selecting"
             : "gs-selecting"
           : ""
       } `}
-      //style={{ width, minWidth: width, maxWidth: width, zIndex:150,  }}
-      style={{ width, minWidth: width, maxWidth: width,  ...freezeStyle }}
+      style={{ width, minWidth: width, maxWidth: width, zIndex:150,  }}
+      
+      //style={{ width, minWidth: width, maxWidth: width,  ...freezeStyle }}
       onContextMenu={(e) => {
         if (contextMenuItems.length > 0) {
           e.stopPropagation();
@@ -247,7 +248,7 @@ export const HeaderCellTop: FC<Props> = memo(({ x, freezeStyle }) => {
         onMouseUp={handleDragEnd}
       >
         <div
-          className="gs-th-inner"
+          className="gs-th-inner "
           style={{ height: table.headerHeight, position: "relative" }}
         >
           <ScrollHandle
@@ -262,7 +263,7 @@ export const HeaderCellTop: FC<Props> = memo(({ x, freezeStyle }) => {
             className={`
               gs-resizer 
               ${prevention.hasOperation(col?.prevention, prevention.Resize) ? "gs-protected" : ""}
-              ${dragging ? "gs-hidden" : ""}`}
+              ${dragging ? "gs-hidden" : ""} `}
             style={{ height: table.headerHeight }}
             onMouseDown={handleResizeMouseDown}
           >
