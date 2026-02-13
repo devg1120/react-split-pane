@@ -460,8 +460,8 @@ export const Tabular = () => {
       let style = {
         position: "sticky",
         left: `${leftwidth}px`,
-        //zIndex: 200,
-        zIndex: 103,
+        zIndex: 200,
+        //zIndex: 103,
         //background: "blue",
         //borderRight: "",
         //border: "solid blue 1px",
@@ -520,7 +520,8 @@ export const Tabular = () => {
                     position: "sticky",
                     width: table.headerWidth,
                     height: table.headerHeight,
-                    //background: "red",
+                    //background: "white",
+                    //border: "solid 1px red",
                     zIndex: 200,
                   }}
                   onClick={handleSelectAllClick}
