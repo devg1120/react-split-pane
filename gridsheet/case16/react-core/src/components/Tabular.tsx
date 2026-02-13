@@ -429,9 +429,9 @@ export const Tabular = () => {
         //borderBottom: "solid #e6e6fa 0px",
       };
 
-      if (freeze_point && y < freeze_point.y) {
-        style["border"] = "solid #0000 1px";
-      }
+      //if (freeze_point && y < freeze_point.y) {
+      //  style["border"] = "solid #0000 1px";
+      //}
 
       if (x == freeze_point.x - 1) {
         //style["borderRight"] = "2px solid green";
