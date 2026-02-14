@@ -516,7 +516,7 @@ export const Tabular = () => {
               <tr className="gs-row" >
                 <th
                   id="CR"
-                  className="gs-th gs-th-left gs-th-top"
+                  className="gs-th gs-th-left gs-th-top header_freeze_x"
                   style={{
                     position: "sticky",
                     width: table.headerWidth,
