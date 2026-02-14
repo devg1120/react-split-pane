@@ -317,7 +317,9 @@ export const Tabular = () => {
     let height = 0;
     if (tableRef.current) {
       let ele = tableRef.current.querySelector("#CR");
-      height += ele?.clientHeight+ 1;
+      if (ele && ele.clientHeight) {
+         height += ele?.clientHeight+ 1;
+      }
       //height = table.headerHeight;
       for (let i = 1; i < y; i++) {
         const rowId = y2r(y);
