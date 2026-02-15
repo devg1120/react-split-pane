@@ -155,28 +155,14 @@ HEADER_WIDTH = 50;
     })
   );
 
-    cells["9"] = { height: 80 };
-
     cells["D9"] = {
 		   value: "価格",
 		   style: {   
 			      textAlign: 'right',
 			      verticalAlign: 'top' ,
 			      },
-    },
-    cells["E9"] = {
-		   value: "コード",
-		   style: {   
-			      textAlign: 'center',
-			      verticalAlign: 'center' ,
-			      },
-    },
-    cells["F9"] = {
-		   value: "商品",
-		   style: {   
-			      textAlign: 'left',
-			      verticalAlign: 'bottom' ,
-			      },
+			      
+			      
     },
   table.initialize(cells);
   table.setTotalSize();
@@ -298,11 +284,11 @@ HEADER_WIDTH = 50;
 
 
 
-            "A10": {
+            "A14": {
                    style: { height: '40px' }
 		   },
 	   
-            "C10": {
+            "C14": {
 		   value: "製品",
 		   
 		   style: {   
@@ -312,7 +298,7 @@ HEADER_WIDTH = 50;
 
 	    },
 
-            "D10": {
+            "D14": {
 		   value: "コード",
 		   
 		   style: {   
@@ -322,7 +308,7 @@ HEADER_WIDTH = 50;
 			      
 	    },
 	    //https://gridsheet.walkframe.com/api-reference/props
-            "E10": {
+            "E14": {
 		   value: "価格",
 		   
 		   style: {   
@@ -332,28 +318,28 @@ HEADER_WIDTH = 50;
 			      
 	    },
 
-            "C10:E10": {
+            "C14:E14": {
               style: {
                 ...makeBorder({
                   bottom: "4px double #000000",
                 }),
               },
             },
-            "C9:E9": {
+            "C13:E13": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
                 }),
               },
             },
-            "C11:E11": {
+            "C15:E15": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
                 }),
               },
             },
-            "C12:E12": {
+            "C16:E16": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
@@ -361,28 +347,28 @@ HEADER_WIDTH = 50;
               },
             },
 
-            "B10:B12": {
+            "B14:B16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",
                 }),
               },
             },
-            "C10:C12": {
+            "C14:C16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",
                 }),
               },
             },
-            "D10:D12": {
+            "D14:D16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",
                 }),
               },
             },
-            "E10:E12": {
+            "E14:E16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",

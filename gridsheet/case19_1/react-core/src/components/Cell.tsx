@@ -110,15 +110,11 @@ export const Cell: FC<Props> = memo(
     const sync = useCallback((table: UserTable) => {
       dispatch(setStore({ tableReactive: { current: table.__raw__ } }));
     }, []);
-1
+
     let errorMessage = "";
     let rendered: any;
     try {
       rendered = table.render({ table, point: { y, x }, sync });
-      if (rendered  == "" ) { // GUSA
-            rendered = " " 
-      }
-
     } catch (e: any) {
       if (e instanceof FormulaError) {
         errorMessage = e.message;
@@ -394,9 +390,11 @@ export const Cell: FC<Props> = memo(
           <div
             className={"gs-cell-inner"}
             style={{
-              //...cell?.style,
+              ...cell?.style,
               //justifyContent: cell?.justifyContent || "center",
               //alignItems: cell?.alignItems || "start",
+	      //varticalAlign:  'bottom',
+              //alignItems:  "end",
 
             }}
           >
