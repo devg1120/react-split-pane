@@ -249,7 +249,7 @@ HEADER_WIDTH = 50;
                 alignItems: 'center',
                 justifyContent: 'center',
               },
-            "A7:F7": {
+            "A7:E7": {
               style: {
                 ...makeBorder({
                   bottom: "4px double #000000",
@@ -273,45 +273,58 @@ dashed	破線
 wavy	波線
 
 */
+
+            "A14": {
+                   style: { height: '40px' }
+		   },
+	   
             "C14": {
 		   value: "製品",
 		   style: {   
-			      textAlign: 'center',
-			      height: '40px',
-			      verticalAlign: 'middle',
-			     
-		   },
-	    },
-            "D14": {
-		   value: "価格",
-		   style: {   textAlign: 'center', 
-			      verticalAlign: 'middle',
-		   
-		   },
+			      textAlign: 'left',
+			      verticalAlign: 'bottom' ,
+			      },
+
 	    },
 
-            "C14:D14": {
+            "D14": {
+		   value: "コード",
+		   style: {   
+			      textAlign: 'center',
+			      verticalAlign: 'center' ,
+			      },
+	    },
+	    //https://gridsheet.walkframe.com/api-reference/props
+            "E14": {
+		   value: "価格",
+		   style: {   
+			      textAlign: 'right',
+			      verticalAlign: 'top' ,
+			      },
+	    },
+
+            "C14:E14": {
               style: {
                 ...makeBorder({
                   bottom: "4px double #000000",
                 }),
               },
             },
-            "C13:D13": {
+            "C13:E13": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
                 }),
               },
             },
-            "C15:D15": {
+            "C15:E15": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
                 }),
               },
             },
-            "C16:D16": {
+            "C16:E16": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
@@ -334,6 +347,13 @@ wavy	波線
               },
             },
             "D14:D16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+            "E14:E16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",

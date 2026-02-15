@@ -385,13 +385,15 @@ export const Cell: FC<Props> = memo(
           onTouchStart={handleDragStart}
           onMouseEnter={handleDragging}
           onMouseUp={handleDragEnd}
+
         >
           <div
             className={"gs-cell-inner"}
             style={{
-              ...cell?.style,
-              justifyContent: cell?.justifyContent || "left",
-              alignItems: cell?.alignItems || "start",
+              //...cell?.style,
+              //justifyContent: cell?.justifyContent || "center",
+              //alignItems: cell?.alignItems || "start",
+
             }}
           >
             {errorMessage && (
