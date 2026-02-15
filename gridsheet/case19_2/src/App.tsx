@@ -63,7 +63,7 @@ const App: React.FC = () => {
 
 
 
-  let cellsmod: CellsByAddressTyp   ={
+  let cellsmod: CellsByAddressType   ={
   /*
             default: {                   // cell size
               width: 100,
@@ -240,6 +240,9 @@ const App: React.FC = () => {
 			      
 	    };
           
+      cells["M10"] =  {
+		   value: "X",
+		   }
   const { wire } = hub;
 
 
