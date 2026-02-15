@@ -26,6 +26,7 @@ import { useDebounceCallback } from "./hooks";
 
 type Props = {
   y: number;
+  isFreeze: boolean;
 };
 
 export const HeaderCellLeft: FC<Props> = memo(({ y , isFreeze}) => {

@@ -28,6 +28,7 @@ import { useDebounceCallback } from "./hooks";
 
 type Props = {
   x: number;
+  isFreeze: boolean; //GUSA
   freezeStyle: CSSProperties; //GUSA
 };
 

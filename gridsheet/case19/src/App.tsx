@@ -9,6 +9,8 @@ import {
   useHub,
   makeBorder,
   type HubProps,
+  //Renderer,
+  //CheckboxRendererMixin,
 } from "../react-core/src/index";
 
 import type { CellsByAddressType } from "../react-core/src/types";
@@ -27,6 +29,9 @@ const App: React.FC = () => {
   const [enableDecimalLabeler, setEnableDecimalLabeler] = useState(false);
 
   const hubProps: HubProps = {
+  //renderers: {
+  //    checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
+  //  },
     labelers: {},
     onInit: ({ table }) => {
       console.log(`Table initialized: ${table.sheetName}`);
@@ -150,6 +155,15 @@ HEADER_WIDTH = 50;
     })
   );
 
+    cells["D9"] = {
+		   value: "価格",
+		   style: {   
+			      textAlign: 'right',
+			      verticalAlign: 'top' ,
+			      },
+			      
+			      
+    },
   table.initialize(cells);
   table.setTotalSize();
 
@@ -222,6 +236,7 @@ HEADER_WIDTH = 50;
         <br />
 	
 
+
         <GridSheet
           hub={hub}
           initialCells={{
@@ -231,24 +246,19 @@ HEADER_WIDTH = 50;
               style: { fontSize: "14px" },
               default: { labeler: "decimal" },
             },
-	    0: { height:20, width: 100},  // header size
+	    0: { height:20, width: 100,
+	         //freeze : 'C3',
+
+	    },  // header size
             A4: { value: "TEST", colsize:2, rowsize:2,
               style: {
                 backgroundColor: "#ccff99",
 		}
 
 	    },
+
             C3: { value: "=SUM(Sheet1!A2:B3)" },
             X20: { value: 789 },
-	             F: {
-                width: 50,
-                renderer: 'checkbox',
-                style: {
-                  backgroundColor: '#f8f9fa',
-                },
-                alignItems: 'center',
-                justifyContent: 'center',
-              },
             "A7:E7": {
               style: {
                 ...makeBorder({
@@ -265,14 +275,14 @@ HEADER_WIDTH = 50;
                 textAlign: "center",
               },
             },
-/*
-solid	一本線　初期値
-double	二重線
-dotted	点線
-dashed	破線
-wavy	波線
 
-*/
+//solid	一本線　初期値
+//double	二重線
+//dotted	点線
+//dashed	破線
+//wavy	波線
+
+
 
             "A14": {
                    style: { height: '40px' }
@@ -280,6 +290,7 @@ wavy	波線
 	   
             "C14": {
 		   value: "製品",
+		   
 		   style: {   
 			      textAlign: 'left',
 			      verticalAlign: 'bottom' ,
@@ -289,18 +300,22 @@ wavy	波線
 
             "D14": {
 		   value: "コード",
+		   
 		   style: {   
 			      textAlign: 'center',
 			      verticalAlign: 'center' ,
 			      },
+			      
 	    },
 	    //https://gridsheet.walkframe.com/api-reference/props
             "E14": {
 		   value: "価格",
+		   
 		   style: {   
 			      textAlign: 'right',
 			      verticalAlign: 'top' ,
 			      },
+			      
 	    },
 
             "C14:E14": {
@@ -361,16 +376,6 @@ wavy	波線
               },
             },
 
-/*
-            "C13:D13": {
-              style: {
-                ...makeBorder({
-                  bottom: "1px solid #000000",
-                }),
-              },
-            },
-*/
-            //default: { labeler: 'decimal' },
           }}
           //style={{ width: 800, height: 300 }}
           options={{}}
