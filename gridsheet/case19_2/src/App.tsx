@@ -15,23 +15,23 @@ import {
 
 import type { CellsByAddressType } from "../react-core/src/types";
 
-function colNumToId(colNum:number) : string {
-    let columnName = '';
-    while (colNum > 0) {
-        let modulo = (colNum - 1) % 26;
-        columnName = String.fromCharCode(65 + modulo) + columnName;
-        colNum = Math.floor((colNum - modulo) / 26);
-    }
-    return columnName;
+function colNumToId(colNum: number): string {
+  let columnName = "";
+  while (colNum > 0) {
+    let modulo = (colNum - 1) % 26;
+    columnName = String.fromCharCode(65 + modulo) + columnName;
+    colNum = Math.floor((colNum - modulo) / 26);
+  }
+  return columnName;
 }
 
 const App: React.FC = () => {
   const [enableDecimalLabeler, setEnableDecimalLabeler] = useState(false);
 
   const hubProps: HubProps = {
-  //renderers: {
-  //    checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
-  //  },
+    //renderers: {
+    //    checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
+    //  },
     labelers: {},
     onInit: ({ table }) => {
       console.log(`Table initialized: ${table.sheetName}`);
@@ -46,8 +46,8 @@ const App: React.FC = () => {
     hub.wire.transmit(hubProps);
   }, [enableDecimalLabeler]);
 
-  let cells: CellsByAddressType  = {};
-/*
+  let cells: CellsByAddressType = {};
+  /*
     for ( let rowNum = 1 ; rowNum < 500 ; rowNum++ ) {
     for ( let colNum = 1 ; colNum < 140 ; colNum++ ) {
         const columnName = colNumToId(colNum);
@@ -58,13 +58,9 @@ const App: React.FC = () => {
     }
   }
 */
-  
 
-
-
-
-  let cellsmod: CellsByAddressType   ={
-  /*
+  let cellsmod: CellsByAddressType = {
+    /*
             default: {                   // cell size
               width: 100,
               height: 20,
@@ -76,16 +72,25 @@ const App: React.FC = () => {
 
 	    },  // header size
     */
-            A4: { value: "TEST", colsize:2, rowsize:2,
-              style: {
-                backgroundColor: "#ccff99",
-		}
+    B2: {
+      value: "OK",
+      style: {
+        transform: "matrix(1, -0.75, 0, 1, 0, 15)",
+      },
+    },
 
-	    },
+    A4: {
+      value: "TEST2",
+      colsize: 2,
+      rowsize: 2,
+      style: {
+        backgroundColor: "#ccff99",
+      },
+    },
 
-            //C3: { value: "=SUM(Sheet1!A2:B3)" },
-            X20: { value: 789 },
-	    /*
+    //C3: { value: "=SUM(Sheet1!A2:B3)" },
+    X20: { value: 789 },
+    /*
             "A7:E7": {
               style: {
                 ...makeBorder({
@@ -94,59 +99,53 @@ const App: React.FC = () => {
               },
             },
 	    */
-            D8: {
-              value: "abc",
-              style: {
-                backgroundColor: "#3498db",
-                color: "white",
-                fontWeight: "bold",
-                textAlign: "center",
-              },
-            },
+    D8: {
+      value: "abc",
+      style: {
+        backgroundColor: "#3498db",
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center",
+      },
+    },
 
-//solid	一本線　初期値
-//double	二重線
-//dotted	点線
-//dashed	破線
-//wavy	波線
+    //solid	一本線　初期値
+    //double	二重線
+    //dotted	点線
+    //dashed	破線
+    //wavy	波線
 
+    A14: {
+      style: { height: "40px" },
+    },
 
+    C14: {
+      value: "製品",
 
-            A14: {
-                   style: { height: '40px' }
-		   },
+      style: {
+        textAlign: "left",
+        verticalAlign: "bottom",
+      },
+    },
 
-	   
-            C14: {
-		   value: "製品",
-		   
-		   style: {   
-			      textAlign: 'left',
-			      verticalAlign: 'bottom' ,
-			      },
+    D14: {
+      value: "コード",
 
-	    },
+      style: {
+        textAlign: "center",
+        verticalAlign: "center",
+      },
+    },
+    //https://gridsheet.walkframe.com/api-reference/props
+    E14: {
+      value: "価格",
 
-            D14: {
-		   value: "コード",
-		   
-		   style: {   
-			      textAlign: 'center',
-			      verticalAlign: 'center' ,
-			      },
-			      
-	    },
-	    //https://gridsheet.walkframe.com/api-reference/props
-            E14: {
-		   value: "価格",
-		   
-		   style: {   
-			      textAlign: 'right',
-			      verticalAlign: 'top' ,
-			      },
-			      
-	    },
-/*1
+      style: {
+        textAlign: "right",
+        verticalAlign: "top",
+      },
+    },
+    /*1
             "C14:E14": {
               style: {
                 ...makeBorder({
@@ -205,54 +204,70 @@ const App: React.FC = () => {
               },
             },
 */
-          };
-/*
+  };
+  /*
    for (const key in cellsmod) {
       //console.log(key, spans[key]);
       Object.assign(cells[key], cellsmod[key])
   }
 */
 
-      cells["4"] =  { height : 60 }
+  cells["4"] = { height: 60 };
 
-      cells["B4"] =  {
-		   value: "製品",
-		   style: {   
-			      textAlign: 'right',
-			      verticalAlign: 'top' ,
-			      },
-			      
-	    };
-      cells["C4"] =  {
-		   value: "コード",
-		   style: {   
-			      textAlign: 'center',
-			      verticalAlign: 'center' ,
-			      },
-			      
-	    };
-      cells["D4"] =  {
-		   value: "価格",
-		   style: {   
-			      textAlign: 'left',
-			      verticalAlign: 'bottom' ,
-			      },
-			      
-	    };
-          
-      cells["M10"] =  {
-		   value: "X",
-		   }
+  cells["B4"] = {
+    value: "製品",
+    style: {
+      textAlign: "right",
+      verticalAlign: "top",
+    },
+  };
+  cells["C4"] = {
+    value: "コード",
+    style: {
+      textAlign: "center",
+      verticalAlign: "center",
+    },
+  };
+  cells["D4"] = {
+    value: "価格",
+    style: {
+      textAlign: "left",
+      verticalAlign: "bottom",
+    },
+  };
+
+  cells["2"] = { style: { height: "60px" } };
+
+  cells["E2"] = {
+    value: "",
+    style: {
+      backgroundImage: 'url(\"./top2bottom.svg\")',
+      backgroundRepeat: "no-repeat" /* 繰り返さない */,
+      backgroundSize:
+        "cover" /* 要素全体を覆うように拡大縮小（はみ出しは隠す） */,
+      backgroundPosition: "center" /* 中央に配置 */,
+    },
+  };
+  cells["C2"] = {
+    value: "OK",
+    style: {
+      backgroundImage: 'url(\"./bottom2top.svg\")',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+  cells["M10"] = {
+    value: "X",
+  };
   const { wire } = hub;
 
-
-  let    minNumRows= 1;
-  let    maxNumRows= -1;
-  let    minNumCols= 1;
-  let    maxNumCols= -1;
+  let minNumRows = 1;
+  let maxNumRows = -1;
+  let minNumCols = 1;
+  let maxNumCols = -1;
   let sheetName = "Sheet1";
 
-/*
+  /*
    const table = new Table({
       minNumRows,
       maxNumRows,
@@ -263,7 +278,7 @@ const App: React.FC = () => {
     });
 */
 
-   const [table, setTable] = useState(
+  const [table, setTable] = useState(
     new Table({
       minNumRows,
       maxNumRows,
@@ -271,13 +286,11 @@ const App: React.FC = () => {
       maxNumCols,
       sheetName,
       hub: wire,
-    })
+    }),
   );
-
 
   table.initialize(cells);
   table.setTotalSize();
-
 
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
@@ -289,8 +302,8 @@ const App: React.FC = () => {
       <div className="grid-container">
         <GridSheetPassive
           hub={hub}
-	  table={table}
-/*
+          table={table}
+          /*
           initialCells={{
             
 	   // '0': {
@@ -310,63 +323,59 @@ const App: React.FC = () => {
           }}
 */
 
-
-          options={
-            {
-              //mode: 'dark',
-	      sheetHeight:400,
-	      sheetWidth:800,
-            }
-          }
-
-
+          options={{
+            //mode: 'dark',
+            sheetHeight: 400,
+            sheetWidth: 800,
+          }}
           //sheetName="Sheet1"
           sheetName={sheetName}
           //style={{ width: 800, height: 300 }}
-	  //
+          //
         />
 
         <br />
 
         <GridSheetPassive
           hub={hub}
-	  table={table}
+          table={table}
           //initialCells={ cells }
           options={
             {
               //mode: 'dark',
-	      //sheetHeight: 400,
-	      //sheetWidth: 800,
+              //sheetHeight: 400,
+              //sheetWidth: 800,
             }
           }
           sheetName="Sheet1"
           //style={{ width: 800, height: 300 }}
         />
 
-
         <br />
-	
-
 
         <GridSheet
           hub={hub}
           initialCells={{
-            default: {                   // cell size
+            default: {
+              // cell size
               width: 100,
               height: 20,
               style: { fontSize: "14px" },
               default: { labeler: "decimal" },
             },
-	    0: { height:20, width: 100,
-	         //freeze : 'C3',
-
-	    },  // header size
-            A4: { value: "TEST", colsize:2, rowsize:2,
+            0: {
+              height: 20,
+              width: 100,
+              //freeze : 'C3',
+            }, // header size
+            A4: {
+              value: "TEST",
+              colsize: 2,
+              rowsize: 2,
               style: {
                 backgroundColor: "#ccff99",
-		}
-
-	    },
+              },
+            },
 
             C3: { value: "=SUM(Sheet1!A2:B3)" },
             X20: { value: 789 },
@@ -387,47 +396,42 @@ const App: React.FC = () => {
               },
             },
 
-//solid	一本線　初期値
-//double	二重線
-//dotted	点線
-//dashed	破線
-//wavy	波線
+            //solid	一本線　初期値
+            //double	二重線
+            //dotted	点線
+            //dashed	破線
+            //wavy	波線
 
+            A14: {
+              style: { height: "40px" },
+            },
 
+            C14: {
+              value: "製品",
 
-            "A14": {
-                   style: { height: '40px' }
-		   },
-	   
-            "C14": {
-		   value: "製品",
-		   
-		   style: {   
-			      textAlign: 'left',
-			      verticalAlign: 'bottom' ,
-			      },
+              style: {
+                textAlign: "left",
+                verticalAlign: "bottom",
+              },
+            },
 
-	    },
+            D14: {
+              value: "コード",
 
-            "D14": {
-		   value: "コード",
-		   
-		   style: {   
-			      textAlign: 'center',
-			      verticalAlign: 'center' ,
-			      },
-			      
-	    },
-	    //https://gridsheet.walkframe.com/api-reference/props
-            "E14": {
-		   value: "価格",
-		   
-		   style: {   
-			      textAlign: 'right',
-			      verticalAlign: 'top' ,
-			      },
-			      
-	    },
+              style: {
+                textAlign: "center",
+                verticalAlign: "center",
+              },
+            },
+            //https://gridsheet.walkframe.com/api-reference/props
+            E14: {
+              value: "価格",
+
+              style: {
+                textAlign: "right",
+                verticalAlign: "top",
+              },
+            },
 
             "C14:E14": {
               style: {
@@ -486,14 +490,11 @@ const App: React.FC = () => {
                 }),
               },
             },
-
           }}
           //style={{ width: 800, height: 300 }}
           options={{}}
           sheetName="Sheet2"
         />
-
-
       </div>
       {/* Labeler Control */}
       <div className="labeler-control">

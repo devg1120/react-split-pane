@@ -115,7 +115,7 @@ export const Cell: FC<Props> = memo(
     let rendered: any;
     try {
       rendered = table.render({ table, point: { y, x }, sync });
-      console.log("render [", rendered ,"]");
+      //console.log("render [", rendered ,"]");
       if (rendered  == "" ) {
             rendered  = " " ;
       }
@@ -395,7 +395,7 @@ export const Cell: FC<Props> = memo(
           <div
             className={"gs-cell-inner"}
             style={{
-              ...cell?.style,
+              //...cell?.style,
               //justifyContent: cell?.justifyContent || "center",
               //alignItems: cell?.alignItems || "start",
 	      //varticalAlign:  'bottom',

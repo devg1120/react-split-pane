@@ -15,23 +15,23 @@ import {
 
 import type { CellsByAddressType } from "../react-core/src/types";
 
-function colNumToId(colNum:number) : string {
-    let columnName = '';
-    while (colNum > 0) {
-        let modulo = (colNum - 1) % 26;
-        columnName = String.fromCharCode(65 + modulo) + columnName;
-        colNum = Math.floor((colNum - modulo) / 26);
-    }
-    return columnName;
+function colNumToId(colNum: number): string {
+  let columnName = "";
+  while (colNum > 0) {
+    let modulo = (colNum - 1) % 26;
+    columnName = String.fromCharCode(65 + modulo) + columnName;
+    colNum = Math.floor((colNum - modulo) / 26);
+  }
+  return columnName;
 }
 
 const App: React.FC = () => {
   const [enableDecimalLabeler, setEnableDecimalLabeler] = useState(false);
 
   const hubProps: HubProps = {
-  //renderers: {
-  //    checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
-  //  },
+    //renderers: {
+    //    checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
+    //  },
     labelers: {},
     onInit: ({ table }) => {
       console.log(`Table initialized: ${table.sheetName}`);
@@ -46,23 +46,22 @@ const App: React.FC = () => {
     hub.wire.transmit(hubProps);
   }, [enableDecimalLabeler]);
 
-  let cells: CellsByAddressType  = {};
+  let cells: CellsByAddressType = {};
 
-  for ( let rowNum = 1 ; rowNum < 500 ; rowNum++ ) {
-    for ( let colNum = 1 ; colNum < 140 ; colNum++ ) {
-        const columnName = colNumToId(colNum);
-        const cellName = columnName  +  String(rowNum);
-	//console.log(cellName);
-	cells[cellName] = { value: cellName }
-
+  for (let rowNum = 1; rowNum < 500; rowNum++) {
+    for (let colNum = 1; colNum < 140; colNum++) {
+      const columnName = colNumToId(colNum);
+      const cellName = columnName + String(rowNum);
+      //console.log(cellName);
+      cells[cellName] = { value: cellName };
     }
   }
-/*
+  /*
               style: {
                 backgroundColor: "#ccff99",
 		}
 */
-/*
+  /*
   let spans = {
      E5:  {colsize: 2            },
      C10: {            rowsize: 2},
@@ -70,27 +69,32 @@ const App: React.FC = () => {
   }
 */
 
-//                ...makeBorder({
-  let spans:CellsByAddressType = {
-
-     E5:  {colsize: 2            , style:{ backgroundColor: "#ffff99"}},
-     C10: {            rowsize: 2, style:{ backgroundColor: "#99ccff"}},
-     //F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff", border:"solid red 2px"}},
-     F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff", 
-            ...makeBorder({bottom:"solid red 2px",
-	                   top:   "solid red 2px",
-	                   left:  "solid red 2px",
-	                   right: "solid red 2px",
-			   },
-	    )}},
-  }
+  //                ...makeBorder({
+  let spans: CellsByAddressType = {
+    E5: { colsize: 2, style: { backgroundColor: "#ffff99" } },
+    C10: { rowsize: 2, style: { backgroundColor: "#99ccff" } },
+    //F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff", border:"solid red 2px"}},
+    F12: {
+      colsize: 3,
+      rowsize: 3,
+      style: {
+        backgroundColor: "#ffccff",
+        ...makeBorder({
+          bottom: "solid red 2px",
+          top: "solid red 2px",
+          left: "solid red 2px",
+          right: "solid red 2px",
+        }),
+      },
+    },
+  };
 
   for (const key in spans) {
-      //console.log(key, spans[key]);
-      Object.assign(cells[key], spans[key])
+    //console.log(key, spans[key]);
+    Object.assign(cells[key], spans[key]);
   }
 
-/*
+  /*
  default by  ../constants.ts
 
 SHEET_HEIGHT = 500;
@@ -103,37 +107,54 @@ HEADER_HEIGHT = 24;
 HEADER_WIDTH = 50;
 */
 
-
-  cells['default'] = {                   // cell size
-              width: 90,
-              height: 24,
-              style: { fontSize: "14px" },
-              default: { labeler: "decimal" },
+  cells["default"] = {
+    // cell size
+    width: 90,
+    height: 24,
+    style: { fontSize: "14px" },
+    default: { labeler: "decimal" },
   };
 
-  cells['0'] = {
-          height: 24,  // CR   table.headerHeight
-          width: 50,   // CR  table.headerWidth
-	        //default HEADER_HEIGHT = 24;
-                //default HEADER_WIDTH = 50;
+  cells["0"] = {
+    height: 24, // CR   table.headerHeight
+    width: 50, // CR  table.headerWidth
+    //default HEADER_HEIGHT = 24;
+    //default HEADER_WIDTH = 50;
 
-	  freeze : 'C3',
-	  //freeze : 'C5',
-	  //freeze : 'D3',
-	  //freeze : 'B2',
-  }
- 
-          
+    freeze: "C3",
+    //freeze : 'C5',
+    //freeze : 'D3',
+    //freeze : 'B2',
+  };
+
+  cells["E4"] = {
+    value: "",
+    style: {
+      backgroundImage: 'url(\"./top2bottom.svg\")',
+      backgroundRepeat: "no-repeat" /* 繰り返さない */,
+      backgroundSize: "cover",
+      /* 要素全体を覆うように拡大縮小（はみ出しは隠す） */ backgroundPosition:
+        "center" /* 中央に配置 */,
+    },
+  };
+  cells["C4"] = {
+    value: "OK",
+    style: {
+      backgroundImage: 'url(\"./bottom2top.svg\")',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
   const { wire } = hub;
 
-
-  let    minNumRows= 1;
-  let    maxNumRows= -1;
-  let    minNumCols= 1;
-  let    maxNumCols= -1;
+  let minNumRows = 1;
+  let maxNumRows = -1;
+  let minNumCols = 1;
+  let maxNumCols = -1;
   let sheetName = "Sheet1";
 
-/*
+  /*
    const table = new Table({
       minNumRows,
       maxNumRows,
@@ -144,7 +165,7 @@ HEADER_WIDTH = 50;
     });
 */
 
-   const [table, setTable] = useState(
+  const [table, setTable] = useState(
     new Table({
       minNumRows,
       maxNumRows,
@@ -152,35 +173,34 @@ HEADER_WIDTH = 50;
       maxNumCols,
       sheetName,
       hub: wire,
-    })
+    }),
   );
 
-    cells["9"] = { height: 80 };
+  cells["9"] = { height: 80 };
 
-    cells["D9"] = {
-		   value: "価格",
-		   style: {   
-			      textAlign: 'right',
-			      verticalAlign: 'top' ,
-			      },
+  ((cells["D9"] = {
+    value: "価格",
+    style: {
+      textAlign: "right",
+      verticalAlign: "top",
     },
-    cells["E9"] = {
-		   value: "コード",
-		   style: {   
-			      textAlign: 'center',
-			      verticalAlign: 'center' ,
-			      },
-    },
-    cells["F9"] = {
-		   value: "商品",
-		   style: {   
-			      textAlign: 'left',
-			      verticalAlign: 'bottom' ,
-			      },
-    },
-  table.initialize(cells);
+  }),
+    (cells["E9"] = {
+      value: "コード",
+      style: {
+        textAlign: "center",
+        verticalAlign: "center",
+      },
+    }),
+    (cells["F9"] = {
+      value: "商品",
+      style: {
+        textAlign: "left",
+        verticalAlign: "bottom",
+      },
+    }),
+    table.initialize(cells));
   table.setTotalSize();
-
 
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
@@ -192,8 +212,8 @@ HEADER_WIDTH = 50;
       <div className="grid-container">
         <GridSheetPassive
           hub={hub}
-	  table={table}
-/*
+          table={table}
+          /*
           initialCells={{
             
 	   // '0': {
@@ -213,63 +233,59 @@ HEADER_WIDTH = 50;
           }}
 */
 
-
-          options={
-            {
-              //mode: 'dark',
-	      sheetHeight:400,
-	      sheetWidth:800,
-            }
-          }
-
-
+          options={{
+            //mode: 'dark',
+            sheetHeight: 400,
+            sheetWidth: 800,
+          }}
           //sheetName="Sheet1"
           sheetName={sheetName}
           //style={{ width: 800, height: 300 }}
-	  //
+          //
         />
 
         <br />
 
         <GridSheetPassive
           hub={hub}
-	  table={table}
+          table={table}
           //initialCells={ cells }
           options={
             {
               //mode: 'dark',
-	      //sheetHeight: 400,
-	      //sheetWidth: 800,
+              //sheetHeight: 400,
+              //sheetWidth: 800,
             }
           }
           sheetName="Sheet1"
           //style={{ width: 800, height: 300 }}
         />
 
-
         <br />
-	
-
 
         <GridSheet
           hub={hub}
           initialCells={{
-            default: {                   // cell size
+            default: {
+              // cell size
               width: 100,
               height: 20,
               style: { fontSize: "14px" },
               default: { labeler: "decimal" },
             },
-	    0: { height:20, width: 100,
-	         //freeze : 'C3',
-
-	    },  // header size
-            A4: { value: "TEST", colsize:2, rowsize:2,
+            0: {
+              height: 20,
+              width: 100,
+              //freeze : 'C3',
+            }, // header size
+            A4: {
+              value: "TEST",
+              colsize: 2,
+              rowsize: 2,
               style: {
                 backgroundColor: "#ccff99",
-		}
-
-	    },
+              },
+            },
 
             C3: { value: "=SUM(Sheet1!A2:B3)" },
             X20: { value: 789 },
@@ -290,47 +306,42 @@ HEADER_WIDTH = 50;
               },
             },
 
-//solid	一本線　初期値
-//double	二重線
-//dotted	点線
-//dashed	破線
-//wavy	波線
+            //solid	一本線　初期値
+            //double	二重線
+            //dotted	点線
+            //dashed	破線
+            //wavy	波線
 
+            A10: {
+              style: { height: "40px" },
+            },
 
+            C10: {
+              value: "製品",
 
-            "A10": {
-                   style: { height: '40px' }
-		   },
-	   
-            "C10": {
-		   value: "製品",
-		   
-		   style: {   
-			      textAlign: 'left',
-			      verticalAlign: 'bottom' ,
-			      },
+              style: {
+                textAlign: "left",
+                verticalAlign: "bottom",
+              },
+            },
 
-	    },
+            D10: {
+              value: "コード",
 
-            "D10": {
-		   value: "コード",
-		   
-		   style: {   
-			      textAlign: 'center',
-			      verticalAlign: 'center' ,
-			      },
-			      
-	    },
-	    //https://gridsheet.walkframe.com/api-reference/props
-            "E10": {
-		   value: "価格",
-		   
-		   style: {   
-			      textAlign: 'right',
-			      verticalAlign: 'top' ,
-			      },
-			      
-	    },
+              style: {
+                textAlign: "center",
+                verticalAlign: "center",
+              },
+            },
+            //https://gridsheet.walkframe.com/api-reference/props
+            E10: {
+              value: "価格",
+
+              style: {
+                textAlign: "right",
+                verticalAlign: "top",
+              },
+            },
 
             "C10:E10": {
               style: {
@@ -389,14 +400,11 @@ HEADER_WIDTH = 50;
                 }),
               },
             },
-
           }}
           //style={{ width: 800, height: 300 }}
           options={{}}
           sheetName="Sheet2"
         />
-
-
       </div>
       {/* Labeler Control */}
       <div className="labeler-control">
