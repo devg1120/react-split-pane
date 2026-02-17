@@ -256,6 +256,65 @@ const App: React.FC = () => {
       backgroundSize: "cover",
     },
   };
+
+     //backgroundImage: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /%3E%3C/svg%3E');
+     
+    
+
+     //const image= "url(\'data:image/svg+xml, " + svgdata + "\')";
+     //console.log(svgdata)
+     //console.log(image)
+
+
+  cells["G2"] = {
+    style: {
+      backgroundImage: 'url(\'data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"> <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\"/> </svg>\')',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
+   const image =  'url(\'data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"> <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"blue\"/> </svg>\')';
+
+  cells["H2"] = {
+    style: {
+      backgroundImage: image,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
+
+
+  cells["G4"] = {
+    style: {
+      //backgroundImage: image2,
+      backgroundImage: 'url(\'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /%3E%3C/svg%3E\')',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
+     const r = "30";
+     const color = "green"
+     const svgdata = `
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"> 
+         <circle cx="50" cy="50" r="${r}" stroke="black" stroke-width="3" fill="${color}"/> 
+     </svg>
+     `
+
+     const svgdata_enc = encodeURIComponent(svgdata);
+
+     const image2= "url(\'data:image/svg+xml, " + svgdata_enc + "\')";
+
+
+  cells["H4"] = {
+    style: {
+      backgroundImage: image2,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
   cells["M10"] = {
     value: "X",
   };
