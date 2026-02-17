@@ -9,8 +9,8 @@ import {
   useHub,
   makeBorder,
   type HubProps,
-  //Renderer,
-  //CheckboxRendererMixin,
+  Renderer,
+  CheckboxRendererMixin,
 } from "../react-core/src/index";
 
 import type { CellsByAddressType } from "../react-core/src/types";
@@ -29,9 +29,9 @@ const App: React.FC = () => {
   const [enableDecimalLabeler, setEnableDecimalLabeler] = useState(false);
 
   const hubProps: HubProps = {
-    //renderers: {
-    //    checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
-    //  },
+    renderers: {
+        checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
+      },
     labelers: {},
     onInit: ({ table }) => {
       console.log(`Table initialized: ${table.sheetName}`);
@@ -141,6 +141,26 @@ HEADER_WIDTH = 50;
     value: "OK",
     style: {
       backgroundImage: 'url(\"./bottom2top.svg\")',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
+  const r = "30";
+  const color = "green";
+  const svgdata = `
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+         <circle cx="50" cy="50" r="${r}" stroke="black" stroke-width="3" fill="${color}"/>
+     </svg>
+     `;
+
+  const svgdata_enc = encodeURIComponent(svgdata);
+
+  const image2 = "url(\'data:image/svg+xml, " + svgdata_enc + "\')";
+
+  cells["G9"] = {
+    style: {
+      backgroundImage: image2,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
     },
@@ -400,6 +420,18 @@ HEADER_WIDTH = 50;
                 }),
               },
             },
+            F: {
+              label: "Done",
+              width: 50,
+              renderer: "checkbox",
+              style: {
+                backgroundColor: "#f8f9fa",
+              }, 
+              alignItems: "center",
+              justifyContent: "center",
+            },
+            F1: { value: false },
+            F2: { value: true },
           }}
           //style={{ width: 800, height: 300 }}
           options={{}}

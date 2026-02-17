@@ -30,8 +30,8 @@ const App: React.FC = () => {
 
   const hubProps: HubProps = {
     renderers: {
-      checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
-    },
+        checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
+      },
     labelers: {},
     onInit: ({ table }) => {
       console.log(`Table initialized: ${table.sheetName}`);
@@ -47,97 +47,208 @@ const App: React.FC = () => {
   }, [enableDecimalLabeler]);
 
   let cells: CellsByAddressType = {};
+  /*
+    for ( let rowNum = 1 ; rowNum < 500 ; rowNum++ ) {
+    for ( let colNum = 1 ; colNum < 140 ; colNum++ ) {
+        const columnName = colNumToId(colNum);
+        const cellName = columnName  +  String(rowNum);
+	//console.log(cellName);
+	cells[cellName] = { value: "#" }
 
-  for (let rowNum = 1; rowNum < 500; rowNum++) {
-    for (let colNum = 1; colNum < 140; colNum++) {
-      const columnName = colNumToId(colNum);
-      const cellName = columnName + String(rowNum);
-      //console.log(cellName);
-      cells[cellName] = { value: cellName };
     }
   }
-  /*
-              style: {
-                backgroundColor: "#ccff99",
-		}
 */
+
+  let cellsmod: CellsByAddressType = {
+    /*
+            default: {                   // cell size
+              width: 100,
+              height: 20,
+              style: { fontSize: "14px" },
+              default: { labeler: "decimal" },
+            },
+	    0: { height:20, width: 100,
+	         //freeze : 'C3',
+
+	    },  // header size
+    */
+    B2: {
+      value: "OK",
+      style: {
+        transform: "matrix(1, -0.75, 0, 1, 0, 15)",
+      },
+    },
+
+    A4: {
+      value: "TEST2",
+      colsize: 2,
+      rowsize: 2,
+      style: {
+        backgroundColor: "#ccff99",
+      },
+    },
+
+    //C3: { value: "=SUM(Sheet1!A2:B3)" },
+    X20: { value: 789 },
+    /*
+            "A7:E7": {
+              style: {
+                ...makeBorder({
+                  bottom: "4px double #000000",
+                }),
+              },
+            },
+	    */
+    D8: {
+      value: "abc",
+      style: {
+        backgroundColor: "#3498db",
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center",
+      },
+    },
+
+    //solid	一本線　初期値
+    //double	二重線
+    //dotted	点線
+    //dashed	破線
+    //wavy	波線
+
+    A14: {
+      style: { height: "40px" },
+    },
+
+    C14: {
+      value: "製品",
+
+      style: {
+        textAlign: "left",
+        verticalAlign: "bottom",
+      },
+    },
+
+    D14: {
+      value: "コード",
+
+      style: {
+        textAlign: "center",
+        verticalAlign: "center",
+      },
+    },
+    //https://gridsheet.walkframe.com/api-reference/props
+    E14: {
+      value: "価格",
+
+      style: {
+        textAlign: "right",
+        verticalAlign: "top",
+      },
+    },
+    /*1
+            "C14:E14": {
+              style: {
+                ...makeBorder({
+                  bottom: "4px double #000000",
+                }),
+              },
+            },
+            "C13:E13": {
+              style: {
+                ...makeBorder({
+                  bottom: "1px solid #000000",
+                }),
+              },
+            },
+            "C15:E15": {
+              style: {
+                ...makeBorder({
+                  bottom: "1px solid #000000",
+                }),
+              },
+            },
+            "C16:E16": {
+              style: {
+                ...makeBorder({
+                  bottom: "1px solid #000000",
+                }),
+              },
+            },
+
+            "B14:B16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+            "C14:C16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+            "D14:D16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+            "E14:E16": {
+              style: {
+                ...makeBorder({
+                  right: "1px solid #000000",
+                }),
+              },
+            },
+*/
+  };
   /*
-  let spans = {
-     E5:  {colsize: 2            },
-     C10: {            rowsize: 2},
-     F12: {colsize: 3, rowsize: 3},
+   for (const key in cellsmod) {
+      //console.log(key, spans[key]);
+      Object.assign(cells[key], cellsmod[key])
   }
 */
 
-  //                ...makeBorder({
-  let spans: CellsByAddressType = {
-    E5: { colsize: 2, style: { backgroundColor: "#ffff99" } },
-    C10: { rowsize: 2, style: { backgroundColor: "#99ccff" } },
-    //F12: {colsize: 3, rowsize: 3, style:{ backgroundColor: "#ffccff", border:"solid red 2px"}},
-    F12: {
-      colsize: 3,
-      rowsize: 3,
-      style: {
-        backgroundColor: "#ffccff",
-        ...makeBorder({
-          bottom: "solid red 2px",
-          top: "solid red 2px",
-          left: "solid red 2px",
-          right: "solid red 2px",
-        }),
-      },
+  cells["4"] = { height: 60 };
+
+  cells["B4"] = {
+    value: "製品",
+    style: {
+      textAlign: "right",
+      verticalAlign: "top",
+    },
+  };
+  cells["C4"] = {
+    value: "コード",
+    style: {
+      textAlign: "center",
+      verticalAlign: "center",
+    },
+  };
+  cells["D4"] = {
+    value: "価格",
+    style: {
+      textAlign: "left",
+      verticalAlign: "bottom",
     },
   };
 
-  for (const key in spans) {
-    //console.log(key, spans[key]);
-    Object.assign(cells[key], spans[key]);
-  }
+  cells["2"] = { style: { height: "60px" } };
 
-  /*
- default by  ../constants.ts
-
-SHEET_HEIGHT = 500;
-SHEET_WIDTH = 1000;
-
-DEFAULT_HEIGHT = 24;
-DEFAULT_WIDTH = 90;
-
-HEADER_HEIGHT = 24;
-HEADER_WIDTH = 50;
-*/
-
-  cells["default"] = {
-    // cell size
-    width: 90,
-    height: 24,
-    style: { fontSize: "14px" },
-    default: { labeler: "decimal" },
-  };
-
-  cells["0"] = {
-    height: 24, // CR   table.headerHeight
-    width: 50, // CR  table.headerWidth
-    //default HEADER_HEIGHT = 24;
-    //default HEADER_WIDTH = 50;
-
-    freeze: "C3",
-    //freeze : 'C5',
-    //freeze : 'D3',
-    //freeze : 'B2',
-  };
-
-  cells["E4"] = {
+  cells["E2"] = {
     value: "",
     style: {
       backgroundImage: 'url(\"./top2bottom.svg\")',
       backgroundRepeat: "no-repeat" /* 繰り返さない */,
-      backgroundSize: "cover",
-      /* 要素全体を覆うように拡大縮小（はみ出しは隠す） */ backgroundPosition:
-        "center" /* 中央に配置 */,
+      backgroundSize:
+        "cover" /* 要素全体を覆うように拡大縮小（はみ出しは隠す） */,
+      backgroundPosition: "center" /* 中央に配置 */,
     },
   };
-  cells["C4"] = {
+  cells["C2"] = {
     value: "OK",
     style: {
       backgroundImage: 'url(\"./bottom2top.svg\")',
@@ -146,19 +257,58 @@ HEADER_WIDTH = 50;
     },
   };
 
-  const r = "30";
-  const color = "green";
-  const svgdata = `
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-         <circle cx="50" cy="50" r="${r}" stroke="black" stroke-width="3" fill="${color}"/>
+     //backgroundImage: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /%3E%3C/svg%3E');
+     
+    
+
+     //const image= "url(\'data:image/svg+xml, " + svgdata + "\')";
+     //console.log(svgdata)
+     //console.log(image)
+
+
+  cells["G2"] = {
+    style: {
+      backgroundImage: 'url(\'data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"> <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\"/> </svg>\')',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
+   const image =  'url(\'data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"> <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"blue\"/> </svg>\')';
+
+  cells["H2"] = {
+    style: {
+      backgroundImage: image,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
+
+
+  cells["G4"] = {
+    style: {
+      //backgroundImage: image2,
+      backgroundImage: 'url(\'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /%3E%3C/svg%3E\')',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    },
+  };
+
+     const r = "30";
+     const color = "green"
+     const svgdata = `
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"> 
+         <circle cx="50" cy="50" r="${r}" stroke="black" stroke-width="3" fill="${color}"/> 
      </svg>
-     `;
+     `
 
-  const svgdata_enc = encodeURIComponent(svgdata);
+     const svgdata_enc = encodeURIComponent(svgdata);
 
-  const image2 = "url(\'data:image/svg+xml, " + svgdata_enc + "\')";
+     const image2= "url(\'data:image/svg+xml, " + svgdata_enc + "\')";
 
-  cells["G9"] = {
+
+  cells["H4"] = {
     style: {
       backgroundImage: image2,
       backgroundRepeat: "no-repeat",
@@ -166,6 +316,23 @@ HEADER_WIDTH = 50;
     },
   };
 
+  cells["F"] = {
+                label: 'Done',
+                width: 50,
+                renderer: 'checkbox',
+                style: {
+                  backgroundColor: '#f8f9fa',
+                },
+                alignItems: 'center',
+                justifyContent: 'center',
+              };
+  cells["F1"] = { value:false };
+  cells["F2"] = { value:true };
+
+
+  cells["M10"] = {
+    value: "X",
+  };
   const { wire } = hub;
 
   let minNumRows = 1;
@@ -196,30 +363,7 @@ HEADER_WIDTH = 50;
     }),
   );
 
-  cells["9"] = { height: 80 };
-
-  ((cells["D9"] = {
-    value: "価格",
-    style: {
-      textAlign: "right",
-      verticalAlign: "top",
-    },
-  }),
-    (cells["E9"] = {
-      value: "コード",
-      style: {
-        textAlign: "center",
-        verticalAlign: "center",
-      },
-    }),
-    (cells["F9"] = {
-      value: "商品",
-      style: {
-        textAlign: "left",
-        verticalAlign: "bottom",
-      },
-    }),
-    table.initialize(cells));
+  table.initialize(cells);
   table.setTotalSize();
 
   //console.log(cells["E5"]);
@@ -332,11 +476,11 @@ HEADER_WIDTH = 50;
             //dashed	破線
             //wavy	波線
 
-            A10: {
+            A14: {
               style: { height: "40px" },
             },
 
-            C10: {
+            C14: {
               value: "製品",
 
               style: {
@@ -345,7 +489,7 @@ HEADER_WIDTH = 50;
               },
             },
 
-            D10: {
+            D14: {
               value: "コード",
 
               style: {
@@ -354,7 +498,7 @@ HEADER_WIDTH = 50;
               },
             },
             //https://gridsheet.walkframe.com/api-reference/props
-            E10: {
+            E14: {
               value: "価格",
 
               style: {
@@ -363,28 +507,28 @@ HEADER_WIDTH = 50;
               },
             },
 
-            "C10:E10": {
+            "C14:E14": {
               style: {
                 ...makeBorder({
                   bottom: "4px double #000000",
                 }),
               },
             },
-            "C9:E9": {
+            "C13:E13": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
                 }),
               },
             },
-            "C11:E11": {
+            "C15:E15": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
                 }),
               },
             },
-            "C12:E12": {
+            "C16:E16": {
               style: {
                 ...makeBorder({
                   bottom: "1px solid #000000",
@@ -392,47 +536,34 @@ HEADER_WIDTH = 50;
               },
             },
 
-            "B10:B12": {
+            "B14:B16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",
                 }),
               },
             },
-            "C10:C12": {
+            "C14:C16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",
                 }),
               },
             },
-            "D10:D12": {
+            "D14:D16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",
                 }),
               },
             },
-            "E10:E12": {
+            "E14:E16": {
               style: {
                 ...makeBorder({
                   right: "1px solid #000000",
                 }),
               },
             },
-
-            F: {
-              label: "Done",
-              width: 50,
-              renderer: "checkbox",
-              style: {
-                backgroundColor: "#f8f9fa",
-              },
-              alignItems: "center",
-              justifyContent: "center",
-            },
-            F1: { value: false },
-            F2: { value: true },
           }}
           //style={{ width: 800, height: 300 }}
           options={{}}
