@@ -11,6 +11,7 @@ import {
   type HubProps,
   Renderer,
   CheckboxRendererMixin,
+  ThousandSeparatorRendererMixin,
 } from "../react-core/src/index";
 
 import type { CellsByAddressType } from "../react-core/src/types";
@@ -30,8 +31,11 @@ const App: React.FC = () => {
 
   const hubProps: HubProps = {
     renderers: {
-        checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
-      },
+      checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
+      thousand_separator: new Renderer({
+        mixins: [ThousandSeparatorRendererMixin],
+      }),
+    },
     labelers: {},
     onInit: ({ table }) => {
       console.log(`Table initialized: ${table.sheetName}`);
@@ -426,12 +430,27 @@ HEADER_WIDTH = 50;
               renderer: "checkbox",
               style: {
                 backgroundColor: "#f8f9fa",
-              }, 
+              },
               alignItems: "center",
               justifyContent: "center",
             },
             F1: { value: false },
             F2: { value: true },
+
+            G: {
+              label: "Count",
+              width: 150,
+              renderer: "thousand_separator",
+              style: {
+                backgroundColor: "#f8f9fa",
+                textAlign: "right",
+                //verticalAlign: "center",
+              },
+              //alignItems: 'center',
+              //justifyContent: 'right',
+            },
+            G1: { value: 123456789 },
+            G2: { value: 888888 },
           }}
           //style={{ width: 800, height: 300 }}
           options={{}}

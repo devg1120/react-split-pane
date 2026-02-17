@@ -11,6 +11,8 @@ import {
   type HubProps,
   Renderer,
   CheckboxRendererMixin,
+  ThousandSeparatorRendererMixin,
+
 } from "../react-core/src/index";
 
 import type { CellsByAddressType } from "../react-core/src/types";
@@ -31,6 +33,8 @@ const App: React.FC = () => {
   const hubProps: HubProps = {
     renderers: {
         checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
+        thousand_separator: new Renderer({ mixins: [ThousandSeparatorRendererMixin] }),
+
       },
     labelers: {},
     onInit: ({ table }) => {
@@ -330,6 +334,32 @@ const App: React.FC = () => {
   cells["F2"] = { value:true };
 
 
+  cells["G"] = {
+
+                label: 'Count',
+                width: 150,
+                renderer: 'thousand_separator',
+                style: {
+                  backgroundColor: '#f8f9fa',
+                  textAlign: "right",
+                  //verticalAlign: "center",
+                },
+                //alignItems: 'center',
+                //justifyContent: 'right',
+              };
+  cells["G1"] = { value:123456789 };
+  cells["G2"] = { value:888888 ,
+  
+  };
+
+  cells["E4"] = {
+    value: 3333333,
+    renderer: 'thousand_separator',
+    style: {
+      textAlign: "right",
+      verticalAlign: "center",
+    },
+  };
   cells["M10"] = {
     value: "X",
   };
