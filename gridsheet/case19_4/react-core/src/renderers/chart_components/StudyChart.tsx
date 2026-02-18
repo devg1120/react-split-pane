@@ -12,14 +12,14 @@ import {
 // width 700
 // height 500
 
-const StudyChart = ({studyDataList, width, height}) => (
+const StudyChart = ({data, width, height}) => (
   <div className="container">
     <LineChart
     
       width={width}
       height={height}
      
-      data={studyDataList}
+      data={data}
       margin={{
         top: 5,
         right: 5,

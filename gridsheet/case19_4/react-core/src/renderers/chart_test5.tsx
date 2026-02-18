@@ -1,5 +1,7 @@
 import type { RenderProps } from "./core";
 import StudyChart from './chart_components/StudyChart';
+import TinyBarChart from './chart_components/TinyBarChart';
+import BarChartComponent from './chart_components/BarChartComponent';
 
 /*
 export const ChartTest3RendererMixin: RendererMixinType = {
@@ -47,7 +49,8 @@ export const ChartTest5RendererMixin  = {
 */
 
 export const ChartTest5RendererMixin  = {
-  array({ value, sync, table, point }: RenderProps<array>): any {
+  //array({ value, sync, table, point }: RenderProps<array>): any {
+  object({ value, sync, table, point }: RenderProps<object>): any {
   /*
      console.log(point);
      console.log(table.getId(point));
@@ -80,10 +83,14 @@ export const ChartTest5RendererMixin  = {
           height += table.getCellByPoint({ y:point.y + i, x:0}).height;
      }
 
-
-
-    return (
-        <StudyChart studyDataList={value} width={width} height={height} />
-    );
+    if ( value.type == "study_chart" ) {
+       return (
+           <StudyChart data={value.data} width={width} height={height} />
+       );
+    } else if ( value.type == "bar_chart" ) {
+       return (
+           <BarChartComponent data={value.data} width={width} height={height} />
+       );
+    }
   },
 };

@@ -23,6 +23,7 @@ import {
 import type { CellsByAddressType } from "../react-core/src/types";
 
 import studyDataList from './studyData';
+import barDataList from './barData';
 
 function colNumToId(colNum: number): string {
   let columnName = "";
@@ -380,7 +381,7 @@ const App: React.FC = () => {
                 //value: "OK2",
                 renderer: 'chart_test3',
   };
-  
+  /*
   cells["B8"] = {
                 value: ["A","B","C","E"],
 		colsize: 4, 
@@ -391,16 +392,23 @@ const App: React.FC = () => {
                 //value: "OK2",
                 renderer: 'chart_test4',
   };
+*/
 
-  cells["B13"] = {
-                //value: ["A","B","C","E"],
-                value: studyDataList ,
+  cells["B8"] = {
+                //value: studyDataList ,
+                //value: { type: "study_chart", data: studyDataList} ,
+                value: { type: "bar_chart", data: barDataList} ,
 		colsize: 4, 
 		rowsize: 5,
-		border: "solid #99ccf 1pxf",
-		backgroundColor: "#99ccff",
-                //renderer: 'checkbox',
-                //value: "OK2",
+                renderer: 'chart_test5',
+  };
+
+  cells["B14"] = {
+                //value: studyDataList ,
+                value: { type: "study_chart", data: studyDataList} ,
+                //value: { type: "bar_chart", data: barDataList} ,
+		colsize: 5, 
+		rowsize: 6,
                 renderer: 'chart_test5',
   };
 

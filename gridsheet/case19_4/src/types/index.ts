@@ -5,3 +5,9 @@ export type StudyData = {
   正解率: number;
 };
 
+export type BarData = {
+   name: string;
+   contract: number;
+   cancellation: number;
+};
+
