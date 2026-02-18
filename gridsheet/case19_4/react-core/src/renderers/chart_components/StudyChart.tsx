@@ -9,13 +9,15 @@ import {
   YAxis,
 } from 'recharts';
 //import studyDataList from './studyData';
+// width 700
+// height 500
 
-const StudyChart = ({studyDataList}) => (
+const StudyChart = ({studyDataList, width, height}) => (
   <div className="container">
     <LineChart
     
-      width={700}
-      height={300}
+      width={width}
+      height={height}
      
       data={studyDataList}
       margin={{
