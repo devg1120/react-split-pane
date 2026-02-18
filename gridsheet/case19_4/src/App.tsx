@@ -13,6 +13,8 @@ import {
   CheckboxRendererMixin,
   ThousandSeparatorRendererMixin,
   ChartTestRendererMixin,
+  ChartTest2RendererMixin,
+  ChartTest3RendererMixin,
 
 } from "../react-core/src/index";
 
@@ -36,6 +38,8 @@ const App: React.FC = () => {
         checkbox: new Renderer({ mixins: [CheckboxRendererMixin] }),
         thousand_separator: new Renderer({ mixins: [ThousandSeparatorRendererMixin] }),
         chart_test: new Renderer({ mixins: [ChartTestRendererMixin] }),
+        chart_test2: new Renderer({ mixins: [ChartTest2RendererMixin] }),
+        chart_test3: new Renderer({ mixins: [ChartTest3RendererMixin] }),
 
       },
     labelers: {},
@@ -358,6 +362,20 @@ const App: React.FC = () => {
                 value: "OK",
                 renderer: 'chart_test',
   };
+  cells["C6"] = {
+                //value: true,
+                //renderer: 'checkbox',
+                value: "OK2",
+                renderer: 'chart_test2',
+  };
+  
+  cells["D6"] = {
+                value: true,
+                //renderer: 'checkbox',
+                //value: "OK3",
+                renderer: 'chart_test3',
+  };
+
 
   cells["E4"] = {
     value: 3333333,
