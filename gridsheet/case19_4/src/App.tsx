@@ -15,10 +15,14 @@ import {
   ChartTestRendererMixin,
   ChartTest2RendererMixin,
   ChartTest3RendererMixin,
+  ChartTest4RendererMixin,
+  ChartTest5RendererMixin,
 
 } from "../react-core/src/index";
 
 import type { CellsByAddressType } from "../react-core/src/types";
+
+import studyDataList from './studyData';
 
 function colNumToId(colNum: number): string {
   let columnName = "";
@@ -40,6 +44,8 @@ const App: React.FC = () => {
         chart_test: new Renderer({ mixins: [ChartTestRendererMixin] }),
         chart_test2: new Renderer({ mixins: [ChartTest2RendererMixin] }),
         chart_test3: new Renderer({ mixins: [ChartTest3RendererMixin] }),
+        chart_test4: new Renderer({ mixins: [ChartTest4RendererMixin] }),
+        chart_test5: new Renderer({ mixins: [ChartTest5RendererMixin] }),
 
       },
     labelers: {},
@@ -368,14 +374,35 @@ const App: React.FC = () => {
                 value: "OK2",
                 renderer: 'chart_test2',
   };
-  
   cells["D6"] = {
                 value: true,
                 //renderer: 'checkbox',
-                //value: "OK3",
+                //value: "OK2",
                 renderer: 'chart_test3',
   };
+  
+  cells["B8"] = {
+                value: ["A","B","C","E"],
+		colsize: 4, 
+		rowsize: 5,
+		border: "solid #99ccf 1pxf",
+		backgroundColor: "#99ccff",
+                //renderer: 'checkbox',
+                //value: "OK2",
+                renderer: 'chart_test4',
+  };
 
+  cells["B13"] = {
+                //value: ["A","B","C","E"],
+                value: studyDataList ,
+		colsize: 4, 
+		rowsize: 5,
+		border: "solid #99ccf 1pxf",
+		backgroundColor: "#99ccff",
+                //renderer: 'checkbox',
+                //value: "OK2",
+                renderer: 'chart_test5',
+  };
 
   cells["E4"] = {
     value: 3333333,
@@ -385,7 +412,7 @@ const App: React.FC = () => {
       verticalAlign: "center",
     },
   };
-  cells["M10"] = {
+  cells["M25"] = {
     value: "X",
   };
   const { wire } = hub;

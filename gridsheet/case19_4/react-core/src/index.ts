@@ -60,9 +60,12 @@ export { Wire, useHub, createHub } from "./lib/hub";
 export type { Dispatcher } from "./store";
 export { ThousandSeparatorRendererMixin } from "./renderers/thousand_separator";
 export { CheckboxRendererMixin } from "./renderers/checkbox";
+
 export { ChartTestRendererMixin } from "./renderers/chart_test";
 export { ChartTest2RendererMixin } from "./renderers/chart_test2";
 export { ChartTest3RendererMixin } from "./renderers/chart_test3";
+export { ChartTest4RendererMixin } from "./renderers/chart_test4";
+export { ChartTest5RendererMixin } from "./renderers/chart_test5";
 
 export { BaseFunction } from "./formula/functions/__base";
 export { FormulaError } from "./formula/evaluator";
