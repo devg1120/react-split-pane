@@ -24,6 +24,7 @@ import type { CellsByAddressType } from "../react-core/src/types";
 
 import studyDataList from './studyData';
 import barDataList from './barData';
+import pieDataList from './pieData';
 
 function colNumToId(colNum: number): string {
   let columnName = "";
@@ -411,6 +412,18 @@ const App: React.FC = () => {
 		rowsize: 6,
                 renderer: 'chart_test5',
   };
+
+
+  cells["G8"] = {
+                //value: studyDataList ,
+                //value: { type: "study_chart", data: studyDataList} ,
+                //value: { type: "bar_chart", data: barDataList} ,
+                value: { type: "pie_chart", data: pieDataList} ,
+		colsize: 3, 
+		rowsize: 5,
+                renderer: 'chart_test5',
+  };
+
 
   cells["E4"] = {
     value: 3333333,
