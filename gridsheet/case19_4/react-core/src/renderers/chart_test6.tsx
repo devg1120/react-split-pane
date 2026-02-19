@@ -7,9 +7,9 @@ import RadarChartComponent from './chart_components/RadarChartComponent';
 
 import { useState } from 'react';
 
-export const ChartTest5RendererMixin  = {
-  //array({ value, sync, table, point }: RenderProps<array>): any {
-  object({ value, sync, table, point }: RenderProps<object>): any {
+export const ChartTest6RendererMixin  = {
+  array({ value, sync, table, point }: RenderProps<array>): any {
+  //object({ value, sync, table, point }: RenderProps<object>): any {
   /*
      console.log(point);
      console.log(table.getId(point));
@@ -42,19 +42,6 @@ export const ChartTest5RendererMixin  = {
           height += table.getCellByPoint({ y:point.y + i, x:0}).height;
      }
 
-    if ( value.type == "study_chart" ) {
-       return (
-           <StudyChart data={value.data} width={width} height={height} />
-       );
-    } else if ( value.type == "bar_chart" ) {
-       return (
-           <BarChartComponent data={value.data} width={width} height={height} />
-       );
-    } else if ( value.type == "pie_chart" ) {
-       return (
-           <PieChartComponent data={value.data} width={width} height={height} />
-       );
-    } else if ( value.type == "radar_chart" ) {
     /*
          let id = table.getId({x:8,y:13});
          let address = table.getAddressById(id);
@@ -66,8 +53,7 @@ export const ChartTest5RendererMixin  = {
          //console.log(value.data[0]);
 	 //value.data[0].A = cdata;
        return (
-           <RadarChartComponent table={table} data={value.data} width={width} height={height} />
+           <RadarChartComponent table={table} data={value} width={width} height={height} />
        );
-    }
   },
 };

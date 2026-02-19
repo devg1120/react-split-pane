@@ -17,6 +17,7 @@ import {
   ChartTest3RendererMixin,
   ChartTest4RendererMixin,
   ChartTest5RendererMixin,
+  ChartTest6RendererMixin,
 
 } from "../react-core/src/index";
 
@@ -49,6 +50,7 @@ const App: React.FC = () => {
         chart_test3: new Renderer({ mixins: [ChartTest3RendererMixin] }),
         chart_test4: new Renderer({ mixins: [ChartTest4RendererMixin] }),
         chart_test5: new Renderer({ mixins: [ChartTest5RendererMixin] }),
+        chart_test6: new Renderer({ mixins: [ChartTest6RendererMixin] }),
 
       },
     labelers: {},
@@ -414,6 +416,9 @@ const App: React.FC = () => {
                 renderer: 'chart_test5',
   };
 
+  cells["H13"] = {value: 111};
+  //const { cdata, setCdata } = useState(table.wire.data["A1"]);
+
 
   cells["G8"] = {
                 value: { type: "pie_chart", data: pieDataList} ,
@@ -422,13 +427,31 @@ const App: React.FC = () => {
                 renderer: 'chart_test5',
   };
 
+const radarDataList2 = [...radarDataList]; 
+  radarDataList2[0] = { subject: 'aaaa', A: 50, B:200, fullMark : 'mark' }
+  const { radarData, setRadarData } =  useState( radarDataList2 );
+
+/*
+useEffect(() => {
+    console.log("table change");
+}, [table]);
+*/
+
   cells["G14"] = {
                 value: { type: "radar_chart", data: radarDataList} ,
+                //value: { type: "radar_chart", data: radarData} ,
 		colsize: 4, 
 		rowsize: 8,
                 renderer: 'chart_test5',
   };
 
+  cells["J8"] = {
+                value: radarDataList2 ,
+                //value: { type: "radar_chart", data: radarData} ,
+		colsize: 4, 
+		rowsize: 8,
+                renderer: 'chart_test6',
+  };
 
   cells["E4"] = {
     value: 3333333,
@@ -474,6 +497,34 @@ const App: React.FC = () => {
   table.initialize(cells);
   table.setTotalSize();
 
+/*
+         let id = table.getId({x:8,y:13});
+	 //console.log(table.wire.data[id].value);
+
+	 //const { td, setTd} = useState(table.wire.data[id].value);
+	 const { td, setTd} = useState(table.wire.data[id]);
+
+useEffect(() => {
+	 console.log("td change", table.wire.data[id].value);
+}, [td]);
+*/
+
+   const update = () => {
+         console.log("UPDATE");
+         //radarDataList2[0] = { subject: 'aaaa', A: 50, B:200, fullMark : 'mark' }
+         //radarDataList2[0].subject = "bbbb";
+         //radarDataList2[0].A += 10;
+         //radarDataList2 = radarDataList2;
+
+         let id = table.getId({x:8,y:13});
+         let address = table.getAddressById(id);
+         console.log(address);
+	 console.log(table.wire.data[id].value);
+
+
+
+
+   }
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
   //console.log(cells["F12"]);
@@ -481,6 +532,8 @@ const App: React.FC = () => {
   //style={{ width: 800 }}
   return (
     <main>
+    <button onClick={update}>Click me</button>
+
       <div className="grid-container">
         <GridSheetPassive
           hub={hub}

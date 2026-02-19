@@ -6,11 +6,33 @@ import {
   PolarRadiusAxis
 } from "recharts";
 
+import { useState , useEffect } from 'react';
 
 
-const RadarChartComponent = ({data, width, height}) => 
+const RadarChartComponent = ({table, data, width, height}) => 
+{
 
-(
+
+//const { cdata,  setCdata } = useState( data );
+
+/*
+
+         let id = table.getId({x:8,y:13});
+         //let address = table.getAddressById(id);
+	 //console.log(table.wire.data[id].value);
+	 const { td, setTd} = useState(table.wire.data[id].value);
+*/
+/*
+useEffect(() => {  
+  // 何らかの処理  
+  console.log("CHANGE" );
+} ,[cdata])
+*/
+
+//console.log(data[0]["A"]) ;
+//data[0]["A"] = 99;
+
+return (
   <div className="container">
 
 
@@ -36,6 +58,6 @@ const RadarChartComponent = ({data, width, height}) =>
 
   </div>
 );
-
+}
 export default RadarChartComponent;
 
