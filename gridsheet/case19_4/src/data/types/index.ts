@@ -16,3 +16,10 @@ export type PieData = {
    students: number;
 };
 
+export type RadarData = {
+    subject: string,
+    A: number,
+    B: number,
+    fullMark: number
+};
+

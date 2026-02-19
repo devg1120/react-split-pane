@@ -18,6 +18,37 @@ import {
 
 import { PieChart, Pie, Cell  } from "recharts";
 
+
+const RADIAN = Math.PI / 180;
+
+
+const renderCustomizedLabel: React.FunctionComponent<{
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  percent: number;
+  index: number;
+  name: string;
+}> = ({ cx, cy, midAngle, innerRadius, outerRadius, name }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN) - 30;
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="blue"
+      textAnchor="central"
+    >
+      {`${name}`}
+    </text>
+  );
+};
+
+
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 // https://www.geeksforgeeks.org/reactjs/create-a-pie-chart-using-recharts-in-reactjs/
@@ -35,6 +66,7 @@ const PieChartComponent = ({data, width, height}) =>
                 outerRadius={height/2}
                 fill="green"
                 style={{ cursor: 'pointer', outline: 'none' }} // Ensure no outline on focus
+                label={renderCustomizedLabel}
 
             >
                 {data.map((entry, index) => (

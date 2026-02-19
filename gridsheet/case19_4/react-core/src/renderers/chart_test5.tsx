@@ -3,6 +3,7 @@ import StudyChart from './chart_components/StudyChart';
 import TinyBarChart from './chart_components/TinyBarChart';
 import BarChartComponent from './chart_components/BarChartComponent';
 import PieChartComponent from './chart_components/PieChartComponent';
+import RadarChartComponent from './chart_components/RadarChartComponent';
 
 /*
 export const ChartTest3RendererMixin: RendererMixinType = {
@@ -95,6 +96,10 @@ export const ChartTest5RendererMixin  = {
     } else if ( value.type == "pie_chart" ) {
        return (
            <PieChartComponent data={value.data} width={width} height={height} />
+       );
+    } else if ( value.type == "radar_chart" ) {
+       return (
+           <RadarChartComponent data={value.data} width={width} height={height} />
        );
     }
   },
