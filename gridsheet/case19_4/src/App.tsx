@@ -541,7 +541,8 @@ useEffect(() => {
 	 //updateTable(table);
 	 //console.log(table.wire.data[id].value);
 	 //let c = table.getCellByPoint({x:x, y:y});
-         //c.writeCell(new_v);
+
+         hub.wire.transmit(hubProps);
 
 
 /*
