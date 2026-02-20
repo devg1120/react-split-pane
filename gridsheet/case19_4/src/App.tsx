@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 //import { GridSheet, useHub, type HubProps } from '@gridsheet/react-core';
 
 import { Table } from "../react-core/src/lib/table";
+import * as operation from "../react-core/src/lib/operation";
+import { updateTable } from "../react-core/src/store/actions";
+import { Context } from "../react-core/src/store";
 
 import {
   GridSheet,
@@ -40,8 +43,10 @@ function colNumToId(colNum: number): string {
   return columnName;
 }
 
+
 const App: React.FC = () => {
   const [enableDecimalLabeler, setEnableDecimalLabeler] = useState(false);
+
 
   const hubProps: HubProps = {
     renderers: {
@@ -58,6 +63,9 @@ const App: React.FC = () => {
     labelers: {},
     onInit: ({ table }) => {
       console.log(`Table initialized: ${table.sheetName}`);
+    },
+    onChange: () => {
+      console.log(`Change cell: `);
     },
   };
   const hub = useHub(hubProps);
@@ -518,18 +526,34 @@ useEffect(() => {
          //radarDataList2[0].A += 10;
          //radarDataList2 = radarDataList2;
 
-         let id = table.getId({x:8,y:13});
+          const { x, y } = a2p("H13");
+         let id = table.getId({x:x,y:y});
          let address = table.getAddressById(id);
          console.log(address);
 	 //table.wire.data[id].value = 200;
-	 console.log(table.wire.data[id].value);
-	 table.wire.data[id].value += 1;
+	 //console.log(table.wire.data[id].value);
+	 let v = parseInt(table.wire.data[id].value) ;
+	 let new_v = String(v +1);
+	 table.write({point:{x:x,y:y}, value:new_v, updateChangedAt:true});
+	 //table.update({diff: {"H13":{value:new_v}} ,partial: true, operation: operation.Write } );
+	 // table.render({point:{x:x,y:y}  });
+	 // table.refresh(true, true);
+	 //updateTable(table);
+	 //console.log(table.wire.data[id].value);
+	 //let c = table.getCellByPoint({x:x, y:y});
+         //c.writeCell(new_v);
 
+
+/*
       const { x, y } = a2p("H13");
           id = table.getId({x:x,y:y});
           address = table.getAddressById(id);
          console.log(address);
 
+	 //table.update({diff:"H13",  });
+	 table.render({point:{x:x,y:y}  });
+	 table.refresh(true, true);
+*/
 
 
 
