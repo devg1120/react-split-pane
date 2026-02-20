@@ -543,21 +543,7 @@ useEffect(() => {
 	 //let c = table.getCellByPoint({x:x, y:y});
 
          hub.wire.transmit(hubProps);
-
-
-/*
-      const { x, y } = a2p("H13");
-          id = table.getId({x:x,y:y});
-          address = table.getAddressById(id);
-         console.log(address);
-
-	 //table.update({diff:"H13",  });
-	 table.render({point:{x:x,y:y}  });
-	 table.refresh(true, true);
-*/
-
-
-
+	 console.log(table.wire.data[id].value);
 
    }
   //console.log(cells["E5"]);
