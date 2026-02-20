@@ -21,6 +21,8 @@ import {
 
 } from "../react-core/src/index";
 
+import { a2p, x2c, p2a, y2r, grantAddressAbsolute } from "../react-core/src/lib/converters";
+
 import type { CellsByAddressType } from "../react-core/src/types";
 
 import studyDataList from './data/studyData';
@@ -519,7 +521,15 @@ useEffect(() => {
          let id = table.getId({x:8,y:13});
          let address = table.getAddressById(id);
          console.log(address);
+	 //table.wire.data[id].value = 200;
 	 console.log(table.wire.data[id].value);
+	 table.wire.data[id].value += 1;
+
+      const { x, y } = a2p("H13");
+          id = table.getId({x:x,y:y});
+          address = table.getAddressById(id);
+         console.log(address);
+
 
 
 
