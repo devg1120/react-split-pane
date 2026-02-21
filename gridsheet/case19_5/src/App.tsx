@@ -520,33 +520,82 @@ useEffect(() => {
 }, [td]);
 */
 
+   const update_ = () => {
+         console.log("UPDATE");
+         const { x, y } = a2p("H13");
+         let id = table.getId({x:x,y:y});
+         let address = table.getAddressById(id);
+         //console.log(address);
+	 let v = parseInt(table.wire.data[id].value) ;
+	 let new_v = String(v +1);
+	 //table.write({point:{x:x,y:y}, value:new_v, updateChangedAt:true});
+	 table.update({diff: {"H13":{value:new_v}} ,partial: true, operation: operation.Write } );
+         hub.wire.transmit(hubProps);
+	 //console.log(table.wire.data[id].value);
+   }
+
    const update = () => {
          console.log("UPDATE");
-         //radarDataList2[0] = { subject: 'aaaa', A: 50, B:200, fullMark : 'mark' }
-         //radarDataList2[0].subject = "bbbb";
-         //radarDataList2[0].A += 10;
-         //radarDataList2 = radarDataList2;
+	 const LOC = "H13";
+         const { x, y } = a2p(LOC);
+         let id = table.getId({x:x,y:y});
+         let address = table.getAddressById(id);
+         //console.log(address);
+	 let v = parseInt(table.wire.data[id].value) ;
+	 let new_v = String(v +1);
+	 //table.write({point:{x:x,y:y}, value:new_v, updateChangedAt:true});
+	 table.update({diff: {[LOC]:{value:new_v}} ,partial: true, operation: operation.Write } );
+         hub.wire.transmit(hubProps);
+	 //console.log(table.wire.data[id].value);
+   }
+   const update2 = () => {
+         console.log("UPDATE2");
+	 const LOC = "J8";
 
-          const { x, y } = a2p("H13");
+          const { x, y } = a2p(LOC);
          let id = table.getId({x:x,y:y});
          let address = table.getAddressById(id);
          console.log(address);
-	 //table.wire.data[id].value = 200;
-	 //console.log(table.wire.data[id].value);
-	 let v = parseInt(table.wire.data[id].value) ;
-	 let new_v = String(v +1);
-	 table.write({point:{x:x,y:y}, value:new_v, updateChangedAt:true});
-	 //table.update({diff: {"H13":{value:new_v}} ,partial: true, operation: operation.Write } );
-	 // table.render({point:{x:x,y:y}  });
-	 // table.refresh(true, true);
-	 //updateTable(table);
-	 //console.log(table.wire.data[id].value);
-	 //let c = table.getCellByPoint({x:x, y:y});
+	 let v = table.wire.data[id].value ;
+	 //console.log(v);
+	 const new_v = [...v];
+         const copy = structuredClone(new_v[0]);
+         copy.A = 90;
+         new_v[0] = copy;
+	 table.update({diff: {[LOC]:{value:new_v}} ,partial: true, operation: operation.Write } );
 
          hub.wire.transmit(hubProps);
-	 console.log(table.wire.data[id].value);
 
    }
+
+   const update3__ = () => {
+   }
+
+   const update3 = () => {
+
+         console.log("UPDATE3");
+	 const LOC = "G14";
+
+         const { x, y } = a2p(LOC);
+         let id = table.getId({x:x,y:y});
+         let address = table.getAddressById(id);
+         console.log(address);
+	 let v = table.wire.data[id].value ;
+	 //console.log(v);
+	 
+         const new_v = structuredClone(v);
+         const data = [...new_v.data];
+         const copy = structuredClone(data[0]);
+         copy.A = 30;
+         data[0] = copy;
+         new_v.data = data;
+	 table.update({diff: {[LOC]:{value:new_v}} ,partial: true, operation: operation.Write } );
+
+         hub.wire.transmit(hubProps);
+
+   }
+
+
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
   //console.log(cells["F12"]);
@@ -554,7 +603,9 @@ useEffect(() => {
   //style={{ width: 800 }}
   return (
     <main>
-    <button onClick={update}>Click me</button>
+    <button onClick={update}>H13</button>
+    <button onClick={update2}>J8</button>
+    <button onClick={update3}>G14</button>
 
       <div className="grid-container">
         <GridSheetPassive
