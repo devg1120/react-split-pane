@@ -21,6 +21,10 @@ import {
   ChartTest4RendererMixin,
   ChartTest5RendererMixin,
   ChartTest6RendererMixin,
+  ChartTest7RendererMixin,
+  ChartTest8RendererMixin,
+
+  OtherCellDependRendererMixin,
 
 } from "../react-core/src/index";
 
@@ -58,6 +62,10 @@ const App: React.FC = () => {
         chart_test4: new Renderer({ mixins: [ChartTest4RendererMixin] }),
         chart_test5: new Renderer({ mixins: [ChartTest5RendererMixin] }),
         chart_test6: new Renderer({ mixins: [ChartTest6RendererMixin] }),
+        chart_test7: new Renderer({ mixins: [ChartTest7RendererMixin] }),
+        chart_test8: new Renderer({ mixins: [ChartTest8RendererMixin] }),
+
+        othercell_depend: new Renderer({ mixins: [OtherCellDependRendererMixin] }),
 
       },
     labelers: {},
@@ -472,9 +480,64 @@ useEffect(() => {
       verticalAlign: "center",
     },
   };
-  cells["M25"] = {
+
+  cells["A1"] = {
+    //value: ["G1","G2"],
+    value: "=C2",
+    //value: radarDataList2 ,
+    renderer: 'othercell_depend',
+    style: {
+      textAlign: "right",
+      verticalAlign: "center",
+    },
+  };
+
+  cells["A2"] = {
+    value: "=C2",
+    style: {
+      textAlign: "right",
+      verticalAlign: "center",
+    },
+  };
+
+  cells["A21"] = { value: "A" };
+  cells["A22"] = { value: "B" };
+  cells["A23"] = { value: "C" };
+  cells["A24"] = { value: "D" };
+  cells["B21"] = { value: 100 };
+  cells["B22"] = { value: 200 };
+  cells["B23"] = { value: 300 };
+  cells["B24"] = { value: 300 };
+
+  cells["C23"] = { value: "=SUM(B21:B23)" };
+  cells["D23"] = { value: "=SUM(B21:C23)" };
+  //cells["D23"] = { value: "=ARRAY(B21:B23)" };
+  cells["A25"] = { value: "=ARRAY(B21:B24)" ,
+		colsize: 4, 
+		rowsize: 8,
+                renderer: 'chart_test7',
+  };
+
+  cells["G23"] = { value: "A" };
+  cells["G24"] = { value: "B" };
+  cells["G25"] = { value: "C" };
+  cells["G26"] = { value: "D" };
+  cells["H23"] = { value: 100 };
+  cells["H24"] = { value: 200 };
+  cells["H25"] = { value: 300 };
+  cells["H26"] = { value: 300 };
+
+  //cells["G27"] = { value: "=DICT(G23:H26)" ,
+  //cells["G27"] = { value: "=ARRAY(H23:H26)" ,
+  cells["G27"] = { value: "=DICT(G23:H26)" ,
+		colsize: 4, 
+		rowsize: 8,
+                renderer: 'chart_test8',
+  };
+  cells["M35"] = {
     value: "X",
   };
+
   const { wire } = hub;
 
   let minNumRows = 1;
@@ -595,6 +658,32 @@ useEffect(() => {
 
    }
 
+   const update4 = () => {
+
+         console.log("UPDATE4");
+	 const LOC = "G8";
+
+         const { x, y } = a2p(LOC);
+         let id = table.getId({x:x,y:y});
+         let address = table.getAddressById(id);
+         console.log(address);
+	 let v = table.wire.data[id].value ;
+	 //console.log(v);
+	 
+         const new_v = structuredClone(v);
+         const data = [...new_v.data];
+         const copy = structuredClone(data[0]);
+         //copy.students = 1800;
+         let tmp = parseInt(copy.students) + 300;
+         copy.students = tmp;
+         data[0] = copy;
+         new_v.data = data;
+	 table.update({diff: {[LOC]:{value:new_v}} ,partial: true, operation: operation.Write } );
+
+         hub.wire.transmit(hubProps);
+
+   }
+
 
   //console.log(cells["E5"]);
   //console.log(cells["C10"]);
@@ -606,6 +695,7 @@ useEffect(() => {
     <button onClick={update}>H13</button>
     <button onClick={update2}>J8</button>
     <button onClick={update3}>G14</button>
+    <button onClick={update4}>G8</button>
 
       <div className="grid-container">
         <GridSheetPassive

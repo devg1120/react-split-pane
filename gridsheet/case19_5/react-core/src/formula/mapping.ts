@@ -4,6 +4,8 @@ import { MultiplyFunction } from "./functions/multiply";
 import { DivideFunction } from "./functions/divide";
 import { ModFunction } from "./functions/mod";
 import { SumFunction } from "./functions/sum";
+import { ArrayFunction } from "./functions/array";
+import { DictFunction } from "./functions/dict";
 import { ConcatFunction } from "./functions/concat";
 import { ConcatenateFunction } from "./functions/concatenate";
 import { EqFunction } from "./functions/eq";
@@ -69,6 +71,8 @@ export const functions: FunctionMapping = {
   power: PowerFunction,
   sqrt: SqrtFunction,
   sum: SumFunction,
+  array: ArrayFunction, //GUSA
+  dict: DictFunction, //GUSA
   sumif: SumifFunction,
   max: MaxFunction,
   min: MinFunction,

@@ -67,6 +67,10 @@ export { ChartTest3RendererMixin } from "./renderers/chart_test3";
 export { ChartTest4RendererMixin } from "./renderers/chart_test4";
 export { ChartTest5RendererMixin } from "./renderers/chart_test5";
 export { ChartTest6RendererMixin } from "./renderers/chart_test6";
+export { ChartTest7RendererMixin } from "./renderers/chart_test7";
+export { ChartTest8RendererMixin } from "./renderers/chart_test8";
+
+export { OtherCellDependRendererMixin } from "./renderers/othercell_depend";
 
 export { BaseFunction } from "./formula/functions/__base";
 export { FormulaError } from "./formula/evaluator";
