@@ -25,6 +25,7 @@ import {
   ChartTest8RendererMixin,
   ChartTest9RendererMixin,
   ChartTest10RendererMixin,
+  ChartTest11RendererMixin,
 
   OtherCellDependRendererMixin,
 
@@ -69,6 +70,7 @@ const App: React.FC = () => {
         chart_test8: new Renderer({ mixins: [ChartTest8RendererMixin] }),
         chart_test9: new Renderer({ mixins: [ChartTest9RendererMixin] }),
         chart_test10: new Renderer({ mixins: [ChartTest10RendererMixin] }),
+        chart_test11: new Renderer({ mixins: [ChartTest11RendererMixin] }),
 
         othercell_depend: new Renderer({ mixins: [OtherCellDependRendererMixin] }),
 
@@ -574,7 +576,7 @@ useEffect(() => {
 
 
 
-  cells["A37"] = { value: "yyyymm" }
+  cells["A37"] = { value: "date" }
   cells["B37"] = { value: "pv" }
   cells["C37"] = { value: "uv" }
   cells["A38"] = { value: "color" }
@@ -619,7 +621,7 @@ useEffect(() => {
   cells["D44"] = { value: "=ARRAY2DDICT(A37:C50)" ,    // 14 x 3 =  42
 		colsize: 4, 
 		rowsize: 8,
-                renderer: 'chart_test10',
+                renderer: 'chart_test11',
   };
 
 

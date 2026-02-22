@@ -6,30 +6,10 @@ import BarChartWithMultiXAxis2  from  './chart_components/BarChartWithMultiXAxis
 
 import { useState } from 'react';
 
-export const ChartTest10RendererMixin  = {
-  array({ value, sync, table, point }: RenderProps<array>): any {
+export const ChartTest11RendererMixin  = {
+  object({ value, sync, table, point }: RenderProps<array>): any {
   //object({ value, sync, table, point }: RenderProps<object>): any {
   /*
-     console.log(point);
-     console.log(table.getId(point));
-     console.log(table.getCellByPoint(point));
-     let id = table.getId(point);
-     let address = table.getAddressById(id);
-     console.log(id, address);
-     //console.dir(table.wire.data[id]);
-     let cell =table.getCellByPoint(point);
-     console.dir(cell);
-*/
-
-/*
-     let cell =table.getCellByPoint(point);
-     //console.log(cell.collsize);
-     //console.log(cell.rowsize);
-     let w = table.getCellByPoint({ y:0, x:point.x}).width ;
-     let h = table.getCellByPoint({ y:point.y, x:0}).height;
-     let width  = w *4;
-     let height = h * 5;
-*/
    let key = "date";
 
    let bars = [
@@ -37,7 +17,7 @@ export const ChartTest10RendererMixin  = {
         //{ dataKey:"uv",  fill:"#82ca9d"},
         { dataKey:"uv",  fill:"red"},
    ];
-
+*/
 
 
 
@@ -63,7 +43,7 @@ export const ChartTest10RendererMixin  = {
 	 //value.data[0].A = cdata;
 	
        return (
-           <BarChartWithMultiXAxis2 table={table} key={key} bars={bars} data={value} width={width} height={height} />
+           <BarChartWithMultiXAxis2 table={table} key={value.key} bars={value.bars} data={value.data} width={width} height={height} />
        );
   },
 };

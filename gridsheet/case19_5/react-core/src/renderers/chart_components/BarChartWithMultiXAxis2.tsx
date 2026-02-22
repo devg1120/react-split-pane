@@ -113,7 +113,7 @@ const renderQuarterTick = (tickProps: XAxisTickContentProps): ReactNode => {
 };
 
 
-const BarChartWithMultiXAxis2 = ({table, bars, data, width, height}) => {
+const BarChartWithMultiXAxis2 = ({table, key, bars, data, width, height}) => {
 /*
    let bars = [
         { dataKey:"pv",  fill:"#8884dB"},
@@ -136,7 +136,7 @@ const BarChartWithMultiXAxis2 = ({table, bars, data, width, height}) => {
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="date" tickFormatter={monthTickFormatter} />
       <XAxis
-        dataKey="date"
+        dataKey={key}
         axisLine={false}
         tickLine={false}
         interval={0}

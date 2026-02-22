@@ -6,6 +6,7 @@ import { FunctionProps } from "./base";
 //import { ensureNumber } from "./__utils";
 import { ensureAny, AnyType, AnyValue  } from "./__utils";
 import { FormulaError } from "../evaluator";
+import { a2p, x2c, p2a, y2r, grantAddressAbsolute } from "../../lib/converters";
 
 type Dict = {
 	key: string;
@@ -61,7 +62,7 @@ export class Array2dDictFunction extends BaseFunction {
 
   protected validate() {
 
-    console.log("range", this.range);
+    //console.log("range", this.range);
     if (this.bareArgs.length === 0) {
       throw new FormulaError("#N/A", "One or more arguments are required.");
     }
@@ -82,40 +83,57 @@ export class Array2dDictFunction extends BaseFunction {
     this.bareArgs = spreaded;
    
   }
-  protected main(...values: Dict[]) {
-    console.log("array_2d_dict", values.length);
+  //protected main(...values: Dict[]) {
+  protected main(...values: {}) {
+    //console.log("array_2d_dict", values.length);
     if (values.length === 0) {
       return [];
     }
-    /*
-    let values2by = [];
-    for ( let i = 0; i< values.length; ) {
-           values2by.push([ values[i] , values[i+1]]);
-           i++;
-           i++;
-    }
-*/
-    let result = [];
-/*
-    for ( let i = 0; i< values2by.length; i++) {
-          result.push(
-               {
-                  key:   values2by[i][0].string_,
-                  value: values2by[i][1].number_,
-	       }
-           )
-    }
-*/
-    return result;
 
-/*
-    return [
-             { key: values[0].string_, value: values[1].number_},
-             { key: values[2].string_, value: values[3].number_},
-             { key: values[4].string_, value: values[5].number_},
-             { key: values[6].string_, value: values[7].number_},
-          ]
-  */
+    let ids = this.range.split(":");
+    let p1 = a2p(ids[0]);
+    let p2 = a2p(ids[1]);
+    let N = p2.x - p1.x + 1;
+    console.log("N", N);
+    
+    let key =  values[0].string_;
+    let bars = [];
+    for (let i = 0; i< N-1 ; i++) {
+          bars.push( {
+                  dataKey: values[1+i].string_,
+		  fill:    values[N+1+i].string_,
+	  });
+
+    }
+    console.log("bars", bars);
+
+    let start = N*2;
+    let data = [];
+    for ( let i = start; i< values.length; i += N) {
+          //console.log(values[i]);
+	/*
+          data.push( {
+                  date: values[i].string_,
+                  pv: values[i+1].number_,
+                  uv: values[i+2].number_,
+	  });
+*/
+          let dict = {};
+	  dict[key] = values[i].string_;
+	  for( let b = 0; b< bars.length; b++) {
+               //console.log(bars[b].dataKey);
+               dict[bars[b].dataKey] = values[i+b+1].number_;
+	  }
+	  data.push(dict);
+           
+    }
+    console.log(data);
+    let result = {
+	    key: key,
+	    bars: bars,
+	    data: data,
+    };
+    return result;
 
   }
 }

@@ -71,6 +71,7 @@ export { ChartTest7RendererMixin } from "./renderers/chart_test7";
 export { ChartTest8RendererMixin } from "./renderers/chart_test8";
 export { ChartTest9RendererMixin } from "./renderers/chart_test9";
 export { ChartTest10RendererMixin } from "./renderers/chart_test10";
+export { ChartTest11RendererMixin } from "./renderers/chart_test11";
 
 export { OtherCellDependRendererMixin } from "./renderers/othercell_depend";
 
