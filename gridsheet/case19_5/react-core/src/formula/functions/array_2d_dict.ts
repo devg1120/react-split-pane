@@ -30,11 +30,8 @@ export class Array2dDictFunction extends BaseFunction {
       super({args, table, origin} );
       //console.log("args.value", args[0].display({table}));
       let range = args[0].display({table});
-      console.log("range", range);
-      //const range = args[0].value;
-      //const [tableId, idRange] = range.split("!"); // #id
-      //const  ids = idRange.split(":");
-      //console.log(ids);
+      //console.log("range", range);
+      this.range = range;
   }
 
   /*
@@ -64,6 +61,7 @@ export class Array2dDictFunction extends BaseFunction {
 
   protected validate() {
 
+    console.log("range", this.range);
     if (this.bareArgs.length === 0) {
       throw new FormulaError("#N/A", "One or more arguments are required.");
     }
