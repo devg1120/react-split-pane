@@ -113,7 +113,14 @@ const renderQuarterTick = (tickProps: XAxisTickContentProps): ReactNode => {
 };
 
 
-const BarChartWithMultiXAxis2 = ({table, data, width, height}) => {
+const BarChartWithMultiXAxis2 = ({table, bars, data, width, height}) => {
+/*
+   let bars = [
+        { dataKey:"pv",  fill:"#8884dB"},
+        { dataKey:"uv",  fill:"#82ca9d"},
+   ];
+*/
+
   return (
     <BarChart
       style={{ width: {width}, maxWidth: {height}, maxHeight: '70vh', aspectRatio: 1.618 }}
@@ -141,8 +148,19 @@ const BarChartWithMultiXAxis2 = ({table, data, width, height}) => {
       <YAxis width="auto" />
       <Tooltip />
       <Legend wrapperStyle={{ paddingTop: '1em' }} />
+      {/*
       <Bar dataKey="pv" fill="#8884d8" />
       <Bar dataKey="uv" fill="#82ca9d" />
+      */}
+        {
+          (function () {
+	    let r = []
+            for (let i = 0; i < bars.length; i++) {
+              r.push(<Bar dataKey={bars[i].dataKey}  fill={bars[i].fill} />);
+            }
+            return r;
+          }())
+        }
     </BarChart>
   );
 };

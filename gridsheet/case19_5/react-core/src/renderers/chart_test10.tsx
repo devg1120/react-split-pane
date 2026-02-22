@@ -30,6 +30,13 @@ export const ChartTest10RendererMixin  = {
      let width  = w *4;
      let height = h * 5;
 */
+   let bars = [
+        { dataKey:"pv",  fill:"#8884dB"},
+        //{ dataKey:"uv",  fill:"#82ca9d"},
+        { dataKey:"uv",  fill:"red"},
+   ];
+
+
 
 
      let width  = 0;
@@ -54,7 +61,7 @@ export const ChartTest10RendererMixin  = {
 	 //value.data[0].A = cdata;
 	
        return (
-           <BarChartWithMultiXAxis2 table={table} data={value} width={width} height={height} />
+           <BarChartWithMultiXAxis2 table={table} bars={bars} data={value} width={width} height={height} />
        );
   },
 };

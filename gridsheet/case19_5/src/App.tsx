@@ -573,10 +573,15 @@ useEffect(() => {
   };
 
 
-  cells["A36"] = { value: "HEADE" }
-  cells["B36"] = { value: "pv" }
-  cells["C36"] = { value: "uv" }
-  let p = a2p("A37")
+
+  cells["A37"] = { value: "yyyymm" }
+  cells["B37"] = { value: "pv" }
+  cells["C37"] = { value: "uv" }
+  cells["A38"] = { value: "color" }
+  cells["B38"] = { value: "blue" }
+  cells["C38"] = { value: "red" }
+
+  let p = a2p("A39")
   let a = p2a(p)
 
   for (let i = 0; i <  barMultiDataList.length ; i++ ) {
@@ -602,20 +607,21 @@ useEffect(() => {
   };
 */
 
-
+/*
   cells["D44"] = { value: barMultiDataList ,
 		colsize: 4, 
 		rowsize: 8,
                 renderer: 'chart_test10',
   };
+*/
 
-/*
-  cells["D44"] = { value: "=ARRAY_2D_DICT(A36:C48)" ,
+
+  cells["D44"] = { value: "=ARRAY2DDICT(A37:C50)" ,    // 14 x 3 =  42
 		colsize: 4, 
 		rowsize: 8,
                 renderer: 'chart_test10',
   };
-*/
+
 
   cells["M80"] = {
     value: "X",

@@ -6,6 +6,7 @@ import { ModFunction } from "./functions/mod";
 import { SumFunction } from "./functions/sum";
 import { ArrayFunction } from "./functions/array";
 import { ArrayDictFunction } from "./functions/array_dict";
+import { Array2dDictFunction } from "./functions/array_2d_dict";
 import { ConcatFunction } from "./functions/concat";
 import { ConcatenateFunction } from "./functions/concatenate";
 import { EqFunction } from "./functions/eq";
@@ -73,6 +74,7 @@ export const functions: FunctionMapping = {
   sum: SumFunction,
   array: ArrayFunction, //GUSA
   arraydict: ArrayDictFunction, //GUSA
+  array2ddict: Array2dDictFunction, //GUSA
   sumif: SumifFunction,
   max: MaxFunction,
   min: MinFunction,
