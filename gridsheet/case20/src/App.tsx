@@ -425,7 +425,7 @@ HEADER_WIDTH = 50;
               },
             },
             F: {
-              label: "Done",
+              labeler: "Done",
               width: 50,
               renderer: "checkbox",
               style: {
@@ -438,7 +438,7 @@ HEADER_WIDTH = 50;
             F2: { value: true },
 
             G: {
-              label: "Count",
+              labeler: "Count",
               width: 150,
               renderer: "thousand_separator",
               style: {

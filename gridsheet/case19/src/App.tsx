@@ -422,7 +422,7 @@ HEADER_WIDTH = 50;
             },
 
             F: {
-              label: "Done",
+              labeler: "Done",
               width: 50,
               renderer: "checkbox",
               style: {

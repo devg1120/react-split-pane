@@ -11,6 +11,7 @@ import type {
   ModeType,
   RawCellType,
   OperatorType,
+  SpanElementType,
 } from "../types";
 import {
   zoneToArea,
