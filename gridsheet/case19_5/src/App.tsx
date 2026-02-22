@@ -23,6 +23,8 @@ import {
   ChartTest6RendererMixin,
   ChartTest7RendererMixin,
   ChartTest8RendererMixin,
+  ChartTest9RendererMixin,
+  ChartTest10RendererMixin,
 
   OtherCellDependRendererMixin,
 
@@ -34,6 +36,7 @@ import type { CellsByAddressType } from "../react-core/src/types";
 
 import studyDataList from './data/studyData';
 import barDataList from './data/barData';
+import barMultiDataList from './data/barMultiData';
 import pieDataList from './data/pieData';
 import radarDataList from './data/radarData';
 
@@ -64,6 +67,8 @@ const App: React.FC = () => {
         chart_test6: new Renderer({ mixins: [ChartTest6RendererMixin] }),
         chart_test7: new Renderer({ mixins: [ChartTest7RendererMixin] }),
         chart_test8: new Renderer({ mixins: [ChartTest8RendererMixin] }),
+        chart_test9: new Renderer({ mixins: [ChartTest9RendererMixin] }),
+        chart_test10: new Renderer({ mixins: [ChartTest10RendererMixin] }),
 
         othercell_depend: new Renderer({ mixins: [OtherCellDependRendererMixin] }),
 
@@ -529,12 +534,90 @@ useEffect(() => {
 
   //cells["G27"] = { value: "=DICT(G23:H26)" ,
   //cells["G27"] = { value: "=ARRAY(H23:H26)" ,
-  cells["G27"] = { value: "=DICT(G23:H26)" ,
+  
+  /*
+   *  ARRAY
+   *     number
+   *     number
+   *     number
+   *
+   */
+
+  /*
+   *  ARRAYDICT
+   *     string number
+   *     string number
+   *     string number
+   *
+   */
+
+  /*
+   *  ARRAY_2D_DICT
+   *     -      string  string  string
+   *     string number  number  number
+   *     string number  number  number
+   *     string number  number  number
+   *
+   */
+  cells["G27"] = { value: "=ARRAYDICT(G23:H26)" ,
 		colsize: 4, 
 		rowsize: 8,
                 renderer: 'chart_test8',
   };
-  cells["M35"] = {
+
+
+  cells["D36"] = { value: barMultiDataList ,
+		colsize: 4, 
+		rowsize: 8,
+                renderer: 'chart_test9',
+  };
+
+
+  cells["A36"] = { value: "HEADE" }
+  cells["B36"] = { value: "pv" }
+  cells["C36"] = { value: "uv" }
+  let p = a2p("A37")
+  let a = p2a(p)
+
+  for (let i = 0; i <  barMultiDataList.length ; i++ ) {
+     //console.log(barMultiDataList[i]); 
+     let date = barMultiDataList[i].date; 
+     let pv   = barMultiDataList[i].pv; 
+     let uv   = barMultiDataList[i].uv; 
+
+     let s = structuredClone(p);
+     cells[p2a(s)] = { value: date }
+     s = { y:s.y  , x: s.x +1}
+     cells[p2a(s)] = { value: pv   }
+     s = { y:s.y  , x: s.x +1}
+     cells[p2a(s)] = { value: uv   }
+
+     p = { y:p.y +1 , x: p.x }
+  }
+/*
+  cells["D44"] = { value: barMultiDataList ,
+		colsize: 4, 
+		rowsize: 8,
+                renderer: 'chart_test9',
+  };
+*/
+
+
+  cells["D44"] = { value: barMultiDataList ,
+		colsize: 4, 
+		rowsize: 8,
+                renderer: 'chart_test10',
+  };
+
+/*
+  cells["D44"] = { value: "=ARRAY_2D_DICT(A36:C48)" ,
+		colsize: 4, 
+		rowsize: 8,
+                renderer: 'chart_test10',
+  };
+*/
+
+  cells["M80"] = {
     value: "X",
   };
 

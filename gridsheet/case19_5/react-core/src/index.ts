@@ -69,6 +69,8 @@ export { ChartTest5RendererMixin } from "./renderers/chart_test5";
 export { ChartTest6RendererMixin } from "./renderers/chart_test6";
 export { ChartTest7RendererMixin } from "./renderers/chart_test7";
 export { ChartTest8RendererMixin } from "./renderers/chart_test8";
+export { ChartTest9RendererMixin } from "./renderers/chart_test9";
+export { ChartTest10RendererMixin } from "./renderers/chart_test10";
 
 export { OtherCellDependRendererMixin } from "./renderers/othercell_depend";
 

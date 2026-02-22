@@ -18,7 +18,6 @@ export class ArrayFunction extends BaseFunction {
   ];
 
   protected validate() {
-     console.log(this.bareArgs);
 
     if (this.bareArgs.length === 0) {
       throw new FormulaError("#N/A", "One or more arguments are required.");

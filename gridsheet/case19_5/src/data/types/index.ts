@@ -11,6 +11,13 @@ export type BarData = {
    cancellation: number;
 };
 
+export type BarMultiData = {
+    date: string;
+    uv: number;
+    pv: number;
+    amt: number;
+};
+
 export type PieData = {
    name: string;
    students: number;

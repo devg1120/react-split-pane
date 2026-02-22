@@ -52,6 +52,50 @@ export type EnsureBooleanOptions = {
   ignore?: boolean;
 };
 
+
+export type AnyType = "string" | "number" | "boolean" | "none";
+
+export type AnyValue = {
+   type_: AnyType;
+   string_?: string;
+   number_?: number;
+   boolean_?: boolean;
+}
+
+export const ensureAny = (
+  value: any,
+): AnyValue => {
+
+  let result: AnyValue;
+
+  if (typeof value === "string") {
+	  result = {
+		  type_  : "string",
+		  string_: value,
+	  };
+
+  } else if (typeof value === "number") {
+	  result = {
+		  type_  : "number",
+		  number_: value,
+	  };
+
+  } else if (typeof value === "boolean") {
+	  result = {
+		  type_  : "boolean",
+		  boolean_: value,
+	  };
+
+  } else  {
+	  result = {
+		  type_  : "none",
+	  };
+
+  }
+  return result;
+
+}
+
 export const ensureNumber = (
   value: any,
   options?: EnsureNumberOptions,
