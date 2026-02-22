@@ -363,7 +363,7 @@ const App: React.FC = () => {
   };
 
   cells["F"] = {
-                label: 'Done',
+                labeler: 'Done',
                 width: 50,
                 renderer: 'checkbox',
                 style: {
@@ -378,7 +378,7 @@ const App: React.FC = () => {
 
   cells["G"] = {
 
-                label: 'Count',
+                labeler: 'Count',
                 width: 150,
                 renderer: 'thousand_separator',
                 style: {
@@ -454,8 +454,8 @@ const App: React.FC = () => {
   };
 
 const radarDataList2 = [...radarDataList]; 
-  radarDataList2[0] = { subject: 'aaaa', A: 50, B:200, fullMark : 'mark' }
-  const { radarData, setRadarData } =  useState( radarDataList2 );
+  radarDataList2[0] = { subject: 'aaaa', A: 50, B:200, fullMark : 90 }
+  //const { radarData, setRadarData } =  useState( radarDataList2 );
 
 /*
 useEffect(() => {
@@ -680,6 +680,7 @@ useEffect(() => {
          let id = table.getId({x:x,y:y});
          let address = table.getAddressById(id);
          //console.log(address);
+	 if (table.wire.data[id] === undefined) { return }
 	 let v = parseInt(table.wire.data[id].value) ;
 	 let new_v = String(v +1);
 	 //table.write({point:{x:x,y:y}, value:new_v, updateChangedAt:true});
@@ -695,6 +696,7 @@ useEffect(() => {
          let id = table.getId({x:x,y:y});
          let address = table.getAddressById(id);
          //console.log(address);
+	 if (table.wire.data[id] === undefined) { return }
 	 let v = parseInt(table.wire.data[id].value) ;
 	 let new_v = String(v +1);
 	 //table.write({point:{x:x,y:y}, value:new_v, updateChangedAt:true});
@@ -710,6 +712,7 @@ useEffect(() => {
          let id = table.getId({x:x,y:y});
          let address = table.getAddressById(id);
          console.log(address);
+	 if (table.wire.data[id] === undefined) { return }
 	 let v = table.wire.data[id].value ;
 	 //console.log(v);
 	 const new_v = [...v];
@@ -734,6 +737,7 @@ useEffect(() => {
          let id = table.getId({x:x,y:y});
          let address = table.getAddressById(id);
          console.log(address);
+	 if (table.wire.data[id] === undefined) { return }
 	 let v = table.wire.data[id].value ;
 	 //console.log(v);
 	 
@@ -758,6 +762,7 @@ useEffect(() => {
          let id = table.getId({x:x,y:y});
          let address = table.getAddressById(id);
          console.log(address);
+	 if (table.wire.data[id] === undefined) { return }
 	 let v = table.wire.data[id].value ;
 	 //console.log(v);
 	 

@@ -1,7 +1,7 @@
 import { solveTable } from "../solver";
 import { Table } from "../../lib/table";
 import { BaseFunction } from "./__base";
-import { FunctionProps } from "./base";
+import { FunctionProps } from "./__base";
 
 //import { ensureNumber } from "./__utils";
 import { ensureAny, AnyType, AnyValue  } from "./__utils";

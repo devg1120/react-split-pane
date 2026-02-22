@@ -48,11 +48,12 @@ const pieDataList: PieData[] = [
      let width  = 0;
      let height = 0;  
      let cell =table.getCellByPoint(point);
-     for (let i = 0; i < cell.colsize ; i++) {
-          width += table.getCellByPoint({ y:0, x:point.x + i}).width ;
+     if ( cell === undefined ) { return "Error" }
+     for (let i = 0; i < (cell.colsize ?? 1); i++) {
+          width += table.getCellByPoint({ y:0, x:point.x + i})?.width ?? 0;
      }
-     for (let i = 0; i < cell.rowsize ; i++) {
-          height += table.getCellByPoint({ y:point.y + i, x:0}).height;
+     for (let i = 0; i < (cell.rowsize ?? 1); i++) {
+          height += table.getCellByPoint({ y:point.y + i, x:0})?.height ?? 0;
      }
 
     /*

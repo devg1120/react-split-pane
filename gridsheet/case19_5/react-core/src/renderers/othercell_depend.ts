@@ -1,4 +1,5 @@
 import type { RendererMixinType } from "./core";
+import type { RenderProps } from "./core";
 
 export const OtherCellDependRendererMixin: RendererMixinType = {
   //array({ value, sync, table, point }: RenderProps<array>): any {
