@@ -94,7 +94,7 @@ export class Array2dDictFunction extends BaseFunction {
     let p1 = a2p(ids[0]);
     let p2 = a2p(ids[1]);
     let N = p2.x - p1.x + 1;
-    console.log("N", N);
+    //console.log("N", N);
     
     let key =  values[0].string_;
     let bars = [];
@@ -105,7 +105,8 @@ export class Array2dDictFunction extends BaseFunction {
 	  });
 
     }
-    console.log("bars", bars);
+    //console.log("bars", bars);
+
 
     let start = N*2;
     let data = [];
@@ -127,7 +128,7 @@ export class Array2dDictFunction extends BaseFunction {
 	  data.push(dict);
            
     }
-    console.log(data);
+    //console.log(data);
     let result = {
 	    key: key,
 	    bars: bars,
