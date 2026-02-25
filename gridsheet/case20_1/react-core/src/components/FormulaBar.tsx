@@ -1,6 +1,6 @@
 import type { KeyboardEvent } from "react";
 import type { InputEvent } from "react";
-import { useContext, useEffect, useState, useRef, useCallback } from "react";
+import { useContext, useEffect, useState, useRef, useCallback, memo } from "react";
 import { Context } from "../store";
 import { p2a } from "../lib/converters";
 import { setEditingAddress, setInputting, walk, write } from "../store/actions";
@@ -13,7 +13,8 @@ type FormulaBarProps = {
   ready: boolean;
 };
 
-export const FormulaBar = ({ ready }: FormulaBarProps) => {
+//export const FormulaBar = ({ ready }: FormulaBarProps) => {
+export const FormulaBar = memo<FormulaBarProps> (({ ready }: FormulaBarProps) => {
   const { store, dispatch } = useContext(Context);
   const [before, setBefore] = useState("");
   const {
@@ -225,4 +226,5 @@ export const FormulaBar = ({ ready }: FormulaBarProps) => {
       </div>
     </label>
   );
-};
+//};
+});

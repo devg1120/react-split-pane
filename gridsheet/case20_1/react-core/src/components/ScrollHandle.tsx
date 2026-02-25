@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { useEffect, useRef, useContext, useCallback } from "react";
+import { useEffect, useRef, useContext, useCallback, memo } from "react";
 import { Context } from "../store";
 import {
   drag,
@@ -24,13 +24,22 @@ const maxSpeed = 200;
 
 let lastScrollTime = new Date().getTime();
 let currentSpeed = 0;
-
-export function ScrollHandle({
+/*
+export const ScrollHandle = ({
   style,
   horizontal = 0,
   vertical = 0,
   className = "",
-}: Props) {
+}: Props) => {
+*/
+
+export const ScrollHandle = memo<Props>(   //GUSA
+({
+  style,
+  horizontal = 0,
+  vertical = 0,
+  className = "",
+}: Props) => {
   const scrollRef = useRef<number | null>(null);
   const { store, dispatch } = useContext(Context);
   const {
@@ -219,4 +228,5 @@ export function ScrollHandle({
       onMouseLeave={handleMouseLeave}
     />
   );
-}
+//}
+});
