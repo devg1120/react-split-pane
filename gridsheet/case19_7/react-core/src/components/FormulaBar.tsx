@@ -213,7 +213,7 @@ export const FormulaBar = ({ ready }: FormulaBarProps) => {
           ref={largeEditorRef}
           //value={inputting}
           defaultValue={inputting} //GUSA
-          //onInput={handleInput} //GUSA
+          onInput={handleInput} //GUSA
           onFocus={handleFocus}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
