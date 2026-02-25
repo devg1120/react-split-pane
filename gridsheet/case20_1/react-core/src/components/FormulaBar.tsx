@@ -1,4 +1,5 @@
 import type { KeyboardEvent } from "react";
+import type { InputEvent } from "react";
 import { useContext, useEffect, useState, useRef, useCallback } from "react";
 import { Context } from "../store";
 import { p2a } from "../lib/converters";
@@ -68,7 +69,8 @@ export const FormulaBar = ({ ready }: FormulaBarProps) => {
 
   const largeInput = largeEditorRef.current;
 
-  const handleInput = useCallback((e: KeyboardEvent<HTMLTextAreaElement>) => {
+  //const handleInput = useCallback((e: KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleInput = useCallback((e: InputEvent<HTMLTextAreaElement>) => {
     dispatch(setInputting(e.currentTarget.value));
   }, []);
 

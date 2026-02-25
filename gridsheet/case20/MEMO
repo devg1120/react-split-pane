@@ -1,3 +1,17 @@
+case20
+
+
+#  FormulaBar.tsx
+
+import type { InputEvent } from "react";
+
+#72
+  //const handleInput = useCallback((e: KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleInput = useCallback((e: InputEvent<HTMLTextAreaElement>) => {
+
+
+
+
 case19
 
     freeze row resize  skip
