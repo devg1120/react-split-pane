@@ -1,5 +1,19 @@
+
+
+
+
+case20_2   cursor move  span skip
+     store/actions.ts
+
+case20_1  scan
+  memo化
+        ScrollHandle.tsx
+        FormulaBar.tsx
+
+
 case19_4
-   rechart
+   rechart renderring
+
 
 case3
  ---- dev mode
