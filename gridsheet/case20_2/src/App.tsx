@@ -135,7 +135,7 @@ HEADER_WIDTH = 50;
   };
 
   cells["E4"] = {
-    value: "",
+    value: "OK",
     style: {
       backgroundImage: 'url(\"./top2bottom.svg\")',
       backgroundRepeat: "no-repeat" /* 繰り返さない */,
