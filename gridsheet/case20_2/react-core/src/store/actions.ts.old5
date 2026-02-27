@@ -860,12 +860,6 @@ class ArrowAction<
 		 if ( deltaX > 0 ) {                                                 //水平　右方向
 			 if (next.pos.y > 0) {     // Y 先頭以外
 				 new_deltaX += span_list[next.span_index].col_size;
-				 console.log("-------------------------------------Y1")
-				 let add = step(x + new_deltaX, y, 1, 0);
-				 if (add.prev.span) {
-				   console.log(add.deltaX);
-				   new_deltaX += add.deltaX;
-				 }
 			 }
 
 
@@ -875,12 +869,6 @@ class ArrowAction<
 			 }
 			 else if (next.pos.y > 0) {  // Y 先頭以外
 				 new_deltaX -= span_list[next.span_index].col_size ;
-				 console.log("-------------------------------------Y2")
-				 let add = step(x + new_deltaX, y,  -1, 0);
-				 if (add.prev.span) {
-				   console.log(add.deltaX);
-				   new_deltaX += add.deltaX;
-				 }
 			 }
 
 
@@ -889,12 +877,6 @@ class ArrowAction<
 		 if ( deltaY > 0 ) {                                                 //垂直　下方向
 			 if (next.pos.x > 0) {     // X 先頭以外
 				 new_deltaY += span_list[next.span_index].row_size;
-				 console.log("-------------------------------------X1")
-				 let add = step(x, y + new_deltaY, 0, 1);
-				 if (add.prev.span) {
-				   console.log(add.deltaY);
-				   new_deltaY += add.deltaY;
-				 }
 			 }
 
 
@@ -904,12 +886,6 @@ class ArrowAction<
 			 }
 			 else if (next.pos.x > 0) {  // X 先頭以外
 				 new_deltaY -= span_list[next.span_index].row_size ;
-				 console.log("-------------------------------------X2")
-				 let add = step(x, y + new_deltaY, 0, -1);
-				 if (add.prev.span) {
-				   console.log(add.deltaY);
-				   new_deltaY += add.deltaY;
-				 }
 			 }
 
 
@@ -920,7 +896,7 @@ class ArrowAction<
          } else {
 		 console.log("unknown .... ");
 	 }
-         return { deltaX: new_deltaX, deltaY: new_deltaY , prev: prev}
+         return { deltaX: new_deltaX, deltaY: new_deltaY }
 
      }
 
