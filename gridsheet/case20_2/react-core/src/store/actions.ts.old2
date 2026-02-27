@@ -771,8 +771,7 @@ class ArrowAction<
     //
      const span_list: SpanElementType[] = table.spanList;
 
-
-     const isSpan1 = (x: number, y: number) => {
+     const isSpan = (x: number, y: number) => {
        let span = false; // default
        let pos = { x: 0 , y: 0};
 
@@ -796,8 +795,8 @@ class ArrowAction<
        return span ;
      };
 
-
-     const isSpan2 = (x: number, y: number) => {
+/*
+     const isSpan = (x: number, y: number) => {
        let span = false; // default
        let pos = { x: 0 , y: 0};
        let span_index = -1;
@@ -819,31 +818,9 @@ class ArrowAction<
            }
          }
        }
-       return  { span: span, span_index: span_index} ;
+       return  { span: span, index: span_index} ;
      };
-     
-     const step = (x: number, y: number, deltaX: number, deltaY: number) => {
-         let prev = isSpan2(x, y) ;
-         let next = isSpan2(x + deltaX , y + deltaY);
-	 //console.log(prev, next);
-
-	 if ( prev.span == false && next.span == false && prev.span_index ) {
-		 console.log("out > out");
-	 } else if ( prev.span == true && next.span == true && prev.span_index == next.span_index) {
-		 console.log("in > in");
-	 } else if ( prev.span == true && next.span == true && prev.span_index != next.span_index) {
-		 console.log("in > in other");
-	 } else if ( prev.span == false && next.span == true && prev.span_index ) {
-		 console.log("out > in");
-	 } else if ( prev.span == true && next.span == false && prev.span_index ) {
-		 console.log("in > in");
-         } else {
-		 console.log("unknown .... ");
-	 }
-
-
-     }
-
+     */
      const getPos = (x: number, y: number) => {
        let span = false; // default
        let pos = { x: 0 , y: 0};
@@ -865,6 +842,40 @@ class ArrowAction<
          }
        }
        return pos ;
+     };
+
+     const isSpanX = (x: number, y: number) => {
+       let skip = false; // default
+
+       if (typeof span_list !== "undefined") {
+         for (let i = 0; i < span_list.length; i++) {
+           if (
+             x >= span_list[i].x &&
+             x < span_list[i].x + span_list[i].col_size
+           ) {
+             skip = true;
+             break;
+           }
+         }
+       }
+       return skip;
+     };
+
+     const isSpanY = (x: number, y: number) => {
+       let skip = false; // default
+
+       if (typeof span_list !== "undefined") {
+         for (let i = 0; i < span_list.length; i++) {
+           if (
+             y >= span_list[i].y &&
+             y < span_list[i].y + span_list[i].row_size 
+           ) {
+             skip = true;
+             break;
+           }
+         }
+       }
+       return skip;
      };
 
      const colSpan_size = (x: number, y: number) => {
@@ -929,12 +940,9 @@ class ArrowAction<
      };
 */
     /*******************************************************/
-     //console.log("*", isSpan2(x, y), isSpan2(x + deltaX , y + deltaY));
-     //console.log("*", step( x , y , deltaX ,  deltaY));
-     step( x , y , deltaX ,  deltaY);
-
+     console.log("*", isSpan(x, y), isSpan(x + deltaX , y + deltaY));
      //console.log("*", getPos(x, y));
-/*
+
      if (deltaX != 0) {
          //console.log("xx", deltaX)
           if (deltaX > 0) {
@@ -981,7 +989,7 @@ class ArrowAction<
 	  }
 
      }
-*/
+
 
     /*******************************************************/
 

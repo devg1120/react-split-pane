@@ -771,10 +771,8 @@ class ArrowAction<
     //
      const span_list: SpanElementType[] = table.spanList;
 
-
-     const isSpan1 = (x: number, y: number) => {
-       let span = false; // default
-       let pos = { x: 0 , y: 0};
+     const isSpan = (x: number, y: number) => {
+       let skip = false; // default
 
        if (typeof span_list !== "undefined") {
          for (let i = 0; i < span_list.length; i++) {
@@ -784,87 +782,46 @@ class ArrowAction<
              x >= span_list[i].x &&
              x < span_list[i].x + span_list[i].col_size 
            ) {
-		   console.log("i", i);
-             span = true;
-	     pos.y = y - span_list[i].y;
-	     pos.x = x - span_list[i].x;
-
+             skip = true;
              break;
            }
          }
        }
-       return span ;
+       return skip;
      };
 
+     const isSpanX = (x: number, y: number) => {
+       let skip = false; // default
 
-     const isSpan2 = (x: number, y: number) => {
-       let span = false; // default
-       let pos = { x: 0 , y: 0};
-       let span_index = -1;
        if (typeof span_list !== "undefined") {
          for (let i = 0; i < span_list.length; i++) {
            if (
-             y >= span_list[i].y &&
-             y < span_list[i].y + span_list[i].row_size  &&
              x >= span_list[i].x &&
-             x < span_list[i].x + span_list[i].col_size 
+             x < span_list[i].x + span_list[i].col_size
            ) {
-		   console.log("i", i);
-             span = true;
-	     span_index = i;
-	     pos.y = y - span_list[i].y;
-	     pos.x = x - span_list[i].x;
-
+             skip = true;
              break;
            }
          }
        }
-       return  { span: span, span_index: span_index} ;
+       return skip;
      };
-     
-     const step = (x: number, y: number, deltaX: number, deltaY: number) => {
-         let prev = isSpan2(x, y) ;
-         let next = isSpan2(x + deltaX , y + deltaY);
-	 //console.log(prev, next);
 
-	 if ( prev.span == false && next.span == false && prev.span_index ) {
-		 console.log("out > out");
-	 } else if ( prev.span == true && next.span == true && prev.span_index == next.span_index) {
-		 console.log("in > in");
-	 } else if ( prev.span == true && next.span == true && prev.span_index != next.span_index) {
-		 console.log("in > in other");
-	 } else if ( prev.span == false && next.span == true && prev.span_index ) {
-		 console.log("out > in");
-	 } else if ( prev.span == true && next.span == false && prev.span_index ) {
-		 console.log("in > in");
-         } else {
-		 console.log("unknown .... ");
-	 }
-
-
-     }
-
-     const getPos = (x: number, y: number) => {
-       let span = false; // default
-       let pos = { x: 0 , y: 0};
+     const isSpanY = (x: number, y: number) => {
+       let skip = false; // default
 
        if (typeof span_list !== "undefined") {
          for (let i = 0; i < span_list.length; i++) {
            if (
              y >= span_list[i].y &&
-             y < span_list[i].y + span_list[i].row_size  &&
-             x >= span_list[i].x &&
-             x < span_list[i].x + span_list[i].col_size 
+             y < span_list[i].y + span_list[i].row_size 
            ) {
-             span = true;
-	     pos.y = y - span_list[i].y;
-	     pos.x = x - span_list[i].x;
-
+             skip = true;
              break;
            }
          }
        }
-       return pos ;
+       return skip;
      };
 
      const colSpan_size = (x: number, y: number) => {
@@ -895,66 +852,25 @@ class ArrowAction<
        }
        return _rowSpan_size;
      };
-
-/*
-     const colSpan_size = (x: number, y: number) => {
-       let _colSpan_size = 1; // default
-
-       if (typeof span_list !== "undefined") {
-         for (let i = 0; i < span_list.length; i++) {
-           if (( span_list[i].x  <= x < span_list[i].x + span_list[i].col_size ) && 
-	       ( span_list[i].y  <= y < span_list[i].y + span_list[i].row_size )) {
-             if (span_list[i].col_size  > 1) {
-               _colSpan_size = span_list[i].col_size ;
-             }
-           }
-         }
-       }
-       return _colSpan_size;
-     };
-     const rowSpan_size = (x: number, y: number) => {
-       let _rowSpan_size: number = 1; // default
-
-       if (typeof span_list !== "undefined") {
-         for (let i = 0; i < span_list.length; i++) {
-           if (( span_list[i].x  <= x < span_list[i].x + span_list[i].col_size ) && 
-	       ( span_list[i].y  <= y < span_list[i].y + span_list[i].row_size )) {
-             if (span_list[i].row_size  > 1) {
-               _rowSpan_size = span_list[i].row_size ;
-             }
-           }
-         }
-       }
-       return _rowSpan_size;
-     };
-*/
     /*******************************************************/
-     //console.log("*", isSpan2(x, y), isSpan2(x + deltaX , y + deltaY));
-     //console.log("*", step( x , y , deltaX ,  deltaY));
-     step( x , y , deltaX ,  deltaY);
+     console.log("*", isSpan(x, y), isSpan(x + deltaX , y + deltaY));
 
-     //console.log("*", getPos(x, y));
-/*
      if (deltaX != 0) {
          //console.log("xx", deltaX)
           if (deltaX > 0) {
                 if (isSpan(x,y)) {
-			//console.log("x span +", colSpan_size(x,y));
+			//console.log("x+span *", colSpan_size(x,y));
 			deltaX +=colSpan_size(x,y)-1;
 		}
-		
                 if (isSpan(x + deltaX ,y)) {
 			//console.log("     x+ next span");
 		}
-		
           } else {
-		  
                 if (isSpan(x,y)) {
 			//console.log("x-span");
 		}
-		
                 if (isSpan(x + deltaX ,y)) {
-			//console.log("x span -", colSpan_size(x,y));
+			//console.log("     x-      next span *", colSpan_size(x,y));
 			deltaX -=colSpan_size(x,y)-1;
 		}
 	  }
@@ -964,10 +880,10 @@ class ArrowAction<
          //console.log("yy")
           if (deltaY > 0) {
                 if (isSpan(x,y)) {
-			//console.log("y span +", rowSpan_size(x,y));
+			//console.log("y+span");
 			deltaY +=rowSpan_size(x,y)-1;
 		}
-                if (isSpan(x  ,y + deltaY)[0]) {
+                if (isSpan(x  ,y + deltaY)) {
 			//console.log("     y+ next span");
 		}
           } else {
@@ -975,13 +891,13 @@ class ArrowAction<
 			//console.log("y-span");
 		}
                 if (isSpan(x  ,y + deltaY)) {
-			//console.log("y span -", rowSpan_size(x,y));
+			//console.log("     y-      next span");
 			deltaY -=rowSpan_size(x,y)-1;
 		}
 	  }
 
      }
-*/
+
 
     /*******************************************************/
 
