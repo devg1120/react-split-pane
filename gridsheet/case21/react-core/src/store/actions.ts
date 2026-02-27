@@ -1121,6 +1121,7 @@ class ArrowAction<
       }
     }
 
+
     const cell = table.getCellByPoint({ y: nextY, x: nextX }, "SYSTEM");
     height = cell?.height || DEFAULT_HEIGHT;
     width = cell?.width || DEFAULT_WIDTH;

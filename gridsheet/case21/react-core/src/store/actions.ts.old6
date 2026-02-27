@@ -784,7 +784,7 @@ class ArrowAction<
              x >= span_list[i].x &&
              x < span_list[i].x + span_list[i].col_size 
            ) {
-		   //console.log("i", i);
+		   console.log("i", i);
              span = true;
 	     pos.y = y - span_list[i].y;
 	     pos.x = x - span_list[i].x;
@@ -829,9 +829,9 @@ class ArrowAction<
          let new_deltaY = deltaY;
 
 	 if ( prev.span == false && next.span == false && prev.span_index ) {
-		 //console.log("out > out");
+		 console.log("out > out");
 	 } else if ( prev.span == true && next.span == true && prev.span_index == next.span_index) {
-		 //console.log("in > in");
+		 console.log("in > in");
 		 if ( deltaX > 0 ) {                                                   //水平　右方向
 			 if (next.pos.y == 0) {  // Y 先頭
 				 new_deltaX += span_list[next.span_index].col_size -1;
@@ -854,16 +854,16 @@ class ArrowAction<
 
 
 	 } else if ( prev.span == true && next.span == true && prev.span_index != next.span_index) {
-		 //console.log("in > in other");
+		 console.log("in > in other");
 	 } else if ( prev.span == false && next.span == true  ) {
-		 //console.log("out > in", next.pos);
+		 console.log("out > in", next.pos);
 		 if ( deltaX > 0 ) {                                                 //水平　右方向
 			 if (next.pos.y > 0) {     // Y 先頭以外
 				 new_deltaX += span_list[next.span_index].col_size;
-				 //console.log("-------------------------------------Y1")
+				 console.log("-------------------------------------Y1")
 				 let add = step(x + new_deltaX, y, 1, 0);
 				 if (add.prev.span) {
-				   //console.log(add.deltaX);
+				   console.log(add.deltaX);
 				   new_deltaX += add.deltaX;
 				 }
 			 }
@@ -875,10 +875,10 @@ class ArrowAction<
 			 }
 			 else if (next.pos.y > 0) {  // Y 先頭以外
 				 new_deltaX -= span_list[next.span_index].col_size ;
-				 //console.log("-------------------------------------Y2")
+				 console.log("-------------------------------------Y2")
 				 let add = step(x + new_deltaX, y,  -1, 0);
 				 if (add.prev.span) {
-				   //console.log(add.deltaX);
+				   console.log(add.deltaX);
 				   new_deltaX += add.deltaX;
 				 }
 			 }
@@ -889,10 +889,10 @@ class ArrowAction<
 		 if ( deltaY > 0 ) {                                                 //垂直　下方向
 			 if (next.pos.x > 0) {     // X 先頭以外
 				 new_deltaY += span_list[next.span_index].row_size;
-				 //console.log("-------------------------------------X1")
+				 console.log("-------------------------------------X1")
 				 let add = step(x, y + new_deltaY, 0, 1);
 				 if (add.prev.span) {
-				   //console.log(add.deltaY);
+				   console.log(add.deltaY);
 				   new_deltaY += add.deltaY;
 				 }
 			 }
@@ -904,10 +904,10 @@ class ArrowAction<
 			 }
 			 else if (next.pos.x > 0) {  // X 先頭以外
 				 new_deltaY -= span_list[next.span_index].row_size ;
-				 //console.log("-------------------------------------X2")
+				 console.log("-------------------------------------X2")
 				 let add = step(x, y + new_deltaY, 0, -1);
 				 if (add.prev.span) {
-				   //console.log(add.deltaY);
+				   console.log(add.deltaY);
 				   new_deltaY += add.deltaY;
 				 }
 			 }
@@ -916,9 +916,9 @@ class ArrowAction<
 		 }
 
 	 } else if ( prev.span == true && next.span == false  ) {
-		 //console.log("in > out");
+		 console.log("in > out");
          } else {
-		 //console.log("unknown .... ");
+		 console.log("unknown .... ");
 	 }
          return { deltaX: new_deltaX, deltaY: new_deltaY , prev: prev}
 
@@ -952,8 +952,7 @@ class ArrowAction<
 
        if (typeof span_list !== "undefined") {
          for (let i = 0; i < span_list.length; i++) {
-           //if (( span_list[i].x  <= x <= span_list[i].col_size ) && y == span_list[i].y) {
-           if ( span_list[i].x  <= x && x <= span_list[i].col_size  && y == span_list[i].y) {
+           if (( span_list[i].x  <= x <= span_list[i].col_size ) && y == span_list[i].y) {
              if (span_list[i].col_size  > 1) {
                _colSpan_size = span_list[i].col_size ;
              }
@@ -967,8 +966,7 @@ class ArrowAction<
 
        if (typeof span_list !== "undefined") {
          for (let i = 0; i < span_list.length; i++) {
-           //if (x == span_list[i].x && (span_list[i].y <= y < span_list[i].row_size)) {
-           if (x == span_list[i].x && span_list[i].y <= y  && y < span_list[i].row_size) {
+           if (x == span_list[i].x && (span_list[i].y <= y < span_list[i].row_size)) {
              if (span_list[i].row_size  > 1) {
                _rowSpan_size = span_list[i].row_size ;
              }
@@ -1093,7 +1091,6 @@ class ArrowAction<
       return store;
     }
     let { y: editorTop, x: editorLeft, height, width } = store.editorRect;
-    
     if (deltaY > 0) {
       for (let i = y; i < nextY; i++) {
         editorTop +=
