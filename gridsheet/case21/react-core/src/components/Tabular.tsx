@@ -718,7 +718,7 @@ const useOperationStyles = (store: StoreType, refs: RefPaletteType) => {
         borderBottom: BORDER_POINTED,
       },
     );
-    updateStyle({ y, x: x - 1 }, { borderRight: BORDER_POINTED });
+    //updateStyle({ y, x: x - 1 }, { borderRight: BORDER_POINTED });  //GUSA
     //updateStyle({ y, x: x + 1 }, { borderLeft: BORDER_POINTED });  //GUSA
     //updateStyle({ y: y - 1, x }, { borderBottom: BORDER_POINTED }); //GUSA
     //updateStyle({ y: y + 1, x }, { borderTop: BORDER_POINTED });  //GUSA
